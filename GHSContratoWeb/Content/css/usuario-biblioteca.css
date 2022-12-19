@@ -1,0 +1,38 @@
+﻿/* Barra de pesquisa */
+
+.input-pesquisa-usuario-biblioteca {
+    min-width: 310px !important;
+    max-height: 44px !important;
+    padding: .5rem 1rem;
+}
+
+.input-pesquisa-usuario-biblioteca .primeiro{
+    border: 0;
+}
+
+.input-pesquisa-usuario-biblioteca select {
+    height: 25px !important;
+    box-shadow: 0 0 0 0;
+    border: 0 none;
+    outline: 0;
+    display: inline;
+    border-radius: 2px;
+    border: 1px solid #ebedf2;
+}
+
+.input-pesquisa-usuario-biblioteca input {
+    box-shadow: 0 0 0 0;
+    border: 0 none;
+    outline: 0;
+    display: inline;
+    border-radius: 2px;
+    border: 1px solid #ebedf2;
+}
+
+.input-pesquisa-usuario-biblioteca select option:not(:nth-child(1)) {
+    color: #000;
+}
+
+.Situacao {
+    color: #767676;
+}

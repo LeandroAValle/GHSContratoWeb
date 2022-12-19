@@ -1,0 +1,34 @@
+﻿.input-pesquisa-livro input:focus {
+    border: 1px solid #3e93ff;
+}
+
+.input-pesquisa-livro input:nth-child(1):focus {
+    box-shadow: 0 0 0 0;
+    border: 0 none;
+    outline: 0;
+    display: inline;
+    border-radius: 2px;
+}
+
+.input-pesquisa-livro .primeiro{
+    border: none;
+    border: 0;
+}
+
+.input-pesquisa select {
+    height: 25px !important;
+    box-shadow: 0 0 0 0;
+    border: 0 none;
+    outline: 0;
+    display: inline;
+    border-radius: 2px;
+    border: 1px solid #ebedf2;
+}
+
+.Genero, .Autor {
+    color: #767676;
+}
+
+.input-pesquisa-livro select option:not(:nth-child(1)) {
+    color: #000;
+}
