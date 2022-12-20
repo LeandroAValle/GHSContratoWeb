@@ -106,49 +106,55 @@
                             </a>
                         </li>
                         @{ int count = 1;
-                            foreach (var item in lista)
-                            {
-                <li class="nav-item">
-                    <a data-toggle="collapse" href="#submenu-@count">
-                        <span class="material-icons-outlined" style="color: #c0beb3 !important;"><i class="fa @item.Icone me-2"></i></span>
-                        <p class="ml-2">@item.Nome</p>
-                        @if (item.Submenu.Count > 0)
-                        {
-        <span class="caret"></span>}
-                    </a>
+                         foreach (var item in lista)
+                                {
+                                <li class="nav-item">
+                                    <a data-toggle="collapse" href="#submenu-@count">
+                                        <span class="material-icons-outlined" style="color: #c0beb3 !important;"><i class="fa @item.Icone me-2"></i></span>
+                                        <p class="ml-2">@item.Nome</p>
+                                        @if (item.Submenu.Count > 0)
+                                            {
+                                             <span class="caret"></span>
+                                         }
+                                    </a>
 
-                    @if (item.Submenu.Count > 0)
-                    {
-    <div class="collapse" id="submenu-@count">
-        <ul class="nav nav-collapse" style="padding: 0 !important; list-style-type: none !important;">
-            @{ int count2 = 1;
-                foreach (var submenuPrimario in item.Submenu)
-                {
-<li>
-    <a data-toggle="collapse" href="#subnav-@count2">
-        <span class="sub-item">@submenuPrimario.Nome</span>
-    </a>
-    <div class="collapse" id="subnav-@count2">
-        <ul class="nav nav-collapse subnav" style="padding: 0 !important; list-style-type: none !important;">
-            <li>
-                <a href="@Url.Action(submenuPrimario.Action, submenuPrimario.Controller)">
-                    <span class="sub-item">@submenuPrimario.Nome</span>
-                </a>
-            </li>
-        </ul>
-    </div>
-</li> } 
-                }
+                                    @if (item.Submenu.Count > 0)
+                                        {
+                                         <div class="collapse" id="submenu-@count">
+                                             <ul class="nav nav-collapse" style="padding: 0 !important; list-style-type: none !important;">
+                                                 @{ int count2 = 1;
+                                                     foreach (var submenuPrimario in item.Submenu)
+                                                         {
+                                                          <li>
+                                                              <a data-toggle="collapse" href="#subnav-@count2">
+                                                                  <span class="sub-item">@submenuPrimario.Nome</span>
+                                                              </a>
+                                                              <div class="collapse" id="subnav-@count2">
+                                                                  <ul class="nav nav-collapse subnav" style="padding: 0 !important; list-style-type: none !important;">
+                                                                      <li>
+                                                                          <a href="@Url.Action(submenuPrimario.Action, submenuPrimario.Controller)">
+                                                                              <span class="sub-item">@submenuPrimario.Nome</span>
+                                                                          </a>
+                                                                      </li>
+                                                                  </ul>
+                                                              </div>
+                                                          </li> 
+                                                          
+                                                     } 
 
-        </ul>
-    </div>}
-                </li> count++;
-                            } 
-                }
+                                                 }
+
+                                             </ul>
+                                         </div>
+                                     }
+                                </li> 
+                                count++;
+                         } 
+                       }
                     </ul>
-                </div>
-            </div>
-        </div>
+               </div>
+           </div>
+       </div>
         <!-- End Sidebar -->
 
         <div class="main-panel">
