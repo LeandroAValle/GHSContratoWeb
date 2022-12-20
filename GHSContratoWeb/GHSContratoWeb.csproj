@@ -123,10 +123,57 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Conexao.cs" />
+    <Compile Include="Controllers\ClienteController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\LoginController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\Aggregation\MenuAggregation.cs" />
+    <Compile Include="Models\Aggregation\SubMenuAggregation.cs" />
+    <Compile Include="Models\Business\AcomodacaoModuloBusiness.cs" />
+    <Compile Include="Models\Business\ArquivoContratoBusiness.cs" />
+    <Compile Include="Models\Business\CidadeBusiness.cs" />
+    <Compile Include="Models\Business\ClienteBusiness.cs" />
+    <Compile Include="Models\Business\ConsensionariaBusiness.cs" />
+    <Compile Include="Models\Business\ContratoBusiness.cs" />
+    <Compile Include="Models\Business\DadosClienteBusiness.cs" />
+    <Compile Include="Models\Business\EmpresaBusiness.cs" />
+    <Compile Include="Models\Business\EnderecoClienteBusiness.cs" />
+    <Compile Include="Models\Business\EstadoBusiness.cs" />
+    <Compile Include="Models\Business\HistoricoLoginBusiness.cs" />
+    <Compile Include="Models\Business\InformacaoAcessoBusiness.cs" />
+    <Compile Include="Models\Business\MenuBusiness.cs" />
+    <Compile Include="Models\Business\PadraoEntradaBusiness.cs" />
+    <Compile Include="Models\Business\SistemaFotovoltaicoBusiness.cs" />
+    <Compile Include="Models\Business\TipoClienteBusiness.cs" />
+    <Compile Include="Models\Business\TipoContratoBusiness.cs" />
+    <Compile Include="Models\Business\UnidadeConsumidoraBusiness.cs" />
+    <Compile Include="Models\Business\UsuarioBusiness.cs" />
+    <Compile Include="Models\Grid\ClienteGrid.cs" />
+    <Compile Include="Models\Helper\ExtensionMethods.cs" />
+    <Compile Include="Models\Helper\Utils.cs" />
+    <Compile Include="Models\Mapping\AcomodacaoModulo.cs" />
+    <Compile Include="Models\Mapping\ArquivoContrato.cs" />
+    <Compile Include="Models\Mapping\Cidade.cs" />
+    <Compile Include="Models\Mapping\Cliente.cs" />
+    <Compile Include="Models\Mapping\Concessionaria.cs" />
+    <Compile Include="Models\Mapping\Contrato.cs" />
+    <Compile Include="Models\Mapping\DadosCliente.cs" />
+    <Compile Include="Models\Mapping\Empresa.cs" />
+    <Compile Include="Models\Mapping\EnderecoCliente.cs" />
+    <Compile Include="Models\Mapping\Estado.cs" />
+    <Compile Include="Models\Mapping\HistoricoLogin.cs" />
+    <Compile Include="Models\Mapping\InformacaoAcesso.cs" />
+    <Compile Include="Models\Mapping\Menu.cs" />
+    <Compile Include="Models\Mapping\PadraoEntrada.cs" />
+    <Compile Include="Models\Mapping\SistemaFotovoltaico.cs" />
+    <Compile Include="Models\Mapping\Teste.cs" />
+    <Compile Include="Models\Mapping\TipoCliente.cs" />
+    <Compile Include="Models\Mapping\TipoContrato.cs" />
+    <Compile Include="Models\Mapping\UnidadeConsumidora.cs" />
+    <Compile Include="Models\Mapping\Usuario.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -149,6 +196,11 @@
     <Content Include="Content\css\usuario-sistema.css" />
     <Content Include="Content\Imagens\bg.jpg" />
     <Content Include="Content\Imagens\gif-load.gif" />
+    <Content Include="Content\Imagens\logo %281%29.png" />
+    <Content Include="Content\Imagens\logo %282%29.png" />
+    <Content Include="Content\Imagens\logo %283%29.png" />
+    <Content Include="Content\Imagens\logo-4.png" />
+    <Content Include="Content\Imagens\logo.png" />
     <Content Include="Content\Imagens\logobw-35x35.png" />
     <Content Include="Content\Imagens\logobw.png" />
     <Content Include="Content\Imagens\separador-baixo.png" />
@@ -295,6 +347,14 @@
     <Content Include="Content\Templates\Login\fonts\poppins\Poppins-Thin.ttf" />
     <Content Include="Content\Templates\Login\fonts\poppins\Poppins-ThinItalic.ttf" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
+    <Content Include="Scripts\globalize\currency.js" />
+    <Content Include="Scripts\globalize\currency.min.js" />
+    <Content Include="Scripts\globalize\date.js" />
+    <Content Include="Scripts\globalize\date.min.js" />
+    <Content Include="Scripts\globalize\message.js" />
+    <Content Include="Scripts\globalize\message.min.js" />
+    <Content Include="Scripts\globalize\number.js" />
+    <Content Include="Scripts\globalize\number.min.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />
     <Content Include="Scripts\jquery-3.4.1.slim.js" />
@@ -320,14 +380,15 @@
     <Content Include="Views\Home\About.cshtml" />
     <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\Cliente\Alterar.cshtml" />
+    <Content Include="Views\Cliente\Index.cshtml" />
+    <Content Include="Views\Cliente\Novo.cshtml" />
+    <Content Include="Views\Cliente\_BuscarCliente.cshtml" />
+    <Content Include="Views\Login\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Business\" />
     <Folder Include="DAO\" />
-    <Folder Include="HelperWeb\" />
-    <Folder Include="Helper\" />
-    <Folder Include="Models\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />

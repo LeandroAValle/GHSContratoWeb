@@ -1,0 +1,101 @@
+﻿@model List<SistemaContratoWebBusiness.Grid.ClienteGrid>
+@{
+    ViewBag.Title = "Alterar";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="page-inner mt-4 mb-4">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card">
+                <div class="card-header d-flex justify-content-between">
+                    <h4 class="card-title">Cadastro de Cliente</h4>
+                    <a href="@Url.Action("Novo","Cliente")" class="btn btn-success d-flex align-items-center"><span class="ml-1">Novo</span></a>
+                </div>
+                <div class="card-body" style="background-color: #F3F6F9 !important">
+                    <div class="table-responsive text-nowrap" style="margin-top: 10px !important; height: auto; max-height: 500px;">
+                        <table class="dtPadrao table display compact table-striped table-hover w-100 table-bordered">
+                            <thead>
+                                <tr class="text-dark">
+                                    <th scope="col">ID</th>
+                                    <th scope="col">Nome</th>
+                                    <th scope="col">Tipo do Cliente</th>
+                                    <th scope="col">Documento</th>
+                                    <th scope="col">Data do Cliente</th>
+                                    <th scope="col" hidden>Data Expedição</th>
+                                    <th scope="col" class="text-center">Ações</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @{
+                                    foreach (var item in Model)
+                                    {
+                                        <tr>
+                                            <td class="text-center">@item.ID</td>
+                                            <td>@item.Nome</td>
+                                            <td>@item.TipoCliente</td>
+                                            <td>@item.Documento.ToString().FormatarCPFCNPJ()</td>
+                                            <td hidden>@item.DataCliente.Value.ToString("dd/MM/yyyy")</td>
+                                            <td>@item.DataExpedicao.Value.ToString("dd/MM/yyyy")</td>
+                                            <td>
+                                                <a class="btn btn-sm btn-info btn-detalhes-cliente" name="btn-detalhes-cliente" data-toggle="modal" data-target="#modalcliente" data-id="@item.ID" style="color: white !important">Detalhes</a>
+                                                <a class="btn btn-sm btn-primary" href="@Url.Action("Alterar","Cliente",new  {ID = @item.ID })">Alterar</a>
+                                                <a class="btn btn-sm btn-danger" href="@Url.Action("Excluir","Cliente", new {ID = @item.ID })">Excluir</a>
+                                            </td>
+                                        </tr>
+                                    }
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="~/Scripts/jquery-3.6.0.js"></script>
+<script src="~/Scripts/DataTables/dataTables.bootstrap.js"></script>
+<link href="~/Content/DataTables/css/dataTables.bootstrap.css" rel="stylesheet" />
+<link href="~/Content/DataTables/css/dataTables.bootstrap4.css" rel="stylesheet" />
+
+@*MODAL DETALHES CLIENTES*@
+<div class="modal fade" id="modalcliente" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document" style="max-width: 1200px !important;">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Detalhes</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Fechar">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="card-body">
+                    <div id="tr-iloading1">
+                    </div>
+                </div>
+            </div><!-- /.card-body -->
+        </div><!-- /.card -->
+    </div>
+</div>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<script>
+    /*MODAL DETALHES CLIENTE*/
+    $('.btn-detalhes-cliente').click(function () {
+        $.ajax({
+            url: '/Cliente/_BuscarCliente',
+            data: { id: $(this).data('id') },
+            type: 'post',
+            beforeSend: function () {
+            },
+            success: function (page) {
+                $("#tr-iloading1").hide();
+                $('#modalcliente').find('.card-body').empty();
+                $('#modalcliente').find('.card-body').html(page);
+            },
+            error: function (data) {
+                console.log('erro');
+            }
+        });
+    });
+</script>

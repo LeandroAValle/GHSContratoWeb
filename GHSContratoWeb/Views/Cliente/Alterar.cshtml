@@ -1,0 +1,82 @@
+﻿@model SistemaContratoWebBusiness.Mapping.Cliente
+@{
+    ViewBag.Title = "Alterar";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="page-inner mt-4 mb-4">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card border-top-personalizada">
+                <div class="card-header d-flex justify-content-between">
+                    <h4 class="card-title">Cadastro de Cliente</h4>
+                    <a href="@Url.Action("Index","Cliente")" class="btn d-flex align-items-center" style="background-color: grey"><span class="ml-1" style="color:white">Voltar</span></a>
+                </div>
+                <div class="card-body" style="background-color: #F3F6F9 !important ">
+                    <form class="row g-3" action="@Url.Action("Novo","Cliente")" method="post" enctype="application/x-www-form-urlencoded">
+                        <div class="col-md-2">
+                            <label for="ID" style="color: black" class="form-label">Codigo</label>
+                            <input type="text" name="ID" class="form-control form-control-sm" id="Codigo" maxlength="11" value="@Model.ID" />
+                        </div>
+                        <div class="col-md-8">
+                            <label for="Descricao" style="color: black" class="form-label">Descricao</label>
+                            <input type="text" name="Descricao" class="form-control form-control-sm " id="descricao" maxlength="100">
+                        </div>
+                        <div class="col-2">
+                            <label for="tipoCliente" style="color: black" class="form-label">Tipo de Cliente</label>
+                            <div class="row">
+                                <div border-start>
+                                    <input type="hidden" name="TipoData" id="TipoData" value="" />
+                                    <div class="form-check-inline">
+                                        <label class="form-check-label">
+                                            <input type="radio" id="tipo_cpf" name="tipoCliente" value="1" checked onclick="selecionarTipoCliente()"> CPF
+                                        </label>
+                                    </div>
+                                    <div class="form-check-inline ml-5">
+                                        <label class="form-check-label">
+                                            <input type="radio" id="tipo_cnpj" name="tipoCliente" value="2" onclick="selecionarTipoCliente()"> CNPJ
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-3">
+                            <label for="cpf" style="color: black" class="form-label">CPF</label>
+                            <input type="text" name="cpf" class="form-control form-control-sm" id="cpf" maxlength="100">
+                        </div>
+                        <div class="col-3">
+                            <label for="rg" style="color: black" class="form-label">RG</label>
+                            <input type="text" class="form-control form-control-sm" name="rg" id="rg" />
+                        </div>
+                        <div class="col-md-3">
+                            <label for="cnpj" style="color: black" class="form-label">CNPJ</label>
+                            <input type="text" name="cnpj" class="form-control form-control-sm" id="cnpj" />
+                        </div>
+                        <div class="col-md-3">
+                            <label for="ie" style="color: black" class="form-label">IE</label>
+                            <input type="text" name="ie" class="form-control form-control-sm" id="ie" />
+                        </div>
+                        <div class="col-12 d-flex flex-row-reverse">
+                            <button type="submit" class="btn btn-success">Salvar</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    function selecionarTipoCliente() {
+        if (document.getElementById('tipo_cpf').checked == true) {
+            document.getElementById("mostar_cpf").style.visibility = "visible";
+            document.getElementById("mostar_cnpj").style.visibility = "hidden";
+
+        }
+        if (document.getElementById('tipo_cpf').checked == false) {
+            document.getElementById("mostar_cpf").style.visibility = "hidden";
+            document.getElementById("mostar_cnpj").style.visibility = "visible";
+        }
+    }
+</script>
+
