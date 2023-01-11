@@ -362,6 +362,7 @@
     <Content Include="Content\Imagens\logo.png" />
     <Content Include="Content\Imagens\logobw-35x35.png" />
     <Content Include="Content\Imagens\logobw.png" />
+    <Content Include="Content\Imagens\procuraimagem.png" />
     <Content Include="Content\Imagens\separador-baixo.png" />
     <Content Include="Content\Imagens\separador-cima.png" />
     <Content Include="Content\Plugins\jquery.mask.js" />

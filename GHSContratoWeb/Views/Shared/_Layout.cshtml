@@ -10,7 +10,7 @@
 <html lang="en">
 <head>
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <title>Atlantis Lite - Bootstrap 4 Admin Dashboard</title>
+    <title>GHS - Contratos</title>
     <meta content='width=device-width, initial-scale=1.0, shrink-to-fit=no' name='viewport' />
     <!--   Core JS Files   -->
     <script src="../Content/Templates/Atlantis-Lite-master/assets/js/core/jquery.3.2.1.min.js"></script>
@@ -30,6 +30,8 @@
     <link rel="stylesheet" href="../Content/Templates/Atlantis-Lite-master/assets/css/bootstrap.min.css">
     <link rel="stylesheet" href="../Content/Templates/Atlantis-Lite-master/assets/css/atlantis.min.css">
     <link href="~/Content/css/style.css" rel="stylesheet" />
+    @*<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">*@
+    <link href="https://fonts.googleapis.com/css?family=Material+Icons|Material+Icons+Outlined|Material+Icons+Two+Tone|Material+Icons+Round|Material+Icons+Sharp" rel="stylesheet">
 
     <!-- CSS Just for demo purpose, don't include it in your project -->
     <link rel="stylesheet" href="../Content/Templates/Atlantis-Lite-master/assets/css/demo.css">
@@ -38,8 +40,9 @@
     <div class="wrapper">
         <div class="main-header">
             <!-- Logo Header -->
-            <div class="logo-header" style="background-color: #228B22">
+            <div class="logo-header" style="background-color: #52BE80 ">
                 <a href="index.html" class="logo">
+                    <img src="~/Content/Imagens/logo (1).png" alt="navbar brand" class="navbar-brand" style="height: 40px; width: 40px" />
                     <img src="~/Content/Imagens/logo (2).png" alt="navbar brand" class="navbar-brand" style="height: 40px; width: 40px">
                 </a>
                 <button class="navbar-toggler sidenav-toggler ml-auto" type="button" data-toggle="collapse" data-target="collapse" aria-expanded="false" aria-label="Toggle navigation">
@@ -56,12 +59,12 @@
             </div>
             <!-- End Logo Header -->
             <!-- Navbar Header -->
-            <nav class="navbar navbar-header navbar-expand-lg" style="background-color: #228B22">
+            <nav class="navbar navbar-header navbar-expand-lg" style="background-color: #52BE80 ">
                 <div class="container-fluid">
                     <ul class="navbar-nav topbar-nav ml-md-auto align-items-center">
                         <li class="nav-item">
                             <a href="../Content/Templates/Atlantis-Lite-master/assets/examples/demo1" class="nav-link">
-                                Sair
+                                <span style="font-style: italic">Sair</span>
                             </a>
                         </li>
                     </ul>
@@ -107,32 +110,33 @@
                         @{ int count = 1;
                             foreach (var item in lista)
                                 {
-                <li class="nav-item">
-                    <a data-toggle="collapse" href="#submenu-@count">
-                        <span class="material-icons-outlined" style="color: #c0beb3 !important;"><i class="fa @item.Icone me-2"></i></span>
-                        <p class="ml-2">@item.Nome</p>
-                        @if (item.Submenu.Count > 0)
-                            {
-        <span class="caret"></span>}
-                    </a>
+                                <li class="nav-item">
+                                    <a data-toggle="collapse" href="#submenu-@count">
+                                        <span class="material-icons-outlined" style="color: #c0beb3 !important;"><i class="fa @item.Icone me-2"></i></span>
+                                        <p class="ml-2">@item.Nome</p>
+                                        @if (item.Submenu.Count > 0)
+                                            {
+                                            <span class="caret"></span>}
+                                    </a>
 
-                    @if (item.Submenu.Count > 0)
-                        {
-    <div class="collapse" id="submenu-@count">
-        <ul class="nav nav-collapse" style="padding: 0 !important; list-style-type: none !important;">
-            @{ foreach (var submenuPrimario in item.Submenu)
-                    {
-<li>
-    <a href="@Url.Action(submenuPrimario.Action, submenuPrimario.Controller)">
-        <span class="sub-item">@submenuPrimario.Nome</span>
-    </a>
-</li> } }
+                                    @if (item.Submenu.Count > 0)
+                                        {
+                                        <div class="collapse" id="submenu-@count">
+                                            <ul class="nav nav-collapse" style="padding: 0 !important; list-style-type: none !important;">
+                                                @{ foreach (var submenuPrimario in item.Submenu)
+                                                        {
+                                                        <li>
+                                                            <a href="@Url.Action(submenuPrimario.Action, submenuPrimario.Controller)">
+                                                                <span class="sub-item">@submenuPrimario.Nome</span>
+                                                            </a>
+                                                        </li>
+ } }
 
-        </ul>
-    </div>}
-                </li>
- count++;
-                } }
+                                            </ul>
+                                        </div>}
+                                </li>
+                                count++;
+                                } }
                     </ul>
                 </div>
             </div>
@@ -148,8 +152,8 @@
                     <nav class="pull-left">
                     </nav>
                     <div class="copyright ml-auto">
-                        <img src="~/Content/Imagens/logo.png" class="mr-2" style="width: 32px; height: 32px;" />
-                        &copy; @DateTime.Now.Year <a href="http://www.bwinformatica.com.br/" target="_blank">BW Sistemas</a>
+                        <img src="~/Content/Imagens/logo (1).png" class="mr-2" style="width: 32px; height: 32px;"/>
+                        &copy; @DateTime.Now.Year <a href="" target="_blank">Milani Sistemas</a>
                     </div>
                 </div>
             </footer>
@@ -177,6 +181,9 @@
     <!-- Datatables -->
     <script src="~/Content/Templates/Atlantis-Lite-master/assets/js/plugin/datatables/datatables.min.js"></script>
     <link href="~/Content/DataTables/css/dataTables.bootstrap4.css" rel="stylesheet" />
+    <link href="~/Content/DataTables/css/dataTables.bootstrap.min.css" rel="stylesheet" />
+    <link href="~/Content/DataTables/css/dataTables.bootstrap.css" rel="stylesheet" />
+    <link href="~/Content/DataTables/css/responsive.bootstrap.css" rel="stylesheet" />
     <!-- Bootstrap Notify -->
     <script src="../Content/Templates/Atlantis-Lite-master/assets/js/plugin/bootstrap-notify/bootstrap-notify.min.js"></script>
 
@@ -193,26 +200,36 @@
     <script src="//cdn.datatables.net/1.12.1/js/jquery.dataTables.min.js"></script>
     <script src="~/Scripts/js/main.js"></script>
 
-
     <script>
         $(function () {
             let dtPadrao = $('.dtPadrao').dataTable({
                 responsive: true,
                 bPaginate: true,
                 bFilter: true,
-                language: {
-                    searchPlaceholder: 'Pesquisar...',
-                    sSearch: '',
-                    lengthMenu: '_MENU_ Itens página',
-                    emptyTable: "Tabela vazia! Pesquise...",
-                    info: "Vendo _START_ de _END_ em _TOTAL_ itens",
-                    zeroRecords: "Nenhum registro encontrado..",
-                    "processing": "Aguarde...",
+                destroy: true,
+                "lengthChange": false,
+                "language": {
+                    "emptyTable": "Nenhum registro encontrado",
+                    "info": "Mostrando página _PAGE_ de _PAGES_",
+                    "infoEmpty": "Mostrando 0 de 0",
+                    "infoFiltered": "(Filtrado de _MAX_ total registros)",
+                    "infoPostFix": "",
+                    "thousands": ",",
+                    "lengthMenu": "Mostrar _MENU_ registros",
+                    "loadingRecords": "Carregando...",
+                    "processing": "Processando...",
+                    "search": "Pesquisar:",
+                    "zeroRecords": "Nenhum registro encontrado",
                     "paginate": {
-                        "previous": "Anterior",
-                        "next": "Próximo"
+                        "first": "Primeiro",
+                        "last": "Último",
+                        "next": "Próximo",
+                        "previous": "Anterior"
+                    },
+                    "aria": {
+                        "sortAscending": ": ordernar em order crescente",
+                        "sortDescending": ": ordenar em ordem decrescente"
                     }
-
                 }
             });
         });
