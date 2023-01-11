@@ -28,20 +28,20 @@
                             <tbody>
                                 @{ foreach (var item in Model)
                                         {
-                        <tr>
-                            <td class="text-center">@item.ID</td>
-                            <td>@item.Nome</td>
-                            <td>@item.TipoCliente</td>
-                            <td>@item.Documento.ToString()</td>
-                            <td hidden>@item.DataCliente.Value.ToString("dd/MM/yyyy")</td>
-                            <td>@item.DataExpedicao.Value.ToString("dd/MM/yyyy")</td>
-                            <td>
-                                <a class="btn btn-sm btn-info btn-detalhes-cliente" name="btn-detalhes-cliente" data-toggle="modal" data-target="#modalcliente" data-id="@item.ID" style="color: white !important">Detalhes</a>
-                                <a class="btn btn-sm btn-primary" href="@Url.Action("Alterar","Cliente",new  {ID = @item.ID })">Alterar</a>
-                                <a class="btn btn-sm btn-danger" href="@Url.Action("Excluir","Cliente", new {ID = @item.ID })">Excluir</a>
-                            </td>
-                        </tr>
- } }
+                                        <tr>
+                                            <td class="text-center">@item.ID</td>
+                                            <td>@item.Nome</td>
+                                            <td>@item.TipoCliente</td>
+                                            <td>@item.Documento.ToString()</td>
+                                            <td hidden>@item.DataCliente.Value.ToString("dd/MM/yyyy")</td>
+                                            <td>@item.DataExpedicao.Value.ToString("dd/MM/yyyy")</td>
+                                            <td>
+                                                <a class="btn btn-sm btn-info btn-detalhes-cliente" name="btn-detalhes-cliente" data-toggle="modal" data-target="#modalcliente" data-id="@item.ID" style="color: white !important">Detalhes</a>
+                                                <a class="btn btn-sm btn-primary" href="@Url.Action("Alterar","Cliente",new  {ID = @item.ID })">Alterar</a>
+                                                <a class="btn btn-sm btn-danger" href="@Url.Action("Excluir","Cliente", new {ID = @item.ID })">Excluir</a>
+                                            </td>
+                                        </tr>
+                                        } }
                             </tbody>
                         </table>
                     </div>

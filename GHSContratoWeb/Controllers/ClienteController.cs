@@ -74,15 +74,14 @@ namespace GHSContratoWeb.Controllers
                 Bairro = form["Bairro"].IsNullOrEmptyBoolean() ? null : form["Bairro"].Trim(),
                 Complemento = form["Complemento"].IsNullOrEmptyBoolean() ? null : form["Complemento"].Trim(),
                 CEP = form["CEP"].IsNullOrEmptyBoolean() ? null : form["CEP"].Trim(),
-                //LatitudeDecimal = form["LatitudeDecimal"].IsNullOrEmptyBoolean() ? null : form["LatitudeDecimal"].ToDecimal(),
-                //LongitudeDecimal = form["LongitudeDecimal"].IsNullOrEmptyBoolean() ? null : form["LongitudeDecimal"].ToDecimal(),
-                //Padrao = form["Padrao"].IsNullOrEmptyBoolean() ? null : form["Padrao"].Trim(),
+                LatitudeDecimal = form["LatitudeDecimal"].IsNullOrEmptyBoolean() ? (Decimal?)null : form["LatitudeDecimal"].ToDecimal(),
+                LongitudeDecimal = form["LongitudeDecimal"].IsNullOrEmptyBoolean() ? (Decimal?)null : form["LongitudeDecimal"].ToDecimal(),
+                Padrao = form["Padrao"].ToBoolean(),
                 Ativo = form["Ativo"].ToBoolean(),
                 Observacao = form["Observacao"].IsNullOrEmptyBoolean() ? null : form["Observacao"].Trim(),
                 LatitudeHoras = form["LatitudeHoras"].IsNullOrEmptyBoolean() ? null : form["LatitudeHoras"].Trim(),
-                LongitudeHoras = form["LongitudeHoras"].IsNullOrEmptyBoolean() ? null : form["LongitudeHoras"].Trim()
-                //LocalInstalacao = form["LocalInstalacao"].IsNullOrEmptyBoolean() ? null : form["LocalInstalacao"].Trim()
-
+                LongitudeHoras = form["LongitudeHoras"].IsNullOrEmptyBoolean() ? null : form["LongitudeHoras"].Trim(),
+                LocalInstalacao = form["LocalInstalacao"].ToBoolean()
                 };
 
             if (this.Request.Files[0].ContentLength > 0)
