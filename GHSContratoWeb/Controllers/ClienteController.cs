@@ -11,42 +11,42 @@ using System.Web;
 using System.Web.Mvc;
 
 namespace GHSContratoWeb.Controllers
-    {
+{
     public class ClienteController : Controller
-        {
+    {
         // GET: Cliente
         public ActionResult Index()
-            {
+        {
             List<ClienteGrid> listaGrid = new ClienteBusiness().ListarGrid();
 
             if (TempData["Resultado"] != null)
-                {
+            {
                 dynamic obj = TempData["Resultado"];
 
                 if (((bool)obj.Resultado) == true)
-                    {
+                {
                     ViewBag.Notificacao = "<script>Notiflix.Notify.Success('" + (String)obj.Mensagem + "');</script>";
-                    }
-                else
-                    {
-                    ViewBag.Notificacao = "<script>Notiflix.Notify.Failure('" + (String)obj.Mensagem + "');</script>";
-                    }
                 }
+                else
+                {
+                    ViewBag.Notificacao = "<script>Notiflix.Notify.Failure('" + (String)obj.Mensagem + "');</script>";
+                }
+            }
 
             return View(listaGrid);
-            }
+        }
 
         [HttpGet]
         public ActionResult Novo()
-            {
+        {
             return View();
-            }
+        }
 
         [HttpPost]
         public ActionResult Novo(FormCollection form)
-            {
+        {
             Cliente cliente = new Cliente()
-                {
+            {
                 Nome = form["Nome"].IsNullOrEmptyBoolean() ? null : form["Nome"].Trim(),
                 Ativo = form["Ativo"].ToBoolean(),
                 DataExpedicao = form["DataExpedicao"].IsNullOrEmptyBoolean() ? (DateTime?)null : form["DataExpedicao"].ToDate(),
@@ -63,10 +63,10 @@ namespace GHSContratoWeb.Controllers
                 Cidadania = form["Cidadania"].IsNullOrEmptyBoolean() ? null : form["Cidadania"].Trim(),
                 EstadoCivil = form["EstadoCivil"].IsNullOrEmptyBoolean() ? null : form["EstadoCivil"].Trim(),
                 Profissao = form["Profissao"].IsNullOrEmptyBoolean() ? null : form["Profissao"].Trim()
-                };
+            };
 
             EnderecoCliente endereco = new EnderecoCliente()
-                {
+            {
                 IDCliente = form["IDCliente"].IsNullOrEmptyBoolean() ? (Int32?)null : form["IDCliente"].ToInt32(),
                 IDCidade = form["IDCidade"].IsNullOrEmptyBoolean() ? (Int32?)null : form["IDCidade"].ToInt32(),
                 Rua = form["Rua"].IsNullOrEmptyBoolean() ? null : form["Rua"].Trim(),
@@ -82,79 +82,79 @@ namespace GHSContratoWeb.Controllers
                 LatitudeHoras = form["LatitudeHoras"].IsNullOrEmptyBoolean() ? null : form["LatitudeHoras"].Trim(),
                 LongitudeHoras = form["LongitudeHoras"].IsNullOrEmptyBoolean() ? null : form["LongitudeHoras"].Trim(),
                 LocalInstalacao = form["LocalInstalacao"].ToBoolean()
-                };
+            };
 
             if (this.Request.Files[0].ContentLength > 0)
-                {
+            {
                 if (this.Request.Files.Count == 1)
-                    {
+                {
                     using (Stream inputStream = this.Request.Files[0].InputStream)
-                        {
+                    {
                         MemoryStream memoryStream = inputStream as MemoryStream;
                         if (memoryStream == null)
-                            {
+                        {
                             memoryStream = new MemoryStream();
                             inputStream.CopyTo(memoryStream);
-                            }
-                        cliente.Anexo = memoryStream.ToArray();
                         }
+                        cliente.Anexo = memoryStream.ToArray();
                     }
                 }
+            }
 
             int? resultado = new ClienteBusiness().InsertCliente(cliente);
 
             dynamic obj = new System.Dynamic.ExpandoObject();
             if (resultado == 1)
-                {
+            {
                 obj.Resultado = true;
                 obj.Mensagem = "Registro salvo com sucesso!";
-                }
+            }
             else
-                {
+            {
                 obj.Resultado = false;
                 obj.Mensagem = "Falha ao realizar cadastro!";
-                }
+            }
             TempData["Resultado"] = obj;
 
             return RedirectToAction("ClienteEndereco");
-            }
+        }
 
         [HttpPost]
         public PartialViewResult _BuscarCliente(int id)
-            {
+        {
             Cliente cliente = new ClienteBusiness().Detalhes(id);
             return PartialView(cliente);
-            }
+        }
 
 
         public ActionResult Alterar(int id)
-            {
+        {
             Cliente cliente = new ClienteBusiness().Detalhes(id);
             return View(cliente);
-            }
+        }
 
         [HttpPost]
         public ActionResult Alterar(FormCollection form)
-            {
+        {
             Cliente cliente = new Cliente();
 
             if (string.IsNullOrEmpty(form["nome"].ToString().Trim()) == true)
-                {
+            {
                 cliente.Nome = null;
-                }
+            }
             else
-                {
+            {
                 cliente.Nome = form["nome"].ToString().Trim();
-                }
+            }
 
             if (string.IsNullOrEmpty(form["DataExpedicao"].ToString().Trim()) == true)
-                {
+            {
                 cliente.DataExpedicao = null;
-                }
+            }
             else
-                {
+            {
                 cliente.DataExpedicao = Convert.ToDateTime(form["DataExpedicao"].ToString());
-                }
+            }
 
             int? resultado = new ClienteBusiness().UpdateCliente(cliente);
 
@@ -173,6 +173,6 @@ namespace GHSContratoWeb.Controllers
 
             return RedirectToAction("Index", new { id = cliente.ID });
 
-            }
         }
     }
+}

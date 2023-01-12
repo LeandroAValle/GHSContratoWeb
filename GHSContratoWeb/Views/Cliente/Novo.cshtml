@@ -8,20 +8,10 @@
                     <h4 class="card-title">Novo Cliente</h4>
                 </div>
                 <div class="card-body">
-                    <ul class="nav nav-tabs" id="myTab" role="tablist">
-                        <li class="nav-item">
-                            <a class="nav-link active" id="dadosCliente-tab" data-toggle="tab" href="#dadosCliente" role="tab" aria-controls="dadosCliente" aria-selected="true">Dados Pessoais</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">Profile</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" id="contact-tab" data-toggle="tab" href="#contact" role="tab" aria-controls="contact" aria-selected="false">Contact</a>
-                        </li>
-                    </ul>
-                    <div class="tab-content" id="myTabContent">
-                        <form action="@Url.Action("Novo","Cliente")" method="post">
-                            <div class="tab-pane fade show active" id="dadosCliente" role="tabpanel" aria-labelledby="dadosCliente-tab">
+                    <form action="@Url.Action("Novo","Cliente")" method="post">
+                        <div class="">
+                            <fieldset class="border p-4">
+                                <legend class="float-none w-auto" style="font-size: 1.2em !important;">Dados Pessoais</legend>
                                 <div class="row">
                                     <div class="col-12 col-md-2 px-0">
                                         <div class="form-group">
@@ -101,22 +91,22 @@
                                             <input type="text" name="Profissao" class="form-control form-control-sm" id="Profissao" />
                                         </div>
                                     </div>
-                                    <div class="col-12 col-md-2 px-0">
-                                        <div class="form-group">
-                                            <label for="Telefone">Telefone</label>
-                                            <input type="text" name="Telefone" class="form-control form-control-sm" id="Telefone" />
-                                        </div>
-                                    </div>
                                     <div class="col-12 col-md-3 px-0">
                                         <div class="form-group">
-                                            <label for="Email">E-mail</label>
-                                            <input type="text" name="Email" class="form-control form-control-sm" id="Email" />
+                                            <label for="faixaSalarial">Faixa Salárial</label>
+                                            <input type="text" name="faixaSalarial" class="form-control form-control-sm" id="faixaSalarial" />
                                         </div>
                                     </div>
                                     <div class="col-12 col-md-2 px-0">
                                         <div class="form-group">
                                             <label for="DataAbertura">Data Abertura</label>
                                             <input type="text" name="DataAbertura" class="form-control form-control-sm" id="DataAbertura" />
+                                        </div>
+                                    </div>
+                                    <div class="col-12 col-md-2 px-0">
+                                        <div class="form-group">
+                                            <label for="anexo">Anexos</label>
+                                            <input type="text" name="anexos" class="form-control form-control-sm" id="anexos" />
                                         </div>
                                     </div>
                                 </div>
@@ -128,43 +118,61 @@
                                         </div>
                                     </div>
                                 </div>
+                            </fieldset>
+                        </div>
+                        <div class="">
+                            <fieldset class="border p-4">
+                                <legend class="float-none w-auto" style="font-size: 1.2em !important;">Contatos</legend>
+                                <div class="Form-contatos">
+                                </div>
+                                <div class="row">
+                                    <div class="form-group d-flex flex-row-reverse">
+                                        <button href="#" id="adicionarcampoContatos" class="btn btn-sm btn-dark add_field_button_contatos">Adicionar Contato</button>
+                                    </div>
+                                </div>
+                            </fieldset>
+                        </div>
+                        <div class="">
+                            <fieldset class="border p-4">
+                                <legend class="float-none w-auto" style="font-size: 1.2em !important;">Endereços</legend>
                                 <div class="Form-endereco">
                                 </div>
                                 <div class="row">
                                     <div class="form-group d-flex flex-row-reverse">
-                                        <button href="#" id="adicionarcampo" class="btn btn-sm btn-secondary add_field_button">Adicionar Endereço</button>
+                                        <button href="#" id="adicionarcampo" class="btn btn-sm btn-dark add_field_button">Adicionar Endereço</button>
                                     </div>
                                 </div>
+                            </fieldset>
+                        </div>
+                        <div class="">
+                            <fieldset class="border p-4">
+                                <legend class="float-none w-auto" style="font-size: 1.2em !important;">Informações de Acesso</legend>
+                                <div class="Form-acesso">
+                                </div>
                                 <div class="row">
+                                    <div class="form-group d-flex flex-row-reverse">
+                                        <button href="#" id="adicionaracesso" class="btn btn-sm btn-dark add_field_acesso_button">Adicionar Acesso</button>
+                                    </div>
                                 </div>
+                            </fieldset>
+                        </div>
+                        <div class="col-md-12 col-md-12 px-0">
+                            <div class="form-group d-flex flex-row-reverse">
+                                <button type="submit" class="btn btn-success btn-sm d-flex align-items-center salvar-alert ml-1">Salvar</button>
+                                <a href="@Url.Action("Index","Cliente")" class="btn btn-dark btn-sm d-flex align-items-center">Cancelar</a>
                             </div>
-                            <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
-                                ...
-                            </div>
-                            <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">
-                                ...
-                            </div>
-                            <div class="col-md-12 col-md-12 px-0">
-                                <div class="form-group d-flex flex-row-reverse">
-                                    <a href="@Url.Action("Index","Cliente")" class="btn btn-outline-dark btn-sm d-flex align-items-center ml-1"><span class="material-icons-outlined">clear</span><span class="ml-1">Cancelar</span></a>
-                                    <button type="submit" class="btn btn-outline-success btn-sm d-flex align-items-center"><span class="material-icons-outlined">save</span><span class="ml-1">Salvar</span></button>
-                                </div>
-                            </div>
-                        </form>
-                    </div>
+                        </div>
+                    </form>
                 </div>
             </div>
         </div>
     </div>
 </div>
 <script>
-</script>
-<script>
     function selecionarTipoCliente() {
         if (document.getElementById('tipo_cpf').checked == true) {
             document.getElementById("mostar_cpf").style.visibility = "visible";
             document.getElementById("mostar_cnpj").style.visibility = "hidden";
-
         }
         if (document.getElementById('tipo_cpf').checked == false) {
             document.getElementById("mostar_cpf").style.visibility = "hidden";
@@ -196,7 +204,7 @@
 
             if (x < max_fields) { //max input box allowed
                 x++; //text box increment
-                $(wrapper).append('<div><fieldset class="border p-2" style="border-color: black !important"><legend class="float-none w-auto p-2">Endereço<label class="Total-endereco">' + (length + 1) + '</label></legend><div class="row"><div class="col-12 col-md-7"><div class="form-group"><label for="Rua">Rua</label><input type="text" name="Rua' + (length + 1) + '" class="form-control form-control-sm" id="Rua' + (length + 1) + '"/></div></div><div class="col-12 col-md-1"><div class="form-group"><label for="Número">Número</label><input type="text" name="Numero' + (length + 1) + '" class="form-control form-control-sm" id="Número' + (length + 1) + '"/></div></div><div class="col-12 col-md-4"><div class="form-group"><label for="Bairro">Bairro</label><input type="text" name="Bairro' + (length + 1) + '" class="form-control form-control-sm" id="Bairro' + (length + 1) + '"/></div></div></div><div class="row mb-4"><div class="col-12 col-md-5"><div class="form-group"><label for="Cidade">Cidade</label><input type="text" name="Cidade' + (length + 1) + '" class="form-control form-control-sm" id="Cidade' + (length + 1) + '"/></div></div><div class="col-12 col-md-1"><div class="form-group"><label for="Estado">Estado</label><input type="text" name="Estado' + (length + 1) + '" class="form-control form-control-sm" id="Estado' + (length + 1) + '"/></div></div><div class="col-12 col-md-2"><div class="form-group"><label for="CEP">CEP</label><input type="text" name="CEP' + (length + 1) + '" class="form-control form-control-sm" id="CEP' + (length + 1) + '"/></div></div><div class="col-12 col-md-4"><div class="form-group"><label for="Concessionaria">Concessionária</label><input type="text" name="Concessionaria' + (length + 1) + '" class="form-control form-control-sm" id="Concessionaria' + (length + 1) + '"/></div></div></fieldset><a href="#" class="remove_field">Remove</a></div>');
+                $(wrapper).append('<div><h4 class="float-none w-auto p-2">Endereço<label class="Total-endereco">' + (length + 1) + '</label></h4><div class="row"><div class="col-12 col-md-7 px-0"><div class="form-group"><label for="Rua">Rua</label><input type="text" name="Rua' + (length + 1) + '" class="form-control form-control-sm" id="Rua' + (length + 1) + '" /></div></div><div class="col-12 col-md-1 px-0"><div class="form-group"><label for="Número">Número</label><input type="text" name="Numero' + (length + 1) + '" class="form-control form-control-sm" id="Número' + (length + 1) + '" /></div></div><div class="col-12 col-md-4 px-0"><div class="form-group"><label for="Bairro">Bairro</label><input type="text" name="Bairro' + (length + 1) + '" class="form-control form-control-sm" id="Bairro' + (length + 1) + '" /></div></div></div><div class="row"><div class="col-12 col-md-5 px-0"><div class="form-group"><label for="Cidade">Cidade</label><input type="text" name="Cidade' + (length + 1) + '" class="form-control form-control-sm" id="Cidade' + (length + 1) + '" /></div></div><div class="col-12 col-md-1 px-0"><div class="form-group"><label for="Estado">Estado</label><input type="text" name="Estado' + (length + 1) + '" class="form-control form-control-sm" id="Estado' + (length + 1) + '" /></div></div><div class="col-12 col-md-2 px-0"><div class="form-group"><label for="CEP">CEP</label><input type="text" name="CEP' + (length + 1) + '" class="form-control form-control-sm" id="CEP' + (length + 1) + '" /></div></div><div class="col-12 col-md-4 px-0"><div class="form-group"><label for="Concessionaria">Concessionária</label><input type="text" name="Concessionaria' + (length + 1) + '" class="form-control form-control-sm" id="Concessionaria' + (length + 1) + '" /></div></div></div><div class="row"><div class="col-12 col-md-5 px-0"><div class="form-check"><input type="checkbox" class="form-check-input" id="enderecoPrincipal' + (length + 1) + '"><label class="form-check-label" for="exampleCheck1">Principal</label></div></div></div><a href="#" class="remove_field">Remover</a><hr /></div>');
             }
             //Fazendo com que cada uma escreva seu name
         });
@@ -205,6 +213,50 @@
             e.preventDefault();
             $(this).parent('div').remove();
             x--;
+            //replaceName();
+        })
+
+        var wrappercontatos = $(".Form-contatos"); //Fields wrapper
+        var add_button_contatos = $(".add_field_button_contatos"); //Add button ID
+
+        var y = 1; //initlal text box count
+        $(add_button_contatos).click(function (e) { //on add input button click
+            e.preventDefault();
+            var lengthcontatos = wrappercontatos.find(".Total-contatos").length;
+
+            if (y < max_fields) { //max input box allowed
+                y++; //text box increment
+                $(wrappercontatos).append('<div><div class="row Total-contatos"><div class="col-12 col-md-2 px-0"><div class="form-group"><label for="Telefone">Telefone</label><input type="text" name="Telefone' + (lengthcontatos + 1) + '" class="form-control form-control-sm" id="Telefone' + (lengthcontatos + 1) + '" /></div></div><div class="col-12 col-md-5 px-0"><div class="form-group"><label for="Email">E-mail</label><input type="text" name="Email' + (lengthcontatos + 1) + '" class="form-control form-control-sm" id="Email' + (lengthcontatos + 1) + '" /></div></div><div class="col-12 col-md-5 px-0"><div class="form-group"><label for="Email">Proprietário</label><input type="text" name="proprietario' + (lengthcontatos + 1) + '" class="form-control form-control-sm" id="proprietario' + (lengthcontatos + 1) + '" /></div></div></div><a href="#" class="remove_field_contatos">Remover</a></div>');
+            }
+            //Fazendo com que cada uma escreva seu name
+        });
+
+        $(wrappercontatos).on("click", ".remove_field_contatos", function (e) { //user click on remove text
+            e.preventDefault();
+            $(this).parent('div').remove();
+            y--;
+            //replaceName();
+        })
+
+        var wrapperacesso = $(".Form-acesso"); //Fields wrapper
+        var add_button_acesso = $(".add_field_acesso_button"); //Add button ID
+
+        var z = 1; //initlal text box count
+        $(add_button_acesso).click(function (e) { //on add input button click
+            e.preventDefault();
+            var lengthacesso = wrapperacesso.find(".Total-acesso").length;
+
+            if (z < max_fields) { //max input box allowed
+                z++; //text box increment
+                $(wrapperacesso).append('<div><div class="row Total-acesso"><div class="col-12 col-md-3 px-0"><div class="form-group"><label for="Setores">Setores</label><input type="text" name="Setores' + (lengthacesso + 1) + '" class="form-control form-control-sm" id="setores' + (lengthacesso + 1) + '" /></div></div><div class="col-12 col-md-3 px-0"><div class="form-group"><label for="Discriminacao">Discriminação</label><input type="text" name="Discriminacao' + (lengthacesso + 1) + '" class="form-control form-control-sm" id="discriminacao' + (lengthacesso + 1) + '" /></div></div><div class="col-12 col-md-3 px-0"><div class="form-group"><label for="Usuario">Usuário</label><input type="text" name="Usuario' + (lengthacesso + 1) + '" class="form-control form-control-sm" id="usuario' + (lengthacesso + 1) + '" /></div></div><div class="col-12 col-md-3 px-0"><div class="form-group"><label for="Senha">Senha</label><input type="text" name="Senha' + (lengthacesso + 1) + '" class="form-control form-control-sm" id="senha' + (lengthacesso + 1) + '" /></div></div></div><a href="#" class="remove_field_acesso">Remover</a></div>');
+            }
+            //Fazendo com que cada uma escreva seu name
+        });
+
+        $(wrapperacesso).on("click", ".remove_field_acesso", function (e) { //user click on remove text
+            e.preventDefault();
+            $(this).parent('div').remove();
+            z--;
             //replaceName();
         })
 
@@ -223,5 +275,4 @@
         //    });
         //}
     });
-
 </script>

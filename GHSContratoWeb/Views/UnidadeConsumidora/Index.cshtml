@@ -1,0 +1,55 @@
+﻿@model List<GHSContratoWeb.Models.Mapping.UnidadeConsumidora>
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml"; }
+
+
+<div class="page-inner mt-5">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card">
+                <div class="card-header d-flex justify-content-between">
+                    <h4 class="card-title">Cadastro de Cliente</h4>
+                    <a href="@Url.Action("Novo","Cliente")" class="btn btn-success d-flex align-items-center"><span class="ml-1">Novo</span></a>
+                </div>
+                <div class="card-body">
+                    <div class="table-responsive">
+                        <table class="dtPadrao table table-sm display table-striped table-hover w-100 table-bordered">
+                            <thead>
+                                <tr class="text-dark">
+                                    <th>ID</th>
+                                    <th hidden>IDEnderecoCliente</th>
+                                    <th hidden>IDConsensionaria</th>
+                                    <th hidden>CodigoUnidadeConsumidora</th>
+                                    <th hidden>Observacao</th>
+                                    <th>Registro</th>
+                                    <th>Ativo</th>
+                                    <th class="text-center">Ações</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @{ foreach (var item in Model)
+                                    {
+                                        <tr>
+                                            <td>@item.ID</td>
+                                            <td hidden>@item.IDEnderecoCliente</td>
+                                            <td hidden>@item.IDConsensionaria</td>
+                                            <td hidden>@item.CodigoUnidadeConsumidora</td>
+                                            <td hidden>@item.Observacao.ToString()</td>
+                                            <td>@item.DataHoraRegistro.Value.ToString("dd/MM/yyyy")</td>
+                                            <td>@item.Ativo</td>
+                                            <td>
+                                                <a class="btn btn-sm btn-info btn-detalhes-cliente" name="btn-detalhes-cliente" data-toggle="modal" data-target="#modalcliente" data-id="@item.ID" style="color: white !important">Detalhes</a>
+                                                <a class="btn btn-sm btn-primary" href="@Url.Action("Alterar","Cliente",new  {ID = @item.ID })">Alterar</a>
+                                                <a class="btn btn-sm btn-danger" href="@Url.Action("Excluir","Cliente", new {ID = @item.ID })">Excluir</a>
+                                            </td>
+                                        </tr>
+                                    } }
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
