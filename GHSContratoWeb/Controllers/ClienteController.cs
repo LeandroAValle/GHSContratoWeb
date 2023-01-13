@@ -9,6 +9,7 @@ using System.IO;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using GHSContratoWeb.Models.Helper;
 
 namespace GHSContratoWeb.Controllers
 {
@@ -17,6 +18,13 @@ namespace GHSContratoWeb.Controllers
         // GET: Cliente
         public ActionResult Index()
         {
+            Usuario usuario = new Utils().Usuario;
+
+            if (usuario == null)
+            {
+                RedirectToAction("Index", "Login");
+            }
+
             List<ClienteGrid> listaGrid = new ClienteBusiness().ListarGrid();
 
             if (TempData["Resultado"] != null)
@@ -39,6 +47,13 @@ namespace GHSContratoWeb.Controllers
         [HttpGet]
         public ActionResult Novo()
         {
+            Usuario usuario = new Utils().Usuario;
+
+            if (usuario == null)
+            {
+                RedirectToAction("Index", "Login");
+            }
+
             return View();
         }
 

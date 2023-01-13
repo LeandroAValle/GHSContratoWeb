@@ -26,7 +26,7 @@ namespace SistemaContratoWeb.Controllers
         /// <param name="form">formulário com o usuário e a senha</param>
         /// <returns>True || False</returns>
         [HttpPost]
-        public ActionResult Acesso(string email, string senha)
+        public ActionResult Login(string email, string senha)
         {
             bool loginAcesso = new UsuarioBusiness().Acesso(email, senha);
             if (loginAcesso == true)

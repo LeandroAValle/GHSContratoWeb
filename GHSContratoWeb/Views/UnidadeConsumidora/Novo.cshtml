@@ -5,7 +5,7 @@
         <div class="col-md-12">
             <div class="card border-top-personalizada">
                 <div class="card-header d-flex justify-content-between">
-                    <h4 class="card-title">Novo Cliente</h4>
+                    <h4 class="card-title">Cadastro Unidade Consumidora</h4>
                 </div>
                 <div class="card-body">
                     <form action="@Url.Action("Novo","UnidadeConsumidora")" method="post">
@@ -13,24 +13,27 @@
                             <fieldset class="border p-4">
                                 <legend class="float-none w-auto" style="font-size: 1.2em !important;">Unidade Consumidora</legend>
                                 <div class="row">
-                                    <div class="col-12 col-md-1 px-0">
-                                        <div class="form-group">
-                                            <label for="ID">Código</label>
-                                            <input type="text" name="ID" class="form-control form-control-sm" id="Codigo" maxlength="11" />
-                                        </div>
+                                    @*<div class="col-12 col-md-1 px-0">
+                                            <div class="form-group">
+                                                <label for="ID">Código</label>
+                                                <input type="text" name="ID" class="form-control form-control-sm" id="Codigo" maxlength="11" />
+                                            </div>
+                                        </div>*@
+                                    <div class="col-12 col-md-12 px-0">
+                                        <h4>Descrição </h4>
+                                        <h4>+ Endereço + Numero + Bairro + Cidade + Estado</h4>
+
+                                        @*<div class="form-group">
+                                                <label for="Nome">Nome</label>
+                                                <input type="text" name="Nome" class="form-control form-control-sm " id="Nome" maxlength="100">
+                                            </div>*@
                                     </div>
-                                    <div class="col-12 col-md-7 px-0">
-                                        <div class="form-group">
-                                            <label for="Nome">Nome</label>
-                                            <input type="text" name="Nome" class="form-control form-control-sm " id="Nome" maxlength="100">
-                                        </div>
-                                    </div>
-                                    <div class="col-12 col-md-2 px-0">
-                                        <div class="form-group">
-                                            <label for="CPF">CPF</label>
-                                            <input type="text" name="CPF" class="form-control form-control-sm" id="CPF" maxlength="100">
-                                        </div>
-                                    </div>
+                                    @*<div class="col-12 col-md-2 px-0">
+                                            <div class="form-group">
+                                                <label for="CPF">CPF</label>
+                                                <input type="text" name="CPF" class="form-control form-control-sm" id="CPF" maxlength="100">
+                                            </div>
+                                        </div>*@
                                 </div>
                             </fieldset>
                         </div>
@@ -47,16 +50,11 @@
                                     <div class="col-12 col-md-4 px-0">
                                         <div class="form-group">
                                             <label for="CPF">Apresentou Fatura de Energia?</label>
-                                            <div class="mt--2">
-                                                <div class="form-check form-check-inline">
-                                                    <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1">
-                                                    <label class="form-check-label" for="inlineRadio1">Sim</label>
-                                                </div>
-                                                <div class="form-check form-check-inline">
-                                                    <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2">
-                                                    <label class="form-check-label" for="inlineRadio2">Não</label>
-                                                </div>
-                                            </div>
+                                            <select class="custom-select custom-select-sm mr-sm-2" id="inlineFormCustomSelect">
+                                                <option selected>-Selecione-</option>
+                                                <option value="1">Sim</option>
+                                                <option value="2">Não</option>
+                                            </select>
                                         </div>
                                     </div>
                                     <div class="col-12 col-md-2 px-0">
@@ -174,19 +172,19 @@
                                             <input type="text" name="CPF" class="form-control form-control-sm" id="CPF" maxlength="100">
                                         </div>
                                     </div>
-                                    <div class="col-12 col-md-4 px-0">
+                                    <div class="col-12 col-md-3 px-0">
                                         <div class="form-group">
                                             <label for="CPF">Potência e Tecnologia (Wp)</label>
                                             <input type="text" name="CPF" class="form-control form-control-sm" id="CPF" maxlength="100">
                                         </div>
                                     </div>
-                                    <div class="col-12 col-md-4 px-0">
+                                    <div class="col-12 col-md-3 px-0">
                                         <div class="form-group">
                                             <label for="CPF">Quantidade de Inversores</label>
                                             <input type="text" name="CPF" class="form-control form-control-sm" id="CPF" maxlength="100">
                                         </div>
                                     </div>
-                                    <div class="col-12 col-md-3 px-0">
+                                    <div class="col-12 col-md-2 px-0">
                                         <div class="form-group">
                                             <label for="CPF">Potencia (W)</label>
                                             <input type="text" name="CPF" class="form-control form-control-sm" id="CPF" maxlength="100">
@@ -240,7 +238,7 @@
                                             <input type="text" name="CPF" class="form-control form-control-sm" id="CPF" maxlength="100">
                                         </div>
                                     </div>
-                                    <div class="col-12 col-md-2 px-0">
+                                    <div class="col-12 col-md-8 px-0">
                                         <div class="form-group">
                                             <label for="CPF">Pagamento</label>
                                             <input type="text" name="CPF" class="form-control form-control-sm" id="CPF" maxlength="100">
@@ -252,19 +250,55 @@
                         <div class="">
                             <fieldset class="border p-4">
                                 <legend class="float-none w-auto" style="font-size: 1.2em !important;">Unidades Consumidoras Beneficiarias (UC'S')</legend>
-                                <h4>Aqui vai uma tabela de unidades beneficiarias</h4>
+                                <div class="table-responsive">
+                                    <table class="dtPadrao table table-sm display table-striped table-hover w-100 table-bordered">
+                                        <thead>
+                                            <tr class="text-dark">
+                                                <th>ID</th>
+                                                <th hidden>IDEnderecoCliente</th>
+                                                <th hidden>IDConsensionaria</th>
+                                                <th hidden>CodigoUnidadeConsumidora</th>
+                                                <th hidden>Observacao</th>
+                                                <th>Registro</th>
+                                                <th>Ativo</th>
+                                                <th class="text-center">Adicionar</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            @{ foreach (var item in ViewBag.UnidadeConsumidoraBeneficiada)
+                                                {
+                                    <tr>
+                                        <td>@item.ID</td>
+                                        <td hidden>@item.IDEnderecoCliente</td>
+                                        <td hidden>@item.IDConsensionaria</td>
+                                        <td hidden>@item.CodigoUnidadeConsumidora</td>
+                                        <td hidden>@item.Observacao.ToString()</td>
+                                        <td>@item.DataHoraRegistro.Value.ToString("dd/MM/yyyy")</td>
+                                        <td>@item.Ativo</td>
+                                        <td>
+                                            <a class="btn btn-sm btn-info btn-detalhes-cliente" name="btn-detalhes-cliente" data-toggle="modal" data-target="#modalcliente" data-id="@item.ID" style="color: white !important">Adicionar</a>
+                                        </td>
+                                    </tr>
+ } }
+                                        </tbody>
+                                    </table>
+                                </div>
+                                <hr />
                                 <div class="row">
-                                    <div class="col-12 col-md-4 px-0">
+                                    <div class="col-12 col-md-8 px-0">
                                         <div class="form-group">
                                             <label for="ID">UC Beneficaria 1</label>
                                             <input type="text" name="ID" class="form-control form-control-sm" id="Codigo" maxlength="11" />
                                         </div>
                                     </div>
-                                    <div class="col-12 col-md-7 px-0">
+                                    <div class="col-12 col-md-3 px-0">
                                         <div class="form-group">
                                             <label for="Nome">Percentual do Exedente(%)</label>
                                             <input type="text" name="Nome" class="form-control form-control-sm " id="Nome" maxlength="100">
                                         </div>
+                                    </div>
+                                    <div style="margin-top: 33px !important; margin-right: -55px !important">
+                                        <a class="btn"><i class="fa fa-minus-circle"></i></a>
                                     </div>
                                 </div>
                             </fieldset>
@@ -273,55 +307,45 @@
                             <fieldset class="border p-4">
                                 <legend class="float-none w-auto" style="font-size: 1.2em !important;">Acomodação dos Modulos</legend>
                                 <div class="row">
-                                    <div class="col-12 col-md-4 px-0">
+                                    <div class="col-12 col-md-2 px-0">
                                         <div class="form-group">
                                             <label for="CPF">Orientação</label>
-                                            <div class="mt--2">
-                                                <div class="form-check form-check-inline">
-                                                    <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1">
-                                                    <label class="form-check-label" for="inlineRadio1">Sim</label>
-                                                </div>
-                                                <div class="form-check form-check-inline">
-                                                    <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2">
-                                                    <label class="form-check-label" for="inlineRadio2">Não</label>
-                                                </div>
-                                            </div>
+                                            <select class="custom-select custom-select-sm mr-sm-2" id="inlineFormCustomSelect">
+                                                <option selected>-Selecione-</option>
+                                                <option value="1">Sim</option>
+                                                <option value="2">Não</option>
+                                            </select>
                                         </div>
                                     </div>
-                                    <div class="col-12 col-md-4 px-0">
+                                    <div class="col-12 col-md-2 px-0">
                                         <div class="form-group">
                                             <label for="CPF">Inclinação</label>
-                                            <div class="mt--2">
-                                                <div class="form-check form-check-inline">
-                                                    <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1">
-                                                    <label class="form-check-label" for="inlineRadio1">Sim</label>
-                                                </div>
-                                                <div class="form-check form-check-inline">
-                                                    <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2">
-                                                    <label class="form-check-label" for="inlineRadio2">Não</label>
-                                                </div>
-                                            </div>
+                                            <select class="custom-select custom-select-sm mr-sm-2" id="inlineFormCustomSelect">
+                                                <option selected>-Selecione-</option>
+                                                <option value="1">Sim</option>
+                                                <option value="2">Não</option>
+                                            </select>
                                         </div>
                                     </div>
-                                    <div class="col-12 col-md-4 px-0">
+                                    <div class="col-12 col-md-3 px-0">
                                         <div class="form-group">
                                             <label for="Nome">Local de Instalação</label>
                                             <input type="text" name="Nome" class="form-control form-control-sm " id="Nome" maxlength="100">
                                         </div>
                                     </div>
-                                    <div class="col-12 col-md-4 px-0">
+                                    <div class="col-12 col-md-2 px-0">
                                         <div class="form-group">
                                             <label for="Nome">Idade do Telhado</label>
                                             <input type="text" name="Nome" class="form-control form-control-sm " id="Nome" maxlength="100">
                                         </div>
                                     </div>
-                                    <div class="col-12 col-md-4 px-0">
+                                    <div class="col-12 col-md-3 px-0">
                                         <div class="form-group">
                                             <label for="Nome">Tipo de telhado</label>
                                             <input type="text" name="Nome" class="form-control form-control-sm " id="Nome" maxlength="100">
                                         </div>
                                     </div>
-                                    <div class="col-12 col-md-4 px-0">
+                                    <div class="col-12 col-md-3 px-0">
                                         <div class="form-group">
                                             <label for="Nome">Peso do Sistema (Kg)</label>
                                             <input type="text" name="Nome" class="form-control form-control-sm " id="Nome" maxlength="100">
@@ -333,94 +357,64 @@
                                             <input type="text" name="Nome" class="form-control form-control-sm " id="Nome" maxlength="100">
                                         </div>
                                     </div>
-                                    <div class="col-12 col-md-4 px-0">
+                                    <div class="col-12 col-md-3 px-0">
                                         <div class="form-group">
                                             <label for="CPF">Qualidade do Telhado</label>
-                                            <div class="mt--2">
-                                                <div class="form-check form-check-inline">
-                                                    <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1">
-                                                    <label class="form-check-label" for="inlineRadio1">Sim</label>
-                                                </div>
-                                                <div class="form-check form-check-inline">
-                                                    <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2">
-                                                    <label class="form-check-label" for="inlineRadio2">Não</label>
-                                                </div>
-                                            </div>
+                                            <select class="custom-select custom-select-sm mr-sm-2" id="inlineFormCustomSelect">
+                                                <option selected>-Selecione-</option>
+                                                <option value="1">Sim</option>
+                                                <option value="2">Não</option>
+                                            </select>
                                         </div>
                                     </div>
-                                    <div class="col-12 col-md-4 px-0">
+                                    <div class="col-12 col-md-3 px-0">
                                         <div class="form-group">
                                             <label for="CPF">&nbsp;</label>
-                                            <div class="mt--2">
-                                                <div class="form-check form-check-inline">
-                                                    <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1">
-                                                    <label class="form-check-label" for="inlineRadio1">Sim</label>
-                                                </div>
-                                                <div class="form-check form-check-inline">
-                                                    <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2">
-                                                    <label class="form-check-label" for="inlineRadio2">Não</label>
-                                                </div>
-                                            </div>
+                                            <select class="custom-select custom-select-sm mr-sm-2" id="inlineFormCustomSelect">
+                                                <option selected>-Selecione-</option>
+                                                <option value="1">Sim</option>
+                                                <option value="2">Não</option>
+                                            </select>
                                         </div>
                                     </div>
-                                    <div class="col-12 col-md-4 px-0">
+                                    <div class="col-12 col-md-3 px-0">
                                         <div class="form-group">
                                             <label for="CPF">Estrutura de Ajuste</label>
-                                            <div class="mt--2">
-                                                <div class="form-check form-check-inline">
-                                                    <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1">
-                                                    <label class="form-check-label" for="inlineRadio1">Sim</label>
-                                                </div>
-                                                <div class="form-check form-check-inline">
-                                                    <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2">
-                                                    <label class="form-check-label" for="inlineRadio2">Não</label>
-                                                </div>
-                                            </div>
+                                            <select class="custom-select custom-select-sm mr-sm-2" id="inlineFormCustomSelect">
+                                                <option selected>-Selecione-</option>
+                                                <option value="1">Sim</option>
+                                                <option value="2">Não</option>
+                                            </select>
                                         </div>
                                     </div>
-                                    <div class="col-12 col-md-4 px-0">
+                                    <div class="col-12 col-md-3 px-0">
                                         <div class="form-group">
                                             <label for="CPF">Serralheiro</label>
-                                            <div class="mt--2">
-                                                <div class="form-check form-check-inline">
-                                                    <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1">
-                                                    <label class="form-check-label" for="inlineRadio1">Sim</label>
-                                                </div>
-                                                <div class="form-check form-check-inline">
-                                                    <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2">
-                                                    <label class="form-check-label" for="inlineRadio2">Não</label>
-                                                </div>
-                                            </div>
+                                            <select class="custom-select custom-select-sm mr-sm-2" id="inlineFormCustomSelect">
+                                                <option selected>-Selecione-</option>
+                                                <option value="1">Sim</option>
+                                                <option value="2">Não</option>
+                                            </select>
                                         </div>
                                     </div>
-                                    <div class="col-12 col-md-4 px-0">
+                                    <div class="col-12 col-md-3 px-0">
                                         <div class="form-group">
                                             <label for="CPF">Obstáculos</label>
-                                            <div class="mt--2">
-                                                <div class="form-check form-check-inline">
-                                                    <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1">
-                                                    <label class="form-check-label" for="inlineRadio1">Sim</label>
-                                                </div>
-                                                <div class="form-check form-check-inline">
-                                                    <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2">
-                                                    <label class="form-check-label" for="inlineRadio2">Não</label>
-                                                </div>
-                                            </div>
+                                            <select class="custom-select custom-select-sm mr-sm-2" id="inlineFormCustomSelect">
+                                                <option selected>-Selecione-</option>
+                                                <option value="1">Sim</option>
+                                                <option value="2">Não</option>
+                                            </select>
                                         </div>
                                     </div>
-                                    <div class="col-12 col-md-4 px-0">
+                                    <div class="col-12 col-md-3 px-0">
                                         <div class="form-group">
                                             <label for="CPF">Externos</label>
-                                            <div class="mt--2">
-                                                <div class="form-check form-check-inline">
-                                                    <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1">
-                                                    <label class="form-check-label" for="inlineRadio1">Sim</label>
-                                                </div>
-                                                <div class="form-check form-check-inline">
-                                                    <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2">
-                                                    <label class="form-check-label" for="inlineRadio2">Não</label>
-                                                </div>
-                                            </div>
+                                            <select class="custom-select custom-select-sm mr-sm-2" id="inlineFormCustomSelect">
+                                                <option selected>-Selecione-</option>
+                                                <option value="1">Sim</option>
+                                                <option value="2">Não</option>
+                                            </select>
                                         </div>
                                     </div>
                                 </div>

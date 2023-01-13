@@ -1,8 +1,11 @@
-﻿using System;
+﻿using GHSContratoWeb.Models.Business;
+using GHSContratoWeb.Models.Helper;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using System.Web.Security;
 
 namespace GHSContratoWeb.Controllers
 {
@@ -13,18 +16,35 @@ namespace GHSContratoWeb.Controllers
             return View();
         }
 
-        public ActionResult About()
+        /// <summary>
+        /// View com a página de Login e função de validação do usuário
+        /// </summary>
+        /// <param name="form">formulário com o usuário e a senha</param>
+        /// <returns>True || False</returns>
+        [HttpPost]
+        public ActionResult Login(FormCollection form)
         {
-            ViewBag.Message = "Your application description page.";
+            new Utils().Usuario = new UsuarioBusiness().Login(form["login"], form["senha"]);
 
-            return View();
+            if (new Utils().Usuario == null)
+            {
+                ViewBag.FlagLogin = "Usuário inválido!";
+                return View();
+            }
+
+            return RedirectToAction("Index", "Home");
         }
 
-        public ActionResult Contact()
+        /// <summary>
+        /// Sair do Sistema
+        /// </summary>
+        /// <returns>View Index da Controller Home</returns>
+        [HttpGet]
+        public ActionResult Logout()
         {
-            ViewBag.Message = "Your contact page.";
-
-            return View();
+            FormsAuthentication.SignOut();
+            Session.Remove("Usuario");
+            return RedirectToAction("Login", "Login");
         }
     }
 }

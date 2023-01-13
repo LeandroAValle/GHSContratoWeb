@@ -2,14 +2,13 @@
 @{
     Layout = "~/Views/Shared/_Layout.cshtml"; }
 
-
 <div class="page-inner mt-5">
     <div class="row">
         <div class="col-md-12">
             <div class="card">
                 <div class="card-header d-flex justify-content-between">
                     <h4 class="card-title">Cadastro de Cliente</h4>
-                    <a href="@Url.Action("Novo","Cliente")" class="btn btn-success d-flex align-items-center"><span class="ml-1">Novo</span></a>
+                    <a href="@Url.Action("Novo","UnidadeConsumidora")" class="btn btn-success d-flex align-items-center"><span class="ml-1">Novo</span></a>
                 </div>
                 <div class="card-body">
                     <div class="table-responsive">
@@ -39,8 +38,8 @@
                                             <td>@item.Ativo</td>
                                             <td>
                                                 <a class="btn btn-sm btn-info btn-detalhes-cliente" name="btn-detalhes-cliente" data-toggle="modal" data-target="#modalcliente" data-id="@item.ID" style="color: white !important">Detalhes</a>
-                                                <a class="btn btn-sm btn-primary" href="@Url.Action("Alterar","Cliente",new  {ID = @item.ID })">Alterar</a>
-                                                <a class="btn btn-sm btn-danger" href="@Url.Action("Excluir","Cliente", new {ID = @item.ID })">Excluir</a>
+                                                <a class="btn btn-sm btn-primary" href="@Url.Action("Alterar","UnidadeConsumidora",new  {ID = @item.ID })">Alterar</a>
+                                                <a class="btn btn-sm btn-danger" href="@Url.Action("Excluir","UnidadeConsumidora", new {ID = @item.ID })">Excluir</a>
                                             </td>
                                         </tr>
                                     } }
@@ -52,4 +51,3 @@
         </div>
     </div>
 </div>
-

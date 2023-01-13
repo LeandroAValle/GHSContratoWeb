@@ -25,7 +25,17 @@ namespace GHSContratoWeb.Models.Helper
         {
             get
             {
-                this.usuario = (Usuario)HttpContext.Current.Session["Usuario"];
+
+                try
+                {
+                    this.usuario = (Usuario)HttpContext.Current.Session["Usuario"];
+                }
+                catch
+                {
+                    this.usuario = null;
+                }
+
+               
                 return this.usuario;
             }
             set

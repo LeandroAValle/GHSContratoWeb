@@ -1,5 +1,9 @@
-﻿@{
+﻿@using GHSContratoWeb.Models.Helper;
+@using GHSContratoWeb.Models.Mapping;
+@{
     ViewBag.Title = "Home Page";
+
+    Usuario usuario = new Utils().Usuario;
 }
 
 <!-- CSS -->
@@ -8,7 +12,66 @@
 <!-- Fonts -->
 <link href="https://fonts.googleapis.com/css?family=Francois+One|Lobster+Two" rel="stylesheet">
 <section class="intro">
-
+    <div class="page-inner mt-5">
+        <div class="card-body">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="card card-info card-annoucement card-round">
+                        <div class="card-body text-center" style="background-image: url('../Content/Imagens/ghsimg.png') ">
+                            <div class="card-opening">Bem Vindo @usuario.Nome</div>
+                            <div class="card-desc">
+                            </div>
+                            <div class="card-detail">
+                                <div class="btn btn-light btn-rounded">Ver Detalhes</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card card-post card-round">
+                        <img class="card-img-top" src="~/Content/Imagens/ferramentas.jpg" alt="Card image cap">
+                        <div class="card-body">
+                            <div class="d-flex">
+                                <div class="info-post ml-2">
+                                    <p class="username">Ferramentas</p>
+                                </div>
+                            </div>
+                            <div class="separator-solid"></div>
+                            <a href="#" class="btn btn-primary btn-rounded btn-sm">Consultar</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card card-post card-round">
+                        <img class="card-img-top" src="~/Content/Imagens/unidadegestora.jpg" alt="Card image cap">
+                        <div class="card-body">
+                            <div class="d-flex">
+                                <div class="info-post ml-2">
+                                    <p class="username">Unidades Gestoras</p>
+                                </div>
+                            </div>
+                            <div class="separator-solid"></div>
+                            <a href="#" class="btn btn-primary btn-rounded btn-sm">Consultar</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card card-post card-round">
+                        <img class="card-img-top" src="~/Content/Imagens/pessoas.png" alt="Card image cap" style="height: 14vw !important">
+                        <div class="card-body">
+                            <div class="d-flex">
+                                <div class="info-post ml-2">
+                                    <p class="username">Pessoas</p>
+                                </div>
+                            </div>
+                            <div class="separator-solid"></div>
+                            <a href="#" class="btn btn-primary btn-rounded btn-sm">Consultar</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </section>
 <!--CSS-->
 <script>

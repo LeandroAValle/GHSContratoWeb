@@ -1,18 +1,16 @@
-﻿using System;
-using GHSContratoWeb.Models.Business;
+﻿using GHSContratoWeb.Models.Business;
 using GHSContratoWeb.Models.Grid;
+using GHSContratoWeb.Models.Helper;
 using GHSContratoWeb.Models.Mapping;
-using GHSContratoWebBusiness.Helper;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
-using System.IO;
 using System.Web.Mvc;
-using GHSContratoWeb.Models.Helper;
 
 namespace GHSContratoWeb.Controllers
 {
-    public class UnidadeConsumidoraController : Controller
+    public class FerramentaController : Controller
     {
         public ActionResult Index()
         {
@@ -22,8 +20,6 @@ namespace GHSContratoWeb.Controllers
             {
                 RedirectToAction("Index", "Login");
             }
-
-            List<UnidadeConsumidora> listaGrid = new UnidadeConsumidoraBusiness().SelectUnidadeConsumidora();
 
             if (TempData["Resultado"] != null)
             {
@@ -39,22 +35,7 @@ namespace GHSContratoWeb.Controllers
                 }
             }
 
-            return View(listaGrid);
-        }
-
-        public ActionResult Novo()
-        {
-            Usuario usuario = new Utils().Usuario;
-
-            if (usuario == null)
-            {
-                RedirectToAction("Index", "Login");
-            }
-
-            ViewBag.UnidadeConsumidoraBeneficiada = new UnidadeConsumidoraBusiness().SelectUnidadeConsumidora();
-
             return View();
         }
     }
 }
-

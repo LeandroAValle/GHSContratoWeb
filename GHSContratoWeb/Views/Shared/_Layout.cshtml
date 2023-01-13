@@ -4,7 +4,9 @@
 @using GHSContratoWeb.Models.Helper;
 @{ List<MenuAggregation> lista = new MenuBusiness().ListarMenus();
 
-    Usuario usuario = new Utils().Usuario; }
+    Usuario usuario = new Utils().Usuario;
+
+}
 
 <!DOCTYPE html>
 <html lang="en">
@@ -38,12 +40,11 @@
 </head>
 <body>
     <div class="wrapper">
-        <div class="main-header">
+        <div class="main-header" style="background-image: url('../Content/Imagens/paines.jpg'); background-repeat: no-repeat; ">
             <!-- Logo Header -->
-            <div class="logo-header" style="background-color: #52BE80 ">
-                <a href="index.html" class="logo">
-                    <img src="~/Content/Imagens/logo (1).png" alt="navbar brand" class="navbar-brand" style="height: 40px; width: 40px" />
-                    <img src="~/Content/Imagens/logo (2).png" alt="navbar brand" class="navbar-brand" style="height: 40px; width: 40px">
+            <div class="logo-header">
+                <a href="@Url.Action("Index","Home")" class="logo">
+                    <img src="~/Content/Imagens/Logo-Branca-Ghs.png" alt="navbar brand" class="navbar-brand" />
                 </a>
                 <button class="navbar-toggler sidenav-toggler ml-auto" type="button" data-toggle="collapse" data-target="collapse" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon">
@@ -59,12 +60,12 @@
             </div>
             <!-- End Logo Header -->
             <!-- Navbar Header -->
-            <nav class="navbar navbar-header navbar-expand-lg" style="background-color: #52BE80 ">
+            <nav class="navbar navbar-header navbar-expand-lg">
                 <div class="container-fluid">
                     <ul class="navbar-nav topbar-nav ml-md-auto align-items-center">
                         <li class="nav-item">
-                            <a href="../Content/Templates/Atlantis-Lite-master/assets/examples/demo1" class="nav-link">
-                                <span style="font-style: italic">Sair</span>
+                            <a href="@Url.Action("Index","Login")" class="nav-link">
+                                <span style="font-style: italic; color: white !important">Sair</span>
                             </a>
                         </li>
                     </ul>
@@ -83,7 +84,14 @@
                         <div class="info">
                             <a data-toggle="collapse" href="#collapseExample" aria-expanded="true">
                                 <span>
-                                    Hizrian
+                                    @if (usuario == null)
+                                    {
+                                        
+                                    }
+                                    else
+                                    {
+                                        @usuario.Nome
+                                    }
                                     <span class="user-level">Administrator</span>
                                     <span class="caret"></span>
                                 </span>
@@ -92,7 +100,7 @@
                             <div class="collapse in" id="collapseExample">
                                 <ul class="nav">
                                     <li>
-                                        <a href="#profile">
+                                        <a href="@Url.Action("Index","Login")">
                                             <span class="link-collapse">Sair</span>
                                         </a>
                                     </li>
@@ -109,34 +117,34 @@
                         </li>
                         @{ int count = 1;
                             foreach (var item in lista)
-                                {
+                            {
                                 <li class="nav-item">
                                     <a data-toggle="collapse" href="#submenu-@count">
                                         <span class="material-icons-outlined" style="color: #c0beb3 !important;"><i class="fa @item.Icone me-2"></i></span>
                                         <p class="ml-2">@item.Nome</p>
                                         @if (item.Submenu.Count > 0)
-                                            {
+                                        {
                                             <span class="caret"></span>}
                                     </a>
 
                                     @if (item.Submenu.Count > 0)
-                                        {
+                                    {
                                         <div class="collapse" id="submenu-@count">
                                             <ul class="nav nav-collapse" style="padding: 0 !important; list-style-type: none !important;">
                                                 @{ foreach (var submenuPrimario in item.Submenu)
-                                                        {
+                                                    {
                                                         <li>
                                                             <a href="@Url.Action(submenuPrimario.Action, submenuPrimario.Controller)">
                                                                 <span class="sub-item">@submenuPrimario.Nome</span>
                                                             </a>
                                                         </li>
- } }
+                                                    } }
 
                                             </ul>
                                         </div>}
                                 </li>
                                 count++;
-                                } }
+                            } }
                     </ul>
                 </div>
             </div>
@@ -144,7 +152,7 @@
         <!-- End Sidebar -->
 
         <div class="main-panel">
-            <div class="container">
+            <div class="container" style="background-color: #343c54 !important">
                 @RenderBody()
             </div>
             <footer class="footer">
@@ -152,7 +160,7 @@
                     <nav class="pull-left">
                     </nav>
                     <div class="copyright ml-auto">
-                        <img src="~/Content/Imagens/logo (1).png" class="mr-2" style="width: 32px; height: 32px;"/>
+                        <img src="~/Content/Imagens/logo (1).png" class="mr-2" style="width: 32px; height: 32px;" />
                         &copy; @DateTime.Now.Year <a href="" target="_blank">Milani Sistemas</a>
                     </div>
                 </div>
