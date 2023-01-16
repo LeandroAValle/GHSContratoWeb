@@ -1,0 +1,32 @@
+﻿<div id="card">
+    <div class="table-responsive">
+        <table id="tableDisjuntores" class="dtPadrao table table-sm display compact table-striped table-hover w-100 info">
+            <thead>
+                <tr>
+                    <th>Descrição</th>
+                    <th class="acoes-texto-linha text-center">Ações</th>
+                </tr>
+            </thead>
+            <tbody class="tbody-grid" style="display: none !important;">
+                <tr>
+                    <td>Nis</td>
+                    <th class="text-center">Idade</th>
+                    <td>
+                        <div class="form-button-action px-1 d-flex justify-content-center">
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <div id="tr-iloading">
+            <div class="text-center" colspan="15"><img src="../Content/Imagens/Spinner-1s-64px.gif" /></div>
+        </div>
+    </div>
+</div>
+
+<script>
+    $(window).on("load", function () {
+        $("#tr-iloading").hide();
+        $("#table_lista_pessoas").parent().find('tbody').removeAttr("style");
+    });
+</script>

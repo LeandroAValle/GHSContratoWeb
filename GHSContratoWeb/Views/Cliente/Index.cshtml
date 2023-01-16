@@ -9,7 +9,7 @@
             <div class="card">
                 <div class="card-header d-flex justify-content-between">
                     <h4 class="card-title">Cadastro de Cliente</h4>
-                    <a href="@Url.Action("Novo","Cliente")" class="btn btn-success d-flex align-items-center"><span class="ml-1">Novo</span></a>
+                    <a href="@Url.Action("Novo","Cliente")" class="btn btn-sm btn-success d-flex align-items-center"><span class="ml-1">Novo<i class="fas fa fa-plus ml-1"></i></span></a>
                 </div>
                 <div class="card-body">
                     <div class="table-responsive">
@@ -36,9 +36,9 @@
                                             <td hidden>@item.DataCliente.Value.ToString("dd/MM/yyyy")</td>
                                             <td>@item.DataExpedicao.Value.ToString("dd/MM/yyyy")</td>
                                             <td>
-                                                <a class="btn btn-sm btn-info btn-detalhes-cliente" name="btn-detalhes-cliente" data-toggle="modal" data-target="#modalcliente" data-id="@item.ID" style="color: white !important">Detalhes</a>
-                                                <a class="btn btn-sm btn-primary" href="@Url.Action("Alterar","Cliente",new  {ID = @item.ID })">Alterar</a>
-                                                <a class="btn btn-sm btn-danger" href="@Url.Action("Excluir","Cliente", new {ID = @item.ID })">Excluir</a>
+                                                <a class="btn-link btn-detalhes-cliente" name="btn-detalhes-cliente" data-toggle="modal" data-target="#modalcliente" data-id="@item.ID"><i class="fas fa fa-search-plus text-info"></i></a>
+                                                @*<a class="btn-link ml-1" href="@Url.Action("Alterar","Cliente",new  {ID = @item.ID })"><i class="fas fa fa-edit text-primary"></i></a>*@
+                                                <a class="btn-link ml-1" href="@Url.Action("Excluir","Cliente", new {ID = @item.ID })"><i class="fas fa fa-trash text-danger"></i></a>
                                             </td>
                                         </tr>
                                         } }

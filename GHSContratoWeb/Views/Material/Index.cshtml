@@ -1,0 +1,126 @@
+﻿
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml"; }
+
+<div class="page-inner mt-5">
+    <div class="row">
+        <div class="col-md-4">
+            <div class="card card-primary" data-toggle="modal" data-target="#modal-a" id="disjuntores">
+                <div class="card-body skew-shadow" style="max-height: 300px; overflow-y: auto;">
+                    <div class="card-title fw-mediumbold">
+                        <span class="fw-bold" style="font-size: larger">Disjuntores</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card card-primary" data-toggle="modal" data-target="#modal-b" id="padraoEntrada">
+                <div class="card-body skew-shadow" style="max-height: 300px; overflow-y: auto;">
+                    <div class="card-title fw-mediumbold">
+                        <span class="fw-bold" style="font-size: larger">Padrão de Entrada</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- #region Modal Disjuntores -->
+<div class="modal fade" id="modal-a" tabindex="-1" role="dialog" aria-labelledby="examplemodallabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Disjuntores</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Fechar">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="card-body">
+                    <div id="tr-iloading1">
+                        <div class="text-center" colspan="15"><img src="~/Content/Imagens/gif-load.gif" /></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- #endregion -->
+<!-- #region Modal Padrão de Entrada -->
+<div class="modal fade" id="modal-b" tabindex="-1" role="dialog" aria-labelledby="examplemodallabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Padrão de Entrada</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Fechar">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="card-body">
+                    <div id="tr-iloading1">
+                        <div class="text-center" colspan="15"><img src="~/Content/Imagens/gif-load.gif" /></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- #endregion -->
+
+<style>
+    .card-body::-webkit-scrollbar-track {
+        background-color: #F4F4F4;
+    }
+
+    .card-body::-webkit-scrollbar {
+        width: 6px;
+        background: #F4F4F4;
+    }
+
+    .card-body::-webkit-scrollbar-thumb {
+        background: #dad7d7;
+    }
+
+    .card:hover {
+        transform: scale(0.98);
+        box-shadow: 0 0 5px -2px rgba(0,0,0,0.3);
+        background-size: 130%;
+    }
+
+    .card-img-overlay {
+        transition: all 800ms cubic-bezier(0.19, 1, 0.22, 1);
+        background: rgb(35,79,109);
+        background: linear-gradient(0deg, rgba(4,69,114,0.5) 0%, rgba(4,69,114,1) 100%);
+    }
+</style>
+<script>
+    /*Controla Modals*/
+    var modal_lv = 0;
+    $('.modal').on('shown.bs.modal', function (e) {
+        $('.modal-backdrop:last').css('zIndex', 1051 + modal_lv);
+        $(e.currentTarget).css('zIndex', 1052 + modal_lv);
+        modal_lv++
+    });
+
+    $('.modal').on('hidden.bs.modal', function (e) {
+        modal_lv--
+    });
+
+    $('#disjuntores').click(function () {
+        $.ajax({
+            url: '/Material/_Disjuntores',
+            bbeforeSend: function () {
+            },
+            success: function (page) {
+                $("#tr-iloading1").hide();
+                $('#modal-a').find('.card-body').empty();
+                $('#modal-a').find('.card-body').html(page);
+            },
+            error: function (data) {
+                console.log('erro');
+            }
+        });
+    });
+
+</script>

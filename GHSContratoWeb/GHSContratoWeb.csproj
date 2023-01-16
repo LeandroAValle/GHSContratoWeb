@@ -115,9 +115,14 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Conexao.cs" />
     <Compile Include="Controllers\ClienteController.cs" />
-    <Compile Include="Controllers\FerramentaController.cs" />
+    <Compile Include="Controllers\ConcessionariaController.cs" />
+    <Compile Include="Controllers\ContratoController.cs" />
+    <Compile Include="Controllers\ManutencaoPreventivaController.cs" />
+    <Compile Include="Controllers\MaterialController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
+    <Compile Include="Controllers\ProcuracaoController.cs" />
+    <Compile Include="Controllers\ReciboController.cs" />
     <Compile Include="Controllers\UnidadeConsumidoraController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -369,12 +374,12 @@
     <Content Include="Content\Imagens\Logo-Branca-Ghs.png" />
     <Content Include="Content\Imagens\logo.jpg" />
     <Content Include="Content\Imagens\logo.png" />
-    <Content Include="Content\Imagens\paineis-solares-na-cobertura-celula-solar_335224-1324.jpg" />
     <Content Include="Content\Imagens\paines.jpg" />
     <Content Include="Content\Imagens\pessoas.png" />
     <Content Include="Content\Imagens\procuraimagem.png" />
     <Content Include="Content\Imagens\Sem título.png" />
     <Content Include="Content\Imagens\solar-energy-solar-system-solar-panel-photovoltaic.jpg" />
+    <Content Include="Content\Imagens\solar-panels-on-the-roof-solar-cell_resized.jpg" />
     <Content Include="Content\Imagens\Tools-No-Background.png" />
     <Content Include="Content\Imagens\unidadegestora.jpg" />
     <Content Include="Content\Plugins\jquery.mask.js" />
@@ -668,6 +673,13 @@
     <Content Include="Views\Login\Index.cshtml" />
     <Content Include="Views\UnidadeConsumidora\Index.cshtml" />
     <Content Include="Views\UnidadeConsumidora\Novo.cshtml" />
+    <Content Include="Views\Material\Index.cshtml" />
+    <Content Include="Views\Material\_Disjuntores.cshtml" />
+    <Content Include="Views\Concessionaria\Index.cshtml" />
+    <Content Include="Views\Contrato\Index.cshtml" />
+    <Content Include="Views\ManutencaoPreventiva\Index.cshtml" />
+    <Content Include="Views\Procuracao\Index.cshtml" />
+    <Content Include="Views\Recibo\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

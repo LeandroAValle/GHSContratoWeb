@@ -35,32 +35,36 @@
     <link href="~/Template/css/style.css" rel="stylesheet">
 </head>
 
-<body style="background-image: url('../Content/Imagens/unidadegestora.jpg'); background-repeat: no-repeat; background-size: cover; ">
-    <!-- Sign In Start -->
-    <div class="form-body">
-        <div class="info-holder" style="float: left !important">
-            <img src="~/Content/Imagens/logo-4.png" alt="" class="logo-1" style="width: 600px; height: 300px; margin-left: 100px !important; margin-top: 160px; position: absolute; display:none" />
-            @*<img src="~/Content/Imagens/logo (3).png" alt="" class="logo-2" style="width: 320px; height: 150px; margin-left: 380px !important; margin-top: 350px; position: absolute; display:none" />*@
-            <h1 class="logo-2" style="width: 320px; height: 150px; margin-left: 430px !important; margin-top: 350px; position: absolute; display:none; color: white !important;">ENGENHARIA & ENERGIA</h1>
-        </div>
-        <div class="login" style="margin-left: 800px; position: absolute; display:none; margin-top: 100px !important">
-            <div class="rounded p-4 p-sm-5 my-4 mx-3" style="background-color: #3d4955;">
-                <form action="@Url.Action("Login","Login")" method="post" enctype="multipart/form-data">
-                    <div class="d-flex align-items-center justify-content-between mb-3">
-                        <a class="">
-                            <h3 style="color: blanchedalmond">Login</h3>
-                        </a>
+<body style="background-image: url('../Content/Imagens/solar-panels-on-the-roof-solar-cell_resized.jpg'); background-repeat: no-repeat; ">
+    <div class="container login-container">
+        <div class="row">
+            <div class="col-md-6 login-form-1" style="margin-top: 200px">
+                <img src="~/Content/Imagens/logo.png" alt="" class="logo-1" style="display:none" />
+                @*<img src="~/Content/Imagens/logo-4.png" alt="" class="logo-1" style="display:none" />
+                <img src="~/Content/Imagens/logo (3).png" alt="" class="logo-2" style="display:none" />*@
+                @*<h1 class="logo-2" style="display:none; color: white !important;">ENGENHARIA & ENERGIA</h1>*@
+            </div>
+            <div class="col-md-6 login-form-2" style="margin-top: 100px">
+                <div class="login" style="display:none;">
+                    <div class="rounded p-4 p-sm-5 my-4 mx-3" style="background-color: #3d4955;">
+                        <form action="@Url.Action("Login","Login")" method="post" enctype="multipart/form-data">
+                            <div class="d-flex align-items-center justify-content-between mb-3">
+                                <a class="">
+                                    <h3 style="color: blanchedalmond">Login</h3>
+                                </a>
+                            </div>
+                            <div class="form-floating mb-3">
+                                <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com" name="email">
+                                <label for="floatingInput">Endereço de Email</label>
+                            </div>
+                            <div class="form-floating mb-4">
+                                <input type="password" class="form-control" id="floatingPassword" placeholder="Password" name="senha">
+                                <label for="floatingPassword">Senha</label>
+                            </div>
+                            <button type="submit" class="btn btn-success py-3 w-100 mb-4">Entrar</button>
+                        </form>
                     </div>
-                    <div class="form-floating mb-3">
-                        <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com" name="email">
-                        <label for="floatingInput">Endereço de Email</label>
-                    </div>
-                    <div class="form-floating mb-4">
-                        <input type="password" class="form-control" id="floatingPassword" placeholder="Password" name="senha">
-                        <label for="floatingPassword">Senha</label>
-                    </div>
-                    <button type="submit" class="btn btn-success py-3 w-100 mb-4">Entrar</button>
-                </form>
+                </div>
             </div>
         </div>
     </div>
