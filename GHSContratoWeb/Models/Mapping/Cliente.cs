@@ -18,6 +18,7 @@ namespace GHSContratoWeb.Models.Mapping
         public string Observacao { get; set; }
         public string CPF { get; set; }
         public string CNPJ { get; set; }
+        public string FaixaSalarial { get; set; }
         public string RG { get; set; }
         public string InscricaoEstadual { get; set; }
         public DateTime? DataNascimento { get; set; }
@@ -27,5 +28,10 @@ namespace GHSContratoWeb.Models.Mapping
         public string EstadoCivil { get; set; }
         public string Profissao { get; set; }
         public Byte[] Anexo { get; set; }
+        public int? IDCliente { get; set; }
+
+        public List<EnderecoCliente> Enderecos { get; set; }
+        public List<ContatoCliente> Contatos { get; set; }
+        public List<InformacoesAcessoCliente> Acessos { get; set; }
     }
 }

@@ -134,6 +134,7 @@
     <Compile Include="Models\Business\CidadeBusiness.cs" />
     <Compile Include="Models\Business\ClienteBusiness.cs" />
     <Compile Include="Models\Business\ConsensionariaBusiness.cs" />
+    <Compile Include="Models\Business\ContatoClienteBusiness.cs" />
     <Compile Include="Models\Business\ContratoBusiness.cs" />
     <Compile Include="Models\Business\DadosClienteBusiness.cs" />
     <Compile Include="Models\Business\EmpresaBusiness.cs" />
@@ -156,13 +157,14 @@
     <Compile Include="Models\Mapping\Cidade.cs" />
     <Compile Include="Models\Mapping\Cliente.cs" />
     <Compile Include="Models\Mapping\Concessionaria.cs" />
+    <Compile Include="Models\Mapping\ContatoCliente.cs" />
     <Compile Include="Models\Mapping\Contrato.cs" />
     <Compile Include="Models\Mapping\DadosCliente.cs" />
     <Compile Include="Models\Mapping\Empresa.cs" />
     <Compile Include="Models\Mapping\EnderecoCliente.cs" />
     <Compile Include="Models\Mapping\Estado.cs" />
     <Compile Include="Models\Mapping\HistoricoLogin.cs" />
-    <Compile Include="Models\Mapping\InformacaoAcesso.cs" />
+    <Compile Include="Models\Mapping\InformacoesAcessoCliente.cs" />
     <Compile Include="Models\Mapping\Menu.cs" />
     <Compile Include="Models\Mapping\PadraoEntrada.cs" />
     <Compile Include="Models\Mapping\SistemaFotovoltaico.cs" />
@@ -380,6 +382,7 @@
     <Content Include="Content\Imagens\Sem título.png" />
     <Content Include="Content\Imagens\solar-energy-solar-system-solar-panel-photovoltaic.jpg" />
     <Content Include="Content\Imagens\solar-panels-on-the-roof-solar-cell_resized.jpg" />
+    <Content Include="Content\Imagens\solar.jpeg" />
     <Content Include="Content\Imagens\Tools-No-Background.png" />
     <Content Include="Content\Imagens\unidadegestora.jpg" />
     <Content Include="Content\Plugins\jquery.mask.js" />

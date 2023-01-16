@@ -1,12 +1,40 @@
 ﻿@{ ViewBag.Title = "Novo";
     Layout = "~/Views/Shared/_Layout.cshtml"; }
-<div class="page-inner mt-5">
+<div class="page-inner">
+    <div class="page-header card-round" style="background-color: #ffffff">
+        <h4 class="page-title ml-3">Cadastro Unidade Consumidora</h4>
+        <ul class="breadcrumbs">
+            <li class="nav-home">
+                <a href="@Url.Action("Index","Home")" class="text-primary">
+                    <i class="flaticon-home"></i>
+                </a>
+            </li>
+            <li class="separator">
+                <i class="flaticon-right-arrow"></i>
+            </li>
+            <li class="nav-item">
+                <a>Cadastros</a>
+            </li>
+            <li class="separator">
+                <i class="flaticon-right-arrow"></i>
+            </li>
+            <li class="nav-item">
+                <a href="@Url.Action("Index","UnidadeConsumidora")" class="text-primary">Unidade Consumidora</a>
+            </li>
+            <li class="separator">
+                <i class="flaticon-right-arrow"></i>
+            </li>
+            <li class="nav-item">
+                <a>Cad. Unidade Consumidora</a>
+            </li>
+        </ul>
+    </div>
     <div class="row">
         <div class="col-md-12">
             <div class="card border-top-personalizada">
-                <div class="card-header d-flex justify-content-between">
+                @*<div class="card-header d-flex justify-content-between">
                     <h4 class="card-title">Cadastro Unidade Consumidora</h4>
-                </div>
+                </div>*@
                 <div class="card-body">
                     <form action="@Url.Action("Novo","UnidadeConsumidora")" method="post">
                         <div class="">
@@ -50,11 +78,22 @@
                                     <div class="col-12 col-md-4 px-0">
                                         <div class="form-group">
                                             <label for="CPF">Apresentou Fatura de Energia?</label>
-                                            <select class="custom-select custom-select-sm mr-sm-2" id="inlineFormCustomSelect">
-                                                <option selected>-Selecione-</option>
-                                                <option value="1">Sim</option>
-                                                <option value="2">Não</option>
-                                            </select>
+                                            <div class="select2-input" data-select2-id="6">
+                                                <select id="basic" name="basic" class="form-control select2-hidden-accessible" data-select2-id="basic" tabindex="-1" aria-hidden="true">
+                                                    <option value="" data-select2-id="2">&nbsp;</option>
+                                                    <optgroup label="Mountain Time Zone" data-select2-id="25">
+                                                        <option value="AZ" data-select2-id="26">Arizona</option>
+                                                        <option value="CO" data-select2-id="27">Colorado</option>
+                                                        <option value="ID" data-select2-id="28">Idaho</option>
+                                                        <option value="MT" data-select2-id="29">Montana</option>
+                                                        <option value="NE" data-select2-id="30">Nebraska</option>
+                                                        <option value="NM" data-select2-id="31">New Mexico</option>
+                                                        <option value="ND" data-select2-id="32">North Dakota</option>
+                                                        <option value="UT" data-select2-id="33">Utah</option>
+                                                        <option value="WY" data-select2-id="34">Wyoming</option>
+                                                    </optgroup>
+                                                </select><span class="select2 select2-container select2-container--bootstrap select2-container--below" dir="ltr" data-select2-id="1" style="width: 291.656px;"><span class="selection"><span class="select2-selection select2-selection--single" role="combobox" aria-haspopup="true" aria-expanded="false" tabindex="0" aria-labelledby="select2-basic-container"><span class="select2-selection__rendered" id="select2-basic-container" role="textbox" aria-readonly="true" title="&nbsp;">&nbsp;</span><span class="select2-selection__arrow" role="presentation"><b role="presentation"></b></span></span></span><span class="dropdown-wrapper" aria-hidden="true"></span></span>
+                                            </div>
                                         </div>
                                     </div>
                                     <div class="col-12 col-md-2 px-0">
@@ -278,8 +317,7 @@
                                         <td>
                                             <a class="btn btn-sm btn-info btn-detalhes-cliente" name="btn-detalhes-cliente" data-toggle="modal" data-target="#modalcliente" data-id="@item.ID" style="color: white !important">Adicionar</a>
                                         </td>
-                                    </tr>
- } }
+                                    </tr> } }
                                         </tbody>
                                     </table>
                                 </div>

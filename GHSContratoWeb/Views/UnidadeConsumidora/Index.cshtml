@@ -2,12 +2,34 @@
 @{
     Layout = "~/Views/Shared/_Layout.cshtml"; }
 
-<div class="page-inner mt-5">
+<div class="page-inner">
+    <div class="page-header card-round skew-shadow" style="background-color: #ffffff">
+        <h4 class="page-title ml-3">Unidade Consumidora</h4>
+        <ul class="breadcrumbs">
+            <li class="nav-home">
+                <a href="@Url.Action("Index","Home")" class="text-primary">
+                    <i class="flaticon-home"></i>
+                </a>
+            </li>
+            <li class="separator">
+                <i class="flaticon-right-arrow"></i>
+            </li>
+            <li class="nav-item">
+                <a>Cadastros</a>
+            </li>
+            <li class="separator">
+                <i class="flaticon-right-arrow"></i>
+            </li>
+            <li class="nav-item">
+                <a>Unidade Consumidora</a>
+            </li>
+        </ul>
+    </div>
     <div class="row">
         <div class="col-md-12">
             <div class="card">
                 <div class="card-header d-flex justify-content-between">
-                    <h4 class="card-title">Cadastro de Cliente</h4>
+                    @*<h4 class="card-title">Cadastro de Cliente</h4>*@
                     <a href="@Url.Action("Novo","UnidadeConsumidora")" class="btn btn-sm btn-success d-flex align-items-center"><span class="ml-1">Novo</span></a>
                 </div>
                 <div class="card-body">

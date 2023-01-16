@@ -6,9 +6,10 @@ using System.Threading.Tasks;
 
 namespace GHSContratoWeb.Models.Mapping
 {
-    public class InformacaoAcesso
+    public class InformacoesAcessoCliente
     {
 		public int ID { get; set; }
+		public int? IDCliente { get; set; }
 		public string Internet { get; set; }
 		public string AplicativoMonitor { get; set; }
 		public string LoginUsuario { get; set; }

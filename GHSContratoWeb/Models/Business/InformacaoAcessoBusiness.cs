@@ -10,7 +10,7 @@ namespace GHSContratoWeb.Models.Business
 {
     public class InformacaoAcessoBusiness
     {
-        public List<InformacaoAcesso> SelectInformacaoAcesso()
+        public List<InformacoesAcessoCliente> SelectInformacaoAcesso()
         {
             // Select           
             try
@@ -18,18 +18,18 @@ namespace GHSContratoWeb.Models.Business
                 using (var db = new Conexao().GetCon())
                 {
                     string sql = @"SELECT ID, Internet, AplicativoMonitor, LoginUsuario, Senha, IDConsensionaria, Observacao FROM [InformacoesAcessos]";
-                    List<InformacaoAcesso> lista = db.Query<InformacaoAcesso>(sql).ToList();
+                    List<InformacoesAcessoCliente> lista = db.Query<InformacoesAcessoCliente>(sql).ToList();
                     return lista;
                 }
             }
             catch (Exception ex)
             {
-                List<InformacaoAcesso> lista = new List<InformacaoAcesso>();
+                List<InformacoesAcessoCliente> lista = new List<InformacoesAcessoCliente>();
                 return lista;
             }
         }
 
-        public int? InsertInformacaoAcesso(InformacaoAcesso informacaoacesso)
+        public int? InsertInformacaoAcesso(InformacoesAcessoCliente informacaoacesso)
         {
             // Insert           
             try
@@ -47,7 +47,7 @@ namespace GHSContratoWeb.Models.Business
             }
         }
 
-        public int? UpdateInformacaoAcesso(InformacaoAcesso informacaoacesso)
+        public int? UpdateInformacaoAcesso(InformacoesAcessoCliente informacaoacesso)
         {
             // Update           
             try
@@ -65,7 +65,7 @@ namespace GHSContratoWeb.Models.Business
             }
         }
 
-        public int? DeleteInformacaoAcesso(InformacaoAcesso informacaoacesso)
+        public int? DeleteInformacaoAcesso(InformacoesAcessoCliente informacaoacesso)
         {
             // Delete            
             try
@@ -83,7 +83,7 @@ namespace GHSContratoWeb.Models.Business
             }
         }
 
-        public InformacaoAcesso Detalhes(int? ID)
+        public InformacoesAcessoCliente Detalhes(int? ID)
         {
             // Select           
             try
@@ -91,13 +91,13 @@ namespace GHSContratoWeb.Models.Business
                 using (var db = new Conexao().GetCon())
                 {
                     string sql = @"SELECT ID, Internet, AplicativoMonitor, LoginUsuario, Senha, IDConsensionaria, Observacao FROM [InformacoesAcessos] where ID = @ID";
-                    InformacaoAcesso informacaoAcesso = db.Query<InformacaoAcesso>(sql, new { ID = ID }).SingleOrDefault();
+                    InformacoesAcessoCliente informacaoAcesso = db.Query<InformacoesAcessoCliente>(sql, new { ID = ID }).SingleOrDefault();
                     return informacaoAcesso;
                 }
             }
             catch (Exception ex)
             {
-                InformacaoAcesso informacaoAcesso = new InformacaoAcesso();
+                InformacoesAcessoCliente informacaoAcesso = new InformacoesAcessoCliente();
                 return informacaoAcesso;
             }
         }
