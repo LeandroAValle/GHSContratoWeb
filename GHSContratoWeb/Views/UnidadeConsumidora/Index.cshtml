@@ -2,8 +2,8 @@
 @{
     Layout = "~/Views/Shared/_Layout.cshtml"; }
 
-<div class="page-inner">
-    <div class="page-header card-round skew-shadow" style="background-color: #ffffff">
+<div class="page-inner mt-5">
+    <div class="page-header card-round" style="background-color: #ffffff">
         <h4 class="page-title ml-3">Unidade Consumidora</h4>
         <ul class="breadcrumbs">
             <li class="nav-home">
@@ -29,12 +29,12 @@
         <div class="col-md-12">
             <div class="card">
                 <div class="card-header d-flex justify-content-between">
-                    @*<h4 class="card-title">Cadastro de Cliente</h4>*@
+                    <h4 class="card-title">Consulta de Unidades Gestoras</h4>
                     <a href="@Url.Action("Novo","UnidadeConsumidora")" class="btn btn-sm btn-success d-flex align-items-center"><span class="ml-1">Novo</span></a>
                 </div>
                 <div class="card-body">
                     <div class="table-responsive">
-                        <table class="dtPadrao table table-sm display table-striped table-hover w-100 table-bordered">
+                        <table class="dtPadrao table-sm display table-striped table-hover w-100 table-bordered">
                             <thead>
                                 <tr class="text-dark">
                                     <th>ID</th>

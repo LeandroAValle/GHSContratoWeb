@@ -1,6 +1,6 @@
 ﻿@{ ViewBag.Title = "Novo";
     Layout = "~/Views/Shared/_Layout.cshtml"; }
-<div class="page-inner">
+<div class="page-inner mt-5">
     <div class="page-header card-round" style="background-color: #ffffff">
         <h4 class="page-title ml-3">Novo Cliente</h4>
         <ul class="breadcrumbs">
@@ -33,8 +33,8 @@
         <div class="col-md-12">
             <div class="card border-top-personalizada">
                 @*<div class="card-header d-flex justify-content-between">
-                    <h4 class="card-title">Novo Cliente</h4>
-                </div>*@
+                        <h4 class="card-title">Novo Cliente</h4>
+                    </div>*@
                 <div class="card-body">
                     <form action="@Url.Action("Novo","Cliente")" method="post">
                         <div class="">
@@ -52,7 +52,7 @@
                                     <div class="col-12 col-md-1 px-0">
                                         <div class="form-group">
                                             <label for="ID">Código</label>
-                                            <input type="text" name="ID" class="form-control form-control-sm" id="Codigo" maxlength="11" />
+                                            <input type="text" name="ID" class="form-control form-control-sm" id="Codigo" readonly />
                                         </div>
                                     </div>
                                     <div class="col-12 col-md-7 px-0">
@@ -64,7 +64,7 @@
                                     <div class="col-12 col-md-2 px-0">
                                         <div class="form-group">
                                             <label for="CPF">CPF</label>
-                                            <input type="text" name="CPF" class="form-control form-control-sm" id="CPF" maxlength="100">
+                                            <input type="text" name="CPF" class="form-control form-control-sm" id="CPF" maxlength="20">
                                         </div>
                                     </div>
                                     <div class="col-12 col-md-2 px-0">
@@ -75,25 +75,37 @@
                                     </div>
                                 </div>
                                 <div class="row">
-                                    <div class="col-12 col-md-2 px-0">
+                                    <div class="col-12 col-md-3 px-0">
                                         <div class="form-group">
                                             <label for="RG">RG</label>
-                                            <input type="text" class="form-control form-control-sm" name="RG" id="RG" />
+                                            <input type="text" class="form-control form-control-sm" name="RG" id="RG" maxlength="15" OnKeyPress="formatar('##.###.###-##', this)" />
                                         </div>
                                     </div>
                                     <div class="col-12 col-md-2 px-0">
                                         <div class="form-group">
+                                            <label for="OE">Orgão Expedidor</label>
+                                            <input type="text" class="form-control form-control-sm" name="OE" id="OE" maxlength="2" />
+                                        </div>
+                                    </div>
+                                    <div class="col-12 col-md-3 px-0">
+                                        <div class="form-group">
                                             <label for="InscricaoEstadual">Inscricao Estadual</label>
-                                            <input type="text" name="InscricaoEstadual" class="form-control form-control-sm" id="InscricaoEstadual" />
+                                            <input type="text" name="InscricaoEstadual" class="form-control form-control-sm" id="InscricaoEstadual" maxlength="16" OnKeyPress="formatar('###.###.###/####', this)" />
+                                        </div>
+                                    </div>
+                                    <div class="col-12 col-md-2 px-0">
+                                        <div class="form-group">
+                                            <label for="Tipodocumento">Tipo Documento</label>
+                                            <input type="text" name="Tipodocumento" class="form-control form-control-sm" id="Tipodocumento" maxlength="16" />
                                         </div>
                                     </div>
                                     <div class="col-12 col-md-2 px-0">
                                         <div class="form-group">
                                             <label for="DataExpedicao">Data Expedição</label>
-                                            <input type="text" class="form-control form-control-sm" name="DataExpedicao" id="DataExpedicao" />
+                                            <input type="date" class="form-control form-control-sm" name="DataExpedicao" id="DataExpedicao" />
                                         </div>
                                     </div>
-                                    <div class="col-12 col-md-4 px-0">
+                                    <div class="col-12 col-md-2 px-0">
                                         <div class="form-group">
                                             <label for="Cidadania">Cidadania</label>
                                             <input type="text" name="Cidadania" class="form-control form-control-sm" id="Cidadania" />
@@ -102,39 +114,37 @@
                                     <div class="col-12 col-md-2 px-0">
                                         <div class="form-group">
                                             <label for="DataNascimento">Data Nascimento</label>
-                                            <input type="text" name="DataNascimento" class="form-control form-control-sm" id="DataNascimento" />
+                                            <input type="date" name="DataNascimento" class="form-control form-control-sm" id="DataNascimento" />
                                         </div>
                                     </div>
-                                </div>
-                                <div class="row">
                                     <div class="col-12 col-md-2 px-0">
                                         <div class="form-group">
                                             <label for="EstadoCivil">Estado Civil</label>
                                             <input type="text" name="EstadoCivil" class="form-control form-control-sm" id="EstadoCivil" />
                                         </div>
                                     </div>
-                                    <div class="col-12 col-md-3 px-0">
+                                    <div class="col-12 col-md-4 px-0">
                                         <div class="form-group">
                                             <label for="Profissao">Profissão</label>
                                             <input type="text" name="Profissao" class="form-control form-control-sm" id="Profissao" />
                                         </div>
                                     </div>
-                                    <div class="col-12 col-md-3 px-0">
+                                    <div class="col-12 col-md-2 px-0">
                                         <div class="form-group">
                                             <label for="faixaSalarial">Faixa Salárial</label>
-                                            <input type="text" name="faixaSalarial" class="form-control form-control-sm" id="faixaSalarial" />
+                                            <input type="text" name="faixaSalarial" class="form-control form-control-sm" id="faixaSalarial" maxlength="12" onkeyup="formatarMoeda()" />
                                         </div>
                                     </div>
                                     <div class="col-12 col-md-2 px-0">
                                         <div class="form-group">
                                             <label for="DataAbertura">Data Abertura</label>
-                                            <input type="text" name="DataAbertura" class="form-control form-control-sm" id="DataAbertura" />
+                                            <input type="date" name="DataAbertura" class="form-control form-control-sm" id="DataAbertura" />
                                         </div>
                                     </div>
-                                    <div class="col-12 col-md-2 px-0">
+                                    <div class="col-12 col-md-10 px-0">
                                         <div class="form-group">
                                             <label for="anexo">Anexos</label>
-                                            <input type="text" name="anexos" class="form-control form-control-sm" id="anexos" />
+                                            <input type="file" name="anexos" class="form-control form-control-sm" id="anexos" />
                                         </div>
                                     </div>
                                 </div>
@@ -149,46 +159,172 @@
                             </fieldset>
                         </div>
                         <div class="">
-                            <fieldset class="border p-4">
+                            <fieldset class="border p-2">
                                 <input type="hidden" name="contatoTotal" class="contato-total" value="0" />
                                 <legend class="float-none w-auto" style="font-size: 1.2em !important;">Contatos</legend>
-                                <div class="Form-contatos">
-                                </div>
-                                <div class="row">
-                                    <div class="form-group d-flex flex-row-reverse">
-                                        <button href="#" id="adicionarcampoContatos" class="btn btn-sm btn-dark add_field_button_contatos">Adicionar Contato</button>
+                                <input hidden type="text" name="totalContatos" class="form-control form-control-sm" id="totalContatos" />
+                                <fieldset class="border p-4">
+                                    <div class="row">
+                                        <div class="col-12 col-md-2 px-0">
+                                            <div class="form-group"><label for="Telefone">Telefone</label><input type="text" class="form-control form-control-sm" id="TelefoneAdd" onkeypress="mask(this, mphone);" onblur="mask(this, mphone);" /></div>
+                                        </div>
+                                        <div class="col-12 col-md-5 px-0">
+                                            <div class="form-group"><label for="Email">E-mail</label><input type="text" class="form-control form-control-sm" id="EmailAdd" /></div>
+                                        </div>
+                                        <div class="col-12 col-md-5 px-0">
+                                            <div class="form-group"><label for="Email">Proprietário</label><input type="text" class="form-control form-control-sm" id="proprietarioAdd" /></div>
+                                        </div>
                                     </div>
+                                    <div class="form-group d-flex flex-row-reverse">
+                                        <button type="button" href="#" id="adicionarcampoContatos" class="btn btn-sm btn-primary add_field_button_contatos">Adicionar Contato</button>
+                                    </div>
+                                </fieldset>
+                                <hr />
+                                <div class="table-responsive">
+                                    <table id="contatoTable" class="dtPadrao table-sm display table-striped table-hover w-100 table-bordered">
+                                        <thead>
+                                            <tr class="text-dark">
+                                                <th hidden></th>
+                                                <th hidden></th>
+                                                <th hidden></th>
+                                                <th>Proprietário</th>
+                                                <th>E-mail</th>
+                                                <th>Telefone</th>
+                                                <th class="text-center">Ações</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                        </tbody>
+                                    </table>
                                 </div>
                             </fieldset>
                         </div>
                         <div class="">
-                            <fieldset class="border p-4">
+                            <fieldset class="border p-2">
                                 <input type="hidden" name="enderecoTotal" class="endereco-total" value="0" />
                                 <legend class="float-none w-auto" style="font-size: 1.2em !important;">Endereços</legend>
-                                <div class="Form-endereco">
-                                </div>
-                                <div class="row">
-                                    <div class="form-group d-flex flex-row-reverse">
-                                        <button href="#" id="adicionarcampo" class="btn btn-sm btn-dark add_field_button">Adicionar Endereço</button>
+                                <fieldset class="border p-4">
+                                    <div class="row">
+                                        <div class="col-12 col-md-7 px-0">
+                                            <div class="form-group"><label for="Rua">Rua</label><input type="text" class="form-control form-control-sm" id="RuaAdd" maxlength="100" /></div>
+                                        </div>
+                                        <div class="col-12 col-md-1 px-0">
+                                            <div class="form-group"><label for="Número">Número</label><input type="number" class="form-control form-control-sm" id="NumeroAdd" maxlength="9" onkeypress="return event.charCode >= 48 && event.charCode <= 57" /></div>
+                                        </div>
+                                        <div class="col-12 col-md-4 px-0">
+                                            <div class="form-group"><label for="Bairro">Bairro</label><input type="text" class="form-control form-control-sm" id="BairroAdd" maxlength="100" /></div>
+                                        </div>
+                                        <div class="col-12 col-md-5 px-0">
+                                            <div class="form-group"><label for="Cidade">Cidade</label><input type="text" class="form-control form-control-sm" id="CidadeAdd" /></div>
+                                        </div>
+                                        <div class="col-12 col-md-1 px-0">
+                                            <div class="form-group"><label for="Estado">Estado</label><input type="text" class="form-control form-control-sm" id="EstadoAdd" /></div>
+                                        </div>
+                                        <div class="col-12 col-md-2 px-0">
+                                            <div class="form-group"><label for="CEP">CEP</label><input type="text" class="form-control form-control-sm" id="CEPAdd" onkeypress="return event.charCode >= 48 && event.charCode <= 57" onblur="pesquisacep(this.value);" /></div>
+                                        </div>
+                                        <div class="col-12 col-md-4 px-0">
+                                            <div class="form-group"><label for="Concessionaria">Concessionária</label><input type="text" class="form-control form-control-sm" id="ConcessionariaAdd" /></div>
+                                        </div>
+                                        <div class="col-12 col-md-6 px-0">
+                                            <div class="form-group"><label for="Latitude">Latitude</label><input type="text" class="form-control form-control-sm" id="LatitudeAdd" maxlength="100" /></div>
+                                        </div>
+                                        <div class="col-12 col-md-6 px-0">
+                                            <div class="form-group"><label for="Longitude">Longitude</label><input type="text" class="form-control form-control-sm" id="LongitudeAdd" maxlength="100" /></div>
+                                        </div>
+                                        <div class="col-12 col-md-10 px-0">
+                                            <div class="form-check form-check-inline">
+                                                <div class="custom-control custom-checkbox">
+                                                    <input type="checkbox" class="custom-control-input" id="enderecoPrincipalAdd">
+                                                    <label class="custom-control-label" for="enderecoPrincipalAdd">Principal</label>
+                                                </div>
+                                            </div>
+                                        </div>
                                     </div>
+                                    <div class="form-group d-flex flex-row-reverse">
+                                        <button type="button" href="#" id="adicionarEndereco" class="btn btn-sm btn-primary add_field_button">Adicionar Endereço</button>
+                                    </div>
+                                </fieldset>
+                                <hr />
+                                <div class="table-responsive">
+                                    <table id="enderecoTable" class="dtPadrao table-sm display table-striped table-hover w-100 table-bordered">
+                                        <thead>
+                                            <tr class="text-dark">
+                                                <th hidden></th>
+                                                <th hidden></th>
+                                                <th hidden></th>
+                                                <th hidden></th>
+                                                <th hidden></th>
+                                                <th hidden></th>
+                                                <th hidden></th>
+                                                <th hidden></th>
+                                                <th hidden></th>
+                                                <th hidden></th>
+                                                <th>Rua</th>
+                                                <th>Número</th>
+                                                <th>Bairro</th>
+                                                <th>Cidade</th>
+                                                <th>Estado</th>
+                                                <th>CEP</th>
+                                                <th>Concessionária</th>
+                                                <th>Principal</th>
+                                                <th class="text-center">Ações</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                        </tbody>
+                                    </table>
                                 </div>
                             </fieldset>
                         </div>
                         <div class="">
-                            <fieldset class="border p-4">
+                            <fieldset class="border p-2">
                                 <input type="hidden" name="acessoTotal" class="acesso-total" value="0" />
                                 <legend class="float-none w-auto" style="font-size: 1.2em !important;">Informações de Acesso</legend>
-                                <div class="Form-acesso">
-                                </div>
-                                <div class="row">
-                                    <div class="form-group d-flex flex-row-reverse">
-                                        <button href="#" id="adicionaracesso" class="btn btn-sm btn-dark add_field_acesso_button">Adicionar Acesso</button>
+                                <fieldset class="border p-4">
+                                    <div class="row Total-acesso">
+                                        <div class="col-12 col-md-3 px-0">
+                                            <div class="form-group"><label for="Setores">Setores</label><input type="text" class="form-control form-control-sm" id="setoresAdd" maxlength="55" /></div>
+                                        </div>
+                                        <div class="col-12 col-md-3 px-0">
+                                            <div class="form-group"><label for="Discriminacao">Discriminação</label><input type="text" class="form-control form-control-sm" id="discriminacaoAdd" maxlength="55" /></div>
+                                        </div>
+                                        <div class="col-12 col-md-3 px-0">
+                                            <div class="form-group"><label for="Usuario">Usuário</label><input type="text" class="form-control form-control-sm" id="usuarioAdd" maxlength="55" /></div>
+                                        </div>
+                                        <div class="col-12 col-md-3 px-0">
+                                            <div class="form-group"><label for="Senha">Senha</label><input type="text" class="form-control form-control-sm" id="senhaAdd" maxlength="55" /></div>
+                                        </div>
                                     </div>
+                                    <div class="form-group d-flex flex-row-reverse">
+                                        <button type="button" href="#" id="adicionaracesso" class="btn btn-sm btn-primary add_field_acesso_button">Adicionar Acesso</button>
+                                    </div>
+                                </fieldset>
+                                <hr />
+                                <div class="table-responsive">
+                                    <table id="acessoTable" class="dtPadrao table-sm display table-striped table-hover w-100 table-bordered">
+                                        <thead>
+                                            <tr class="text-dark">
+                                                <th hidden></th>
+                                                <th hidden></th>
+                                                <th hidden></th>
+                                                <th hidden></th>
+                                                <th>Setores</th>
+                                                <th>Discriminação</th>
+                                                <th>Usuário</th>
+                                                <th>Senha</th>
+                                                <th class="text-center">Ações</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                        </tbody>
+                                    </table>
                                 </div>
                             </fieldset>
                         </div>
                         <div class="col-md-12 col-md-12 px-0">
                             <div class="form-group d-flex flex-row-reverse">
+                                <button type="button" class="btn btn-info btn-sm d-flex align-items-center ml-1" id="proximaEtapaButton">Proxima Etapa</button>
                                 <button type="submit" class="btn btn-success btn-sm d-flex align-items-center salvar-alert ml-1">Salvar</button>
                                 <a href="@Url.Action("Index","Cliente")" class="btn btn-dark btn-sm d-flex align-items-center">Cancelar</a>
                             </div>
@@ -199,7 +335,168 @@
         </div>
     </div>
 </div>
+<style>
+    .dataTables_wrapper div.dataTables_filter {
+        display: none
+    }
+</style>
 <script>
+
+    function mask(o, f) {
+        setTimeout(function () {
+            var v = mphone(o.value);
+            if (v != o.value) {
+                o.value = v;
+            }
+        }, 1);
+    }
+
+    function mphone(v) {
+        var r = v.replace(/\D/g, "");
+        r = r.replace(/^0/, "");
+        if (r.length > 10) {
+            r = r.replace(/^(\d\d)(\d{5})(\d{4}).*/, "($1) $2-$3");
+        } else if (r.length > 5) {
+            r = r.replace(/^(\d\d)(\d{4})(\d{0,4}).*/, "($1) $2-$3");
+        } else if (r.length > 2) {
+            r = r.replace(/^(\d\d)(\d{0,5})/, "($1) $2");
+        } else {
+            r = r.replace(/^(\d*)/, "($1");
+        }
+        return r;
+    }
+
+    document.getElementById('CPF').addEventListener('input', function (e) {
+
+        let x = e.target.value.replace(/\D/g, '').match(/(\d{0,2})(\d{0,3})(\d{0,3})(\d{0,4})(\d{0,2})/);
+        e.target.value = !x[2] ? x[1] : x[1] + '.' + x[2] + (x[3] ? '.' : '') + x[3] + (x[4] ? '/' : x[4]) + x[4] + (x[5] ? '-' + x[5] : '');
+
+        if (e.target.value.length < 15) {
+            x = e.target.value.replace(/\D/g, '').match(/(\d{0,3})(\d{0,3})(\d{0,3})(\d{0,2})/);
+            e.target.value = !x[2] ? x[1] : x[1] + '.' + x[2] + (x[3] ? '.' : '') + x[3] + (x[4] ? '-' + x[4] : '');
+        }
+
+        console.log('Com formatação: ' + e.target.value);
+
+        //Caso queira pegar apenas os números use essa função para remover todos os caracteres menos os números em Javascript
+        let valor = e.target.value.replace(/[^0-9]/g, '');
+        console.log('Sem formatação: ' + valor);
+    });
+
+    document.getElementById('CNPJ').addEventListener('input', function (e) {
+
+        let x = e.target.value.replace(/\D/g, '').match(/(\d{0,2})(\d{0,3})(\d{0,3})(\d{0,4})(\d{0,2})/);
+        e.target.value = !x[2] ? x[1] : x[1] + '.' + x[2] + (x[3] ? '.' : '') + x[3] + (x[4] ? '/' : x[4]) + x[4] + (x[5] ? '-' + x[5] : '');
+
+        if (e.target.value.length < 15) {
+            x = e.target.value.replace(/\D/g, '').match(/(\d{0,3})(\d{0,3})(\d{0,3})(\d{0,2})/);
+            e.target.value = !x[2] ? x[1] : x[1] + '.' + x[2] + (x[3] ? '.' : '') + x[3] + (x[4] ? '-' + x[4] : '');
+        }
+
+        console.log('Com formatação: ' + e.target.value);
+
+        //Caso queira pegar apenas os números use essa função para remover todos os caracteres menos os números em Javascript
+        let valor = e.target.value.replace(/[^0-9]/g, '');
+        console.log('Sem formatação: ' + valor);
+    });
+
+    function limpa_formulário_cep() {
+        //Limpa valores do formulário de cep.
+        document.getElementById('RuaAdd').value = ("");
+        document.getElementById('BairroAdd').value = ("");
+        document.getElementById('CidadeAdd').value = ("");
+        document.getElementById('EstadoAdd').value = ("");
+    }
+
+    function meu_callback(conteudo) {
+        if (!("erro" in conteudo)) {
+            //Atualiza os campos com os valores.
+            document.getElementById('RuaAdd').value = (conteudo.logradouro);
+            document.getElementById('BairroAdd').value = (conteudo.bairro);
+            document.getElementById('CidadeAdd').value = (conteudo.localidade);
+            document.getElementById('EstadoAdd').value = (conteudo.uf);
+        } //end if.
+        else {
+            //CEP não Encontrado.
+            limpa_formulário_cep();
+            alert("CEP não encontrado.");
+        }
+    }
+
+    function pesquisacep(valor) {
+
+        //Nova variável "cep" somente com dígitos.
+        var cep = valor.replace(/\D/g, '');
+
+        //Verifica se campo cep possui valor informado.
+        if (cep != "") {
+
+            //Expressão regular para validar o CEP.
+            var validacep = /^[0-9]{8}$/;
+
+            //Valida o formato do CEP.
+            if (validacep.test(cep)) {
+
+                document.getElementById('CEPAdd').value = cep.substring(0, 5)
+                    + "-"
+                    + cep.substring(5);
+
+                //Preenche os campos com "..." enquanto consulta webservice.
+                document.getElementById('RuaAdd').value = "...";
+                document.getElementById('BairroAdd').value = "...";
+                document.getElementById('CidadeAdd').value = "...";
+                document.getElementById('EstadoAdd').value = "...";
+
+                //Cria um elemento javascript.
+                var script = document.createElement('script');
+
+                //Sincroniza com o callback.
+                script.src = 'https://viacep.com.br/ws/' + cep + '/json/?callback=meu_callback';
+
+                //Insere script no documento e carrega o conteúdo.
+                document.body.appendChild(script);
+
+            } //end if.
+            else {
+                //cep é inválido.
+                limpa_formulário_cep();
+                alert("Formato de CEP inválido.");
+            }
+        } //end if.
+        else {
+            //cep sem valor, limpa formulário.
+            limpa_formulário_cep();
+        }
+    };
+
+    function formatar(mascara, documento) {
+        var i = documento.value.length;
+        var saida = mascara.substring(0, 1);
+        var texto = mascara.substring(i)
+        if (texto.substring(0, 1) != saida) {
+            documento.value += texto.substring(0, 1);
+        }
+    }
+
+    function formatarMoeda() {
+        var elemento = document.getElementById('faixaSalarial');
+        var valor = elemento.value;
+
+
+        valor = valor + '';
+        valor = parseInt(valor.replace(/[\D]+/g, ''));
+        valor = valor + '';
+        valor = valor.replace(/([0-9]{2})$/g, ",$1");
+
+        if (valor.length > 6) {
+            valor = valor.replace(/([0-9]{3}),([0-9]{2}$)/g, ".$1,$2");
+        }
+
+        elemento.value = valor;
+        if (valor == 'NaN') elemento.value = '';
+
+    }
+
     function selecionarTipoCliente() {
         if (document.getElementById('tipo_cpf').checked == true) {
             document.getElementById("mostar_cpf").style.visibility = "visible";
@@ -223,103 +520,469 @@
         }
     }
 
-    $(document).ready(function () {
-        var max_fields = 10; //maximum input boxes allowed
-        var wrapper = $(".Form-endereco"); //Fields wrapper
-        var add_button = $(".add_field_button"); //Add button ID
+    /* Adiciona Contatos*/
+    $('#adicionarcampoContatos').click(function () {
+        let Telefone = $('#TelefoneAdd').val();
+        let Email = $('#EmailAdd').val();
+        let proprietario = $('#proprietarioAdd').val();
 
-        var x = 1; //initlal text box count
-        $(add_button).click(function (e) { //on add input button click
-            e.preventDefault();
-            var length = wrapper.find(".Total-endereco").length;
+        if (Telefone || Email || proprietario == "") {
 
-            if (x < max_fields) { //max input box allowed
-                x++; //text box increment
-                $(wrapper).append('<div><h4 class="float-none w-auto p-2">Endereço<label class="Total-endereco">' + (length + 1) + '</label></h4><div class="row"><div class="col-12 col-md-7 px-0"><div class="form-group"><label for="Rua">Rua</label><input type="text" name="Rua' + (length + 1) + '" class="form-control form-control-sm" id="Rua' + (length + 1) + '" /></div></div><div class="col-12 col-md-1 px-0"><div class="form-group"><label for="Número">Número</label><input type="text" name="Numero' + (length + 1) + '" class="form-control form-control-sm" id="Número' + (length + 1) + '" /></div></div><div class="col-12 col-md-4 px-0"><div class="form-group"><label for="Bairro">Bairro</label><input type="text" name="Bairro' + (length + 1) + '" class="form-control form-control-sm" id="Bairro' + (length + 1) + '" /></div></div></div><div class="row"><div class="col-12 col-md-5 px-0"><div class="form-group"><label for="Cidade">Cidade</label><input type="text" name="Cidade' + (length + 1) + '" class="form-control form-control-sm" id="Cidade' + (length + 1) + '" /></div></div><div class="col-12 col-md-1 px-0"><div class="form-group"><label for="Estado">Estado</label><input type="text" name="Estado' + (length + 1) + '" class="form-control form-control-sm" id="Estado' + (length + 1) + '" /></div></div><div class="col-12 col-md-2 px-0"><div class="form-group"><label for="CEP">CEP</label><input type="text" name="CEP' + (length + 1) + '" class="form-control form-control-sm" id="CEP' + (length + 1) + '" /></div></div><div class="col-12 col-md-4 px-0"><div class="form-group"><label for="Concessionaria">Concessionária</label><input type="text" name="Concessionaria' + (length + 1) + '" class="form-control form-control-sm" id="Concessionaria' + (length + 1) + '" /></div></div></div><div class="row"><div class="col-12 col-md-5 px-0"><div class="form-check"><input type="checkbox" class="form-check-input" id="enderecoPrincipal' + (length + 1) + '"><label class="form-check-label" for="exampleCheck1">Principal</label></div></div></div><a href="#" class="remove_field">Remover</a><hr /></div>');
-                //Reconta as linhas 
-                total = wrapper.find(".Total-endereco").length;
-                $('.endereco-total').val(total);
-            }
-            //Fazendo com que cada uma escreva seu name
-        });
+            $.notify({
+                // options
+                title: '<strong>ATENÇÃO</strong>',
+                message: "Preencha Todos os Campos.",
+                icon: 'fas fa-exclamation',
+            }, {
+                // settings
+                element: 'body',
+                position: null,
+                type: "warning",
+                allow_dismiss: true,
+                newest_on_top: false,
+                showProgressbar: false,
+                placement: {
+                    from: "top",
+                    align: "right"
+                },
+                offset: 20,
+                spacing: 10,
+                z_index: 1031,
+                delay: 3300,
+                timer: 1000,
+                url_target: '_blank',
+                mouse_over: null,
+                animate: {
+                    enter: 'animated bounceIn',
+                    exit: 'animated bounceOut'
+                },
+                onShow: null,
+                onShown: null,
+                onClose: null,
+                onClosed: null,
+                icon_type: 'class',
+            });
 
-        $(wrapper).on("click", ".remove_field", function (e) { //user click on remove text
-            e.preventDefault();
-            $(this).parent('div').remove();
-            x--;
-            //replaceName();
-            //Reconta as linhas 
-            total = wrapper.find(".Total-endereco").length;
-            $('.endereco-total').val(total);
-        })
+            return false;
+        }
 
-        var wrappercontatos = $(".Form-contatos"); //Fields wrapper
-        var add_button_contatos = $(".add_field_button_contatos"); //Add button ID
+        if ($('#contatoTable').find('tbody').find('.dataTables_empty').length > 0) {
+            $('#contatoTable').find('tbody').empty();
+        }
 
-        var y = 1; //initlal text box count
-        $(add_button_contatos).click(function (e) { //on add input button click
-            e.preventDefault();
-            var lengthcontatos = wrappercontatos.find(".Total-contatos").length;
+        let cont = $('#contatoTable').find('tbody').find('tr').length == 0 ? 1 : $('#contatoTable').find('tbody').find('tr').length + 1;
+        $('#totalContatos').val(cont);
+        let linha =
+            "<tr class=" + cont + ">" +
+            "<td hidden class='td-proprietario'><input type='text' name='Proprietario" + cont + "' value='" + proprietario + "'/></td>" +
+            "<td hidden class='td-email'><input type='text' name='Email" + cont + "' value='" + Email + "'/></td>" +
+            "<td hidden class='td-telefone'><input type='text' name='Telefone" + cont + "' value='" + Telefone + "'/></td>" +
+            "<td class=''>" + proprietario + "</td>" +
+            "<td class=''>" + Email + "</td>" +
+            "<td class=''>" + Telefone + "</td>" +
+            "<td style='width: 100px !important;' class='td-acoes'>" +
+            "<div class='form-button-action px-1 d-flex justify-content-center'>" +
+            "<a class='btn btn-link btn-danger btn-deletar-contato'><span class='material-icons-outlined text-danger'>delete_forever</span></a>" +
+            "</div>" +
+            "</td>" +
+            "</tr>";
 
-            if (y < max_fields) { //max input box allowed
-                y++; //text box increment
-                $(wrappercontatos).append('<div><div class="row Total-contatos"><div class="col-12 col-md-2 px-0"><div class="form-group"><label for="Telefone">Telefone</label><input type="text" name="Telefone' + (lengthcontatos + 1) + '" class="form-control form-control-sm" id="Telefone' + (lengthcontatos + 1) + '" /></div></div><div class="col-12 col-md-5 px-0"><div class="form-group"><label for="Email">E-mail</label><input type="text" name="Email' + (lengthcontatos + 1) + '" class="form-control form-control-sm" id="Email' + (lengthcontatos + 1) + '" /></div></div><div class="col-12 col-md-5 px-0"><div class="form-group"><label for="Email">Proprietário</label><input type="text" name="proprietario' + (lengthcontatos + 1) + '" class="form-control form-control-sm" id="proprietario' + (lengthcontatos + 1) + '" /></div></div></div><a href="#" class="remove_field_contatos">Remover</a><hr /></div>');
+        $('#contatoTable').find('tbody').append(linha);
 
-                totalContatos = wrappercontatos.find(".Total-contatos").length;
-                $('.contato-total').val(totalContatos);
-            }
-            //Fazendo com que cada uma escreva seu name
-        });
-
-        $(wrappercontatos).on("click", ".remove_field_contatos", function (e) { //user click on remove text
-            e.preventDefault();
-            $(this).parent('div').remove();
-            y--;
-            //replaceName();
-            totalContatos = wrappercontatos.find(".Total-contatos").length;
-            $('.contato-total').val(totalContatos);
-        })
-
-        var wrapperacesso = $(".Form-acesso"); //Fields wrapper
-        var add_button_acesso = $(".add_field_acesso_button"); //Add button ID
-
-        var z = 1; //initlal text box count
-        $(add_button_acesso).click(function (e) { //on add input button click
-            e.preventDefault();
-            var lengthacesso = wrapperacesso.find(".Total-acesso").length;
-
-            if (z < max_fields) { //max input box allowed
-                z++; //text box increment
-                $(wrapperacesso).append('<div><div class="row Total-acesso"><div class="col-12 col-md-3 px-0"><div class="form-group"><label for="Setores">Setores</label><input type="text" name="Setores' + (lengthacesso + 1) + '" class="form-control form-control-sm" id="setores' + (lengthacesso + 1) + '" /></div></div><div class="col-12 col-md-3 px-0"><div class="form-group"><label for="Discriminacao">Discriminação</label><input type="text" name="Discriminacao' + (lengthacesso + 1) + '" class="form-control form-control-sm" id="discriminacao' + (lengthacesso + 1) + '" /></div></div><div class="col-12 col-md-3 px-0"><div class="form-group"><label for="Usuario">Usuário</label><input type="text" name="Usuario' + (lengthacesso + 1) + '" class="form-control form-control-sm" id="usuario' + (lengthacesso + 1) + '" /></div></div><div class="col-12 col-md-3 px-0"><div class="form-group"><label for="Senha">Senha</label><input type="text" name="Senha' + (lengthacesso + 1) + '" class="form-control form-control-sm" id="senha' + (lengthacesso + 1) + '" /></div></div></div><a href="#" class="remove_field_acesso">Remover</a><hr /></div>');
-
-                totalAcesso = wrapperacesso.find(".Total-acesso").length;
-                $('.acesso-total').val(totalAcesso);
-            }
-            //Fazendo com que cada uma escreva seu name
-        });
-
-        $(wrapperacesso).on("click", ".remove_field_acesso", function (e) { //user click on remove text
-            e.preventDefault();
-            $(this).parent('div').remove();
-            z--;
-            //replaceName();
-            totalAcesso = wrapperacesso.find(".Total-acesso").length;
-                $('.acesso-total').val(totalAcesso);
-        })
-
-        //function replaceName() {
-        //    cont = 1;
-        //    wrapper.find(".Total-endereco").each(function () {
-        //        $(this).find('.Total-endereco').attr(cont);
-        //        $(this).find('input').attr('name', 'Rua' + cont);
-        //        $(this).find('input').attr('name', 'Numero' + cont);
-        //        $(this).find('input').attr('name', 'Bairro' + cont);
-        //        $(this).find('input').attr('name', 'Cidade' + cont);
-        //        $(this).find('input').attr('name', 'Estado' + cont);
-        //        $(this).find('input').attr('name', 'CEP' + cont);
-        //        $(this).find('input').attr('name', 'Concessionaria' + cont);
-        //        cont++;
-        //    });
-        //}
+        $('#TelefoneAdd').val("");
+        $('#EmailAdd').val("");
+        $('#proprietarioAdd').val("");
     });
+    /* Deleta Contatos*/
+    $("#contatoTable").on("click", ".btn-deletar-contato", function () {
+
+        let tr = $(this).closest('tr');
+
+        $(tr).remove();
+
+        let cont = $('#contatoTable').find('tbody').find('tr').length == 0 ? 0 : $('#contatoTable').find('tbody').find('tr').length;
+        $('.totalContatos').val(cont);
+
+        if ($("#contatoTable tbody tr").length == 0) {
+            $("#contatoTable").prepend('<tr><td class="td-nenhum-registro text-center" colspan="5">Nenhum registro adicionado..</td></tr>');
+        } else {
+            cont = 1;
+            $('#contatoTable').find('tbody').find('tr').each(function () {
+                $(this).find('.td-proprietario').find('input').attr('name', 'Proprietario' + cont);
+                $(this).find('.td-email').find('input').attr('name', 'Email' + cont);
+                $(this).find('.td-telefone').find('input').attr('name', 'Telefone' + cont);
+                cont++;
+            });
+        }
+    });
+
+    /* Adiciona Endereço*/
+    $('#adicionarEndereco').click(function () {
+
+        let Rua = $('#RuaAdd').val();
+        let Numero = $('#NumeroAdd').val();
+        let Bairro = $('#BairroAdd').val();
+        let Cidade = $('#CidadeAdd').val();
+        let Estado = $('#EstadoAdd').val();
+        let CEP = $('#CEPAdd').val();
+        let Concessionaria = $('#ConcessionariaAdd').val();
+        let enderecoPrincipal = $('#enderecoPrincipalAdd').val();
+        let Longitude = $('#LongitudeAdd').val();
+        let Latitude = $('#LatitudeAdd').val();
+
+
+        if (Rua || Numero || Bairro || Cidade || Estado || CEP || Concessionaria == "") {
+
+            $.notify({
+                // options
+                title: '<strong>ATENÇÃO</strong>',
+                message: "Preencha Todos os Campos.",
+                icon: 'fas fa-exclamation',
+            }, {
+                // settings
+                element: 'body',
+                position: null,
+                type: "warning",
+                allow_dismiss: true,
+                newest_on_top: false,
+                showProgressbar: false,
+                placement: {
+                    from: "top",
+                    align: "right"
+                },
+                offset: 20,
+                spacing: 10,
+                z_index: 1031,
+                delay: 3300,
+                timer: 1000,
+                url_target: '_blank',
+                mouse_over: null,
+                animate: {
+                    enter: 'animated bounceIn',
+                    exit: 'animated bounceOut'
+                },
+                onShow: null,
+                onShown: null,
+                onClose: null,
+                onClosed: null,
+                icon_type: 'class',
+            });
+
+            return false;
+        }
+
+        if ($('#enderecoTable').find('tbody').find('.dataTables_empty').length > 0) {
+            $('#enderecoTable').find('tbody').empty();
+        }
+
+        let cont = $('#enderecoTable').find('tbody').find('tr').length == 0 ? 1 : $('#enderecoTable').find('tbody').find('tr').length + 1;
+        $('.endereco-total').val(cont);
+        let linha =
+            "<tr class=" + cont + ">" +
+            "<td hidden class='td-Rua'><input type='text' name='Rua" + cont + "' value='" + Rua + "'/></td>" +
+            "<td hidden class='td-Numero'><input type='text' name='Numero" + cont + "' value='" + Numero + "'/></td>" +
+            "<td hidden class='td-Bairro'><input type='text' name='Bairro" + cont + "' value='" + Bairro + "'/></td>" +
+            "<td hidden class='td-Cidade'><input type='text' name='Cidade" + cont + "' value='" + Cidade + "'/></td>" +
+            "<td hidden class='td-Estado'><input type='text' name='Estado" + cont + "' value='" + Estado + "'/></td>" +
+            "<td hidden class='td-Longitude'><input type='text' name='Longitude" + cont + "' value='" + Longitude + "'/></td>" +
+            "<td hidden class='td-Latitude'><input type='text' name='Latitude" + cont + "' value='" + Latitude + "'/></td>" +
+            "<td hidden class='td-CEP'><input type='text' name='CEP" + cont + "' value='" + CEP + "'/></td>" +
+            "<td hidden class='td-Concessionaria'><input type='text' name='Concessionaria" + cont + "' value='" + Concessionaria + "'/></td>" +
+            "<td hidden class='td-enderecoPrincipal'><input type='text' name='enderecoPrincipal" + cont + "' value='" + enderecoPrincipal + "'/></td>" +
+            "<td class=''>" + Rua + "</td>" +
+            "<td class=''>" + Numero + "</td>" +
+            "<td class=''>" + Bairro + "</td>" +
+            "<td class=''>" + Cidade + "</td>" +
+            "<td class=''>" + Estado + "</td>" +
+            "<td class=''>" + CEP + "</td>" +
+            "<td class=''>" + Concessionaria + "</td>" +
+            "<td class=''>" + enderecoPrincipal + "</td>" +
+            "<td style='width: 100px !important;' class='td-acoes'>" +
+            "<div class='form-button-action px-1 d-flex justify-content-center'>" +
+            "<a class='btn btn-link btn-danger btn-deletar-endereco'><span class='material-icons-outlined text-danger'>delete_forever</span></a>" +
+            "</div>" +
+            "</td>" +
+            "</tr>";
+
+        $('#enderecoTable').find('tbody').append(linha);
+
+        $('#RuaAdd').val("");
+        $('#NumeroAdd').val("");
+        $('#BairroAdd').val("");
+        $('#CidadeAdd').val("");
+        $('#EstadoAdd').val("");
+        $('#CEPAdd').val("");
+        $('#ConcessionariaAdd').val("");
+        $('#enderecoPrincipalAdd').prop('checked', false);
+        $('#LongitudeAdd').val("");
+        $('#LatitudeAdd').val("");
+    });
+    /* Deleta Endereço*/
+    $("#enderecoTable").on("click", ".btn-deletar-endereco", function () {
+
+        let tr = $(this).closest('tr');
+
+        $(tr).remove();
+
+        let cont = $('#enderecoTable').find('tbody').find('tr').length == 0 ? 0 : $('#enderecoTable').find('tbody').find('tr').length;
+        $('.endereco-total').val(cont);
+
+        if ($("#enderecoTable tbody tr").length == 0) {
+            $("#enderecoTable").prepend('<tr><td class="td-nenhum-registro text-center" colspan="9">Nenhum registro adicionado..</td></tr>');
+        } else {
+            cont = 1;
+            $('#enderecoTable').find('tbody').find('tr').each(function () {
+                $(this).find('.td-Rua').find('input').attr('name', 'Rua' + cont);
+                $(this).find('.td-Numero').find('input').attr('name', 'Numero' + cont);
+                $(this).find('.td-Bairro').find('input').attr('name', 'Bairro' + cont);
+                $(this).find('.td-Cidade').find('input').attr('name', 'Cidade' + cont);
+                $(this).find('.td-Estado').find('input').attr('name', 'Estado' + cont);
+                $(this).find('.td-Longitude').find('input').attr('name', 'Longitude' + cont);
+                $(this).find('.td-Latitude').find('input').attr('name', 'Latitude' + cont);
+                $(this).find('.td-CEP').find('input').attr('name', 'CEP' + cont);
+                $(this).find('.td-Concessionaria').find('input').attr('name', 'Concessionaria' + cont);
+                $(this).find('.td-enderecoPrincipal').find('input').attr('name', 'enderecoPrincipal' + cont);
+                cont++;
+            });
+        }
+    });
+
+    /* Adiciona Acesso*/
+    $('#adicionaracesso').click(function () {
+
+        let Setores = $('#setoresAdd').val();
+        let Discriminacao = $('#discriminacaoAdd').val();
+        let Usuario = $('#usuarioAdd').val();
+        let Senha = $('#senhaAdd').val();
+
+
+        if (Setores || Discriminacao || Usuario || Senha == "") {
+
+            $.notify({
+                // options
+                title: '<strong>ATENÇÃO</strong>',
+                message: "Preencha Todos os Campos.",
+                icon: 'fas fa-exclamation',
+            }, {
+                // settings
+                element: 'body',
+                position: null,
+                type: "warning",
+                allow_dismiss: true,
+                newest_on_top: false,
+                showProgressbar: false,
+                placement: {
+                    from: "top",
+                    align: "right"
+                },
+                offset: 20,
+                spacing: 10,
+                z_index: 1031,
+                delay: 3300,
+                timer: 1000,
+                url_target: '_blank',
+                mouse_over: null,
+                animate: {
+                    enter: 'animated bounceIn',
+                    exit: 'animated bounceOut'
+                },
+                onShow: null,
+                onShown: null,
+                onClose: null,
+                onClosed: null,
+                icon_type: 'class',
+            });
+
+            return false;
+        }
+
+        if ($('#acessoTable').find('tbody').find('.dataTables_empty').length > 0) {
+            $('#acessoTable').find('tbody').empty();
+        }
+
+        let cont = $('#acessoTable').find('tbody').find('tr').length == 0 ? 1 : $('#acessoTable').find('tbody').find('tr').length + 1;
+        $('.acesso-total').val(cont);
+        let linha =
+            "<tr class=" + cont + ">" +
+            "<td hidden class='td-Setores'><input type='text' name='Setores" + cont + "' value='" + Setores + "'/></td>" +
+            "<td hidden class='td-Discriminacao'><input type='text' name='Discriminacao" + cont + "' value='" + Discriminacao + "'/></td>" +
+            "<td hidden class='td-Usuario'><input type='text' name='Usuario" + cont + "' value='" + Usuario + "'/></td>" +
+            "<td hidden class='td-Senha'><input type='text' name='Senha" + cont + "' value='" + Senha + "'/></td>" +
+            "<td class=''>" + Setores + "</td>" +
+            "<td class=''>" + Discriminacao + "</td>" +
+            "<td class=''>" + Usuario + "</td>" +
+            "<td class=''>" + Senha + "</td>" +
+            "<td style='width: 100px !important;' class='td-acoes'>" +
+            "<div class='form-button-action px-1 d-flex justify-content-center'>" +
+            "<a class='btn btn-link btn-danger btn-deletar-acesso'><span class='material-icons-outlined text-danger'>delete_forever</span></a>" +
+            "</div>" +
+            "</td>" +
+            "</tr>";
+
+        $('#acessoTable').find('tbody').append(linha);
+
+        $('#setoresAdd').val("");
+        $('#discriminacaoAdd').val("");
+        $('#usuarioAdd').val("");
+        $('#senhaAdd').val("");
+    });
+    /* Deleta Acesso*/
+    $("#acessoTable").on("click", ".btn-deletar-acesso", function () {
+
+        let tr = $(this).closest('tr');
+
+        $(tr).remove();
+
+        let cont = $('#acessoTable').find('tbody').find('tr').length == 0 ? 0 : $('#acessoTable').find('tbody').find('tr').length;
+        $('.acesso-total').val(cont);
+
+        if ($("#acessoTable tbody tr").length == 0) {
+            $("#acessoTable").prepend('<tr><td class="td-nenhum-registro text-center" colspan="5">Nenhum registro adicionado..</td></tr>');
+        } else {
+            cont = 1;
+            $('#acessoTable').find('tbody').find('tr').each(function () {
+                $(this).find('.td-Setores').find('input').attr('name', 'Setores' + cont);
+                $(this).find('.td-Discriminacao').find('input').attr('name', 'Discriminacao' + cont);
+                $(this).find('.td-Usuario').find('input').attr('name', 'Usuario' + cont);
+                $(this).find('.td-Senha').find('input').attr('name', 'Senha' + cont);
+                cont++;
+            });
+        }
+    });
+
+
+    $('#proximaEtapaButton').click(function (e) {
+        e.preventDefault();
+
+        var dados = jQuery(this).serialize();
+
+        //Inicia Salvar
+        $.ajax({
+            url: "/Cliente/Novo",
+            type: "POST",
+            dataType: 'JSON',
+            data: { dados },
+            success: function (resultado) {
+                if (resultado == true) {
+
+                    @*window.location.href = '@Url.Action("Index", "ControleAtendimento")';*@
+
+                    Notiflix.Notify.Success('Atendimento Salvo com Sucesso')
+
+                }
+                else {
+                    Notiflix.Notify.Failure('Falha ao Salvar Atendimento')
+                }
+            },
+            error: function (erro) {
+                Notiflix.Report.Error(
+                    'Erro',
+                    'Erro ao salvar.',
+                    'OK',
+                );
+            }
+        })
+    });
+
+    //$(document).ready(function () {
+    //    var max_fields = 10; //maximum input boxes allowed
+    //    var wrapper = $(".Form-endereco"); //Fields wrapper
+    //    var add_button = $(".add_field_button"); //Add button ID
+
+    //    var x = 1; //initlal text box count
+    //    $(add_button).click(function (e) { //on add input button click
+    //        e.preventDefault();
+    //        var length = wrapper.find(".Total-endereco").length;
+
+    //        if (x < max_fields) { //max input box allowed
+    //            x++; //text box increment
+    //            $(wrapper).append('<div><h4 class="float-none w-auto p-2">Endereço<label class="Total-endereco">' + (length + 1) + '</label></h4><div class="row"><div class="col-12 col-md-7 px-0"><div class="form-group"><label for="Rua">Rua</label><input type="text" name="Rua' + (length + 1) + '" class="form-control form-control-sm" id="Rua' + (length + 1) + '" /></div></div><div class="col-12 col-md-1 px-0"><div class="form-group"><label for="Número">Número</label><input type="text" name="Numero' + (length + 1) + '" class="form-control form-control-sm" id="Número' + (length + 1) + '" /></div></div><div class="col-12 col-md-4 px-0"><div class="form-group"><label for="Bairro">Bairro</label><input type="text" name="Bairro' + (length + 1) + '" class="form-control form-control-sm" id="Bairro' + (length + 1) + '" /></div></div></div><div class="row"><div class="col-12 col-md-5 px-0"><div class="form-group"><label for="Cidade">Cidade</label><input type="text" name="Cidade' + (length + 1) + '" class="form-control form-control-sm" id="Cidade' + (length + 1) + '" /></div></div><div class="col-12 col-md-1 px-0"><div class="form-group"><label for="Estado">Estado</label><input type="text" name="Estado' + (length + 1) + '" class="form-control form-control-sm" id="Estado' + (length + 1) + '" /></div></div><div class="col-12 col-md-2 px-0"><div class="form-group"><label for="CEP">CEP</label><input type="text" name="CEP' + (length + 1) + '" class="form-control form-control-sm" id="CEP' + (length + 1) + '" /></div></div><div class="col-12 col-md-4 px-0"><div class="form-group"><label for="Concessionaria">Concessionária</label><input type="text" name="Concessionaria' + (length + 1) + '" class="form-control form-control-sm" id="Concessionaria' + (length + 1) + '" /></div></div></div><div class="row"><div class="col-12 col-md-5 px-0"><div class="form-check"><input type="checkbox" class="form-check-input" id="enderecoPrincipal' + (length + 1) + '"><label class="form-check-label" for="exampleCheck1">Principal</label></div></div></div><a href="#" class="remove_field">Remover</a><hr /></div>');
+    //            //Reconta as linhas
+    //            total = wrapper.find(".Total-endereco").length;
+    //            $('.endereco-total').val(total);
+    //        }
+    //        //Fazendo com que cada uma escreva seu name
+    //    });
+
+    //    $(wrapper).on("click", ".remove_field", function (e) { //user click on remove text
+    //        e.preventDefault();
+    //        $(this).parent('div').remove();
+    //        x--;
+    //        //replaceName();
+    //        //Reconta as linhas
+    //        total = wrapper.find(".Total-endereco").length;
+    //        $('.endereco-total').val(total);
+    //    })
+
+    //    var wrappercontatos = $(".Form-contatos"); //Fields wrapper
+    //    var add_button_contatos = $(".add_field_button_contatos"); //Add button ID
+
+    //    var y = 1; //initlal text box count
+    //    $(add_button_contatos).click(function (e) { //on add input button click
+    //        e.preventDefault();
+    //        var lengthcontatos = wrappercontatos.find(".Total-contatos").length;
+
+    //        if (y < max_fields) { //max input box allowed
+    //            y++; //text box increment
+    //            $(wrappercontatos).append('<div><div class="row Total-contatos"><div class="col-12 col-md-2 px-0"><div class="form-group"><label for="Telefone">Telefone</label><input type="text" name="Telefone' + (lengthcontatos + 1) + '" class="form-control form-control-sm" id="Telefone' + (lengthcontatos + 1) + '" /></div></div><div class="col-12 col-md-5 px-0"><div class="form-group"><label for="Email">E-mail</label><input type="text" name="Email' + (lengthcontatos + 1) + '" class="form-control form-control-sm" id="Email' + (lengthcontatos + 1) + '" /></div></div><div class="col-12 col-md-5 px-0"><div class="form-group"><label for="Email">Proprietário</label><input type="text" name="proprietario' + (lengthcontatos + 1) + '" class="form-control form-control-sm" id="proprietario' + (lengthcontatos + 1) + '" /></div></div></div><a href="#" class="remove_field_contatos">Remover</a><hr /></div>');
+
+    //            totalContatos = wrappercontatos.find(".Total-contatos").length;
+    //            $('.contato-total').val(totalContatos);
+    //        }
+    //        //Fazendo com que cada uma escreva seu name
+    //    });
+
+    //    $(wrappercontatos).on("click", ".remove_field_contatos", function (e) { //user click on remove text
+    //        e.preventDefault();
+    //        $(this).parent('div').remove();
+    //        y--;
+    //        //replaceName();
+    //        totalContatos = wrappercontatos.find(".Total-contatos").length;
+    //        $('.contato-total').val(totalContatos);
+    //    })
+
+    //    var wrapperacesso = $(".Form-acesso"); //Fields wrapper
+    //    var add_button_acesso = $(".add_field_acesso_button"); //Add button ID
+
+    //    var z = 1; //initlal text box count
+    //    $(add_button_acesso).click(function (e) { //on add input button click
+    //        e.preventDefault();
+    //        var lengthacesso = wrapperacesso.find(".Total-acesso").length;
+
+    //        if (z < max_fields) { //max input box allowed
+    //            z++; //text box increment
+    //            $(wrapperacesso).append('<div><div class="row Total-acesso"><div class="col-12 col-md-3 px-0"><div class="form-group"><label for="Setores">Setores</label><input type="text" name="Setores' + (lengthacesso + 1) + '" class="form-control form-control-sm" id="setores' + (lengthacesso + 1) + '" /></div></div><div class="col-12 col-md-3 px-0"><div class="form-group"><label for="Discriminacao">Discriminação</label><input type="text" name="Discriminacao' + (lengthacesso + 1) + '" class="form-control form-control-sm" id="discriminacao' + (lengthacesso + 1) + '" /></div></div><div class="col-12 col-md-3 px-0"><div class="form-group"><label for="Usuario">Usuário</label><input type="text" name="Usuario' + (lengthacesso + 1) + '" class="form-control form-control-sm" id="usuario' + (lengthacesso + 1) + '" /></div></div><div class="col-12 col-md-3 px-0"><div class="form-group"><label for="Senha">Senha</label><input type="text" name="Senha' + (lengthacesso + 1) + '" class="form-control form-control-sm" id="senha' + (lengthacesso + 1) + '" /></div></div></div><a href="#" class="remove_field_acesso">Remover</a><hr /></div>');
+
+    //            totalAcesso = wrapperacesso.find(".Total-acesso").length;
+    //            $('.acesso-total').val(totalAcesso);
+    //        }
+    //        //Fazendo com que cada uma escreva seu name
+    //    });
+
+    //    $(wrapperacesso).on("click", ".remove_field_acesso", function (e) { //user click on remove text
+    //        e.preventDefault();
+    //        $(this).parent('div').remove();
+    //        z--;
+    //        //replaceName();
+    //        totalAcesso = wrapperacesso.find(".Total-acesso").length;
+    //        $('.acesso-total').val(totalAcesso);
+    //    })
+
+    //    //function replaceName() {
+    //    //    cont = 1;
+    //    //    wrapper.find(".Total-endereco").each(function () {
+    //    //        $(this).find('.Total-endereco').attr(cont);
+    //    //        $(this).find('input').attr('name', 'Rua' + cont);
+    //    //        $(this).find('input').attr('name', 'Numero' + cont);
+    //    //        $(this).find('input').attr('name', 'Bairro' + cont);
+    //    //        $(this).find('input').attr('name', 'Cidade' + cont);
+    //    //        $(this).find('input').attr('name', 'Estado' + cont);
+    //    //        $(this).find('input').attr('name', 'CEP' + cont);
+    //    //        $(this).find('input').attr('name', 'Concessionaria' + cont);
+    //    //        cont++;
+    //    //    });
+    //    //}
+    //});
+
+
 </script>

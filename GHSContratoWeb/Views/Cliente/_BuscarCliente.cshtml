@@ -1,4 +1,160 @@
-﻿<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" />
-<h3>Em Desenvolvimento</h3>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+﻿<form action="@Url.Action("Alterar","Cliente")" method="post">
+    <div class="">
+        <fieldset class="border p-4">
+            <legend class="float-none w-auto" style="font-size: 1.2em !important;">Dados Pessoais</legend>
+            <div class="row">
+                <div class="col-12 col-md-2 px-0">
+                    <div class="form-group">
+                        <img src="~/Content/Imagens/procuraimagem.png" alt="Anexo Foto" class="img-thumbnail">
+                        <input type="file" name="Anexo" id="Anexo" accept="image/jpeg, image/png" onchange="validateFileType()">
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-12 col-md-1 px-0">
+                    <div class="form-group">
+                        <label for="ID">Código</label>
+                        <input type="text" name="ID" class="form-control form-control-sm" id="Codigo" maxlength="11" />
+                    </div>
+                </div>
+                <div class="col-12 col-md-7 px-0">
+                    <div class="form-group">
+                        <label for="Nome">Nome</label>
+                        <input type="text" name="Nome" class="form-control form-control-sm " id="Nome" maxlength="100">
+                    </div>
+                </div>
+                <div class="col-12 col-md-2 px-0">
+                    <div class="form-group">
+                        <label for="CPF">CPF</label>
+                        <input type="text" name="CPF" class="form-control form-control-sm" id="CPF" maxlength="100">
+                    </div>
+                </div>
+                <div class="col-12 col-md-2 px-0">
+                    <div class="form-group">
+                        <label for="CNPJ">CNPJ</label>
+                        <input type="text" name="CNPJ" class="form-control form-control-sm" id="CNPJ" />
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-12 col-md-2 px-0">
+                    <div class="form-group">
+                        <label for="RG">RG</label>
+                        <input type="text" class="form-control form-control-sm" name="RG" id="RG" />
+                    </div>
+                </div>
+                <div class="col-12 col-md-2 px-0">
+                    <div class="form-group">
+                        <label for="InscricaoEstadual">Inscricao Estadual</label>
+                        <input type="text" name="InscricaoEstadual" class="form-control form-control-sm" id="InscricaoEstadual" />
+                    </div>
+                </div>
+                <div class="col-12 col-md-2 px-0">
+                    <div class="form-group">
+                        <label for="DataExpedicao">Data Expedição</label>
+                        <input type="text" class="form-control form-control-sm" name="DataExpedicao" id="DataExpedicao" />
+                    </div>
+                </div>
+                <div class="col-12 col-md-4 px-0">
+                    <div class="form-group">
+                        <label for="Cidadania">Cidadania</label>
+                        <input type="text" name="Cidadania" class="form-control form-control-sm" id="Cidadania" />
+                    </div>
+                </div>
+                <div class="col-12 col-md-2 px-0">
+                    <div class="form-group">
+                        <label for="DataNascimento">Data Nascimento</label>
+                        <input type="text" name="DataNascimento" class="form-control form-control-sm" id="DataNascimento" />
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-12 col-md-2 px-0">
+                    <div class="form-group">
+                        <label for="EstadoCivil">Estado Civil</label>
+                        <input type="text" name="EstadoCivil" class="form-control form-control-sm" id="EstadoCivil" />
+                    </div>
+                </div>
+                <div class="col-12 col-md-3 px-0">
+                    <div class="form-group">
+                        <label for="Profissao">Profissão</label>
+                        <input type="text" name="Profissao" class="form-control form-control-sm" id="Profissao" />
+                    </div>
+                </div>
+                <div class="col-12 col-md-3 px-0">
+                    <div class="form-group">
+                        <label for="faixaSalarial">Faixa Salárial</label>
+                        <input type="text" name="faixaSalarial" class="form-control form-control-sm" id="faixaSalarial" />
+                    </div>
+                </div>
+                <div class="col-12 col-md-2 px-0">
+                    <div class="form-group">
+                        <label for="DataAbertura">Data Abertura</label>
+                        <input type="text" name="DataAbertura" class="form-control form-control-sm" id="DataAbertura" />
+                    </div>
+                </div>
+                <div class="col-12 col-md-2 px-0">
+                    <div class="form-group">
+                        <label for="anexo">Anexos</label>
+                        <input type="text" name="anexos" class="form-control form-control-sm" id="anexos" />
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12 col-md-12 px-0">
+                    <div class="form-group">
+                        <label for="Observacao">Observações</label>
+                        <textarea type="text" name="Observacao" class="form-control form-control-sm" id="Observacao"></textarea>
+                    </div>
+                </div>
+            </div>
+        </fieldset>
+    </div>
+    <div class="">
+        <fieldset class="border p-4">
+            <input type="hidden" name="contatoTotal" class="contato-total" value="0" />
+            <legend class="float-none w-auto" style="font-size: 1.2em !important;">Contatos</legend>
+            <div class="Form-contatos">
+            </div>
+            <div class="row">
+                <div class="form-group d-flex flex-row-reverse">
+                    <button href="#" id="adicionarcampoContatos" class="btn btn-sm btn-dark add_field_button_contatos">Adicionar Contato</button>
+                </div>
+            </div>
+        </fieldset>
+    </div>
+    <div class="">
+        <fieldset class="border p-4">
+            <input type="hidden" name="enderecoTotal" class="endereco-total" value="0" />
+            <legend class="float-none w-auto" style="font-size: 1.2em !important;">Endereços</legend>
+            <div class="Form-endereco">
+            </div>
+            <div class="row">
+                <div class="form-group d-flex flex-row-reverse">
+                    <button href="#" id="adicionarcampo" class="btn btn-sm btn-dark add_field_button">Adicionar Endereço</button>
+                </div>
+            </div>
+        </fieldset>
+    </div>
+    <div class="">
+        <fieldset class="border p-4">
+            <input type="hidden" name="acessoTotal" class="acesso-total" value="0" />
+            <legend class="float-none w-auto" style="font-size: 1.2em !important;">Informações de Acesso</legend>
+            <div class="Form-acesso">
+            </div>
+            <div class="row">
+                <div class="form-group d-flex flex-row-reverse">
+                    <button href="#" id="adicionaracesso" class="btn btn-sm btn-dark add_field_acesso_button">Adicionar Acesso</button>
+                </div>
+            </div>
+        </fieldset>
+    </div>
+    @*<div class="col-md-12 col-md-12 px-0">
+            <div class="form-group d-flex flex-row-reverse">
+                <button type="submit" class="btn btn-success btn-sm d-flex align-items-center salvar-alert ml-1">Salvar</button>
+                <a href="@Url.Action("Index","Cliente")" class="btn btn-dark btn-sm d-flex align-items-center">Cancelar</a>
+            </div>
+        </div>*@
+</form>
+<script>
+</script>
