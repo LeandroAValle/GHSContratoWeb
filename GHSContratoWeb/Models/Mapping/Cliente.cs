@@ -29,6 +29,9 @@ namespace GHSContratoWeb.Models.Mapping
         public string Profissao { get; set; }
         public Byte[] Anexo { get; set; }
         public int? IDCliente { get; set; }
+        public int? TipoDocumento { get; set; }
+        public string OrgaoExpeditor { get; set; }
+        public Byte[] Foto { get; set; }
 
         public List<EnderecoCliente> Enderecos { get; set; }
         public List<ContatoCliente> Contatos { get; set; }

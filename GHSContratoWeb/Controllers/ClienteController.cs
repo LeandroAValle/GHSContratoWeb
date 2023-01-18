@@ -54,6 +54,13 @@ namespace GHSContratoWeb.Controllers
                 RedirectToAction("Index", "Login");
             }
 
+            ViewBag.DropDownTipoCliente = DropDownList.DropDownTipoCliente();
+            ViewBag.DropDownCidade =  DropDownList.DropDownCidade();
+            ViewBag.DropDownEstado =  DropDownList.DropDownEstado();
+
+            int? ultimoCodigo = new ClienteBusiness().BuscarUltimoCodigo();
+            ViewBag.ultimoCodigo = (ultimoCodigo != null ? ultimoCodigo.Value + 1 : 1);
+
             return View();
         }
 
@@ -64,10 +71,12 @@ namespace GHSContratoWeb.Controllers
             {
                 ID = form["ID"].ToInt32(),
                 Nome = form["Nome"].IsNullOrEmptyBoolean() ? null : form["Nome"].Trim(),
-                Ativo = form["Ativo"].ToBoolean(),
+                Ativo = form["clienteAtivo"].ToBoolean(),
                 DataExpedicao = form["DataExpedicao"].IsNullOrEmptyBoolean() ? (DateTime?)null : form["DataExpedicao"].ToDate(),
-                IDTipoCliente = form["IDTipoCliente"].IsNullOrEmptyBoolean() ? (Int32?)null : form["IDTipoCliente"].ToInt32(),
+                IDTipoCliente = form["TipoCliente"].IsNullOrEmptyBoolean() ? (Int32?)null : form["TipoCliente"].ToInt32(),
                 Telefone = form["Telefone"].IsNullOrEmptyBoolean() ? null : form["Telefone"].Trim(),
+                OrgaoExpeditor = form["OE"].IsNullOrEmptyBoolean() ? null : form["OE"].Trim(),
+                TipoDocumento = form["TipoDocumento"].IsNullOrEmptyBoolean() ? (Int32?)null : form["TipoDocumento"].ToInt32(),
                 Email = form["Email"].IsNullOrEmptyBoolean() ? null : form["Email"].Trim(),
                 Observacao = form["Observacao"].IsNullOrEmptyBoolean() ? null : form["Observacao"].Trim(),
                 CPF = form["CPF"].IsNullOrEmptyBoolean() ? null : form["CPF"].Trim(),
@@ -78,7 +87,7 @@ namespace GHSContratoWeb.Controllers
                 DataAbertura = form["DataAbertura"].IsNullOrEmptyBoolean() ? (DateTime?)null : form["DataAbertura"].ToDate(),
                 Cidadania = form["Cidadania"].IsNullOrEmptyBoolean() ? null : form["Cidadania"].Trim(),
                 EstadoCivil = form["EstadoCivil"].IsNullOrEmptyBoolean() ? null : form["EstadoCivil"].Trim(),
-                FaixaSalarial = form["FaixaSalarial"].IsNullOrEmptyBoolean() ? null : form["FaixaSalarial"].Trim(),
+                FaixaSalarial = form["faixaSalarial"].IsNullOrEmptyBoolean() ? null : form["faixaSalarial"].Trim(),
                 Profissao = form["Profissao"].IsNullOrEmptyBoolean() ? null : form["Profissao"].Trim()
             };
 
@@ -112,12 +121,10 @@ namespace GHSContratoWeb.Controllers
             {
                 cliente.Contatos.Add(new ContatoCliente
                 {
-                    IDTipoContato = form["IDDespesa" + i].ToInt32(),
-                    IDCliente = form["IDDespesa" + i].ToInt32(),
-                    Descricao = form["Complemento"].IsNullOrEmptyBoolean() ? null : form["Complemento"].Trim(),
-                    Observacao = form["Complemento"].IsNullOrEmptyBoolean() ? null : form["Complemento"].Trim(),
-                    DataHora = form["Data_Cadastro"].IsNullOrEmptyBoolean() ? (DateTime?)null : form["Data_Cadastro"].ToDate(),
-                    Ativo = form["Ativo"].ToBoolean()
+                    IDCliente = form["IDCliente" + i].ToInt32(),
+                    Telefone = form["Telefone"].IsNullOrEmptyBoolean() ? null : form["Telefone"].Trim(),
+                    Email = form["Email"].IsNullOrEmptyBoolean() ? null : form["Email"].Trim(),
+                    Proprietario = form["Proprietario"].IsNullOrEmptyBoolean() ? null : form["Proprietario"].Trim(),
                 });;
             }
 
@@ -127,13 +134,13 @@ namespace GHSContratoWeb.Controllers
             {
                 cliente.Acessos.Add(new InformacoesAcessoCliente
                 {
-                    Internet = form["Complemento"].IsNullOrEmptyBoolean() ? null : form["Complemento"].Trim(),
-                    AplicativoMonitor = form["Complemento"].IsNullOrEmptyBoolean() ? null : form["Complemento"].Trim(),
-                    LoginUsuario = form["Complemento"].IsNullOrEmptyBoolean() ? null : form["Complemento"].Trim(),
-                    Senha = form["Complemento"].IsNullOrEmptyBoolean() ? null : form["Complemento"].Trim(),
-                    IDConsensionaria = form["IDDespesa" + i].ToInt32(),
-                    Observacao = form["Complemento"].IsNullOrEmptyBoolean() ? null : form["Complemento"].Trim(),
-                    IDCliente = form["IDDespesa" + i].ToInt32()
+                    Internet = form["Internet"].IsNullOrEmptyBoolean() ? null : form["Internet"].Trim(),
+                    AplicativoMonitor = form["AplicativoMonitor"].IsNullOrEmptyBoolean() ? null : form["AplicativoMonitor"].Trim(),
+                    LoginUsuario = form["Usuario"].IsNullOrEmptyBoolean() ? null : form["Usuario"].Trim(),
+                    Senha = form["Senha"].IsNullOrEmptyBoolean() ? null : form["Senha"].Trim(),
+                    IDConsensionaria = form["IDConsensionaria" + i].ToInt32(),
+                    Observacao = form["Observacao"].IsNullOrEmptyBoolean() ? null : form["Observacao"].Trim(),
+                    IDCliente = form["IDCliente" + i].ToInt32()
                 });
             }
 
@@ -150,6 +157,23 @@ namespace GHSContratoWeb.Controllers
                             inputStream.CopyTo(memoryStream);
                         }
                         cliente.Anexo = memoryStream.ToArray();
+                    }
+                }
+            }
+
+            if (this.Request.Files[0].ContentLength > 0)
+            {
+                if (this.Request.Files.Count == 1)
+                {
+                    using (Stream inputStream = this.Request.Files[0].InputStream)
+                    {
+                        MemoryStream memoryStream = inputStream as MemoryStream;
+                        if (memoryStream == null)
+                        {
+                            memoryStream = new MemoryStream();
+                            inputStream.CopyTo(memoryStream);
+                        }
+                        cliente.Foto = memoryStream.ToArray();
                     }
                 }
             }
@@ -255,5 +279,15 @@ namespace GHSContratoWeb.Controllers
             return RedirectToAction("Index", new { id = cliente.ID });
 
         }
+
+        [HttpPost]
+        public JsonResult ListarCidades(int uf)
+        {
+            List<SelectListItem> lista = DropDownList.DropDownCidade(null, uf);
+
+            return Json(new { lista }, JsonRequestBehavior.AllowGet);
+
+        }
+
     }
 }

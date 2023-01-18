@@ -12,6 +12,9 @@ namespace GHSContratoWeb.Models.Mapping
         public int IDCliente { get; set; }
         public string Descricao { get; set; }
         public string Observacao { get; set; }
+        public string Telefone { get; set; }
+        public string Email { get; set; }
+        public string Proprietario { get; set; }
         public DateTime? DataHora { get; set; }
         public bool Ativo { get; set; }
     }

@@ -118,5 +118,24 @@ namespace GHSContratoWeb.Models.Business
                 return lista;
             }
         }
+
+        internal int? BuscarUltimoCodigo()
+        {
+            try
+            {
+                using (var con = new Conexao().GetCon())
+                {
+                    return con.Query<int?>(@"
+                    SELECT
+                        MAX(ID)
+                    FROM
+                        Clientes").SingleOrDefault();
+                }
+            }
+            catch (Exception ex)
+            {
+                return null;
+            }
+        }
     }
 }

@@ -29,6 +29,30 @@ namespace GHSContratoWeb.Models.Business
             }
         }
 
+        internal List<Cidade> ListarDropDown(int uf)
+        {
+            try
+            {
+                using (var con = new Conexao().GetCon())
+                {
+                    return con.Query<Cidade>(@"
+                                      SELECT 
+                                         ID, nome, IDEstado, Ibge
+                                      FROM
+                                          Cidades
+                                      WHERE
+                                        IDEstado = @UF
+                                    ORDER BY
+                                        nome
+                                    ASC", new { UF = uf }).ToList();
+                }
+            }
+            catch (Exception ex)
+            {
+                return new List<Cidade>();
+            }
+        }
+
         public int? InsertCidade(Cidade cidade)
         {       
             try

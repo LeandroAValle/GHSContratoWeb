@@ -150,6 +150,7 @@
     <Compile Include="Models\Business\UnidadeConsumidoraBusiness.cs" />
     <Compile Include="Models\Business\UsuarioBusiness.cs" />
     <Compile Include="Models\Grid\ClienteGrid.cs" />
+    <Compile Include="Models\Helper\DropDownList.cs" />
     <Compile Include="Models\Helper\ExtensionMethods.cs" />
     <Compile Include="Models\Helper\Utils.cs" />
     <Compile Include="Models\Mapping\AcomodacaoModulo.cs" />
@@ -184,6 +185,8 @@
     <Content Include="Content\bootstrap-reboot.min.css" />
     <Content Include="Content\bootstrap-reboot.rtl.css" />
     <Content Include="Content\bootstrap-reboot.rtl.min.css" />
+    <Content Include="Content\bootstrap-responsive.css" />
+    <Content Include="Content\bootstrap-responsive.min.css" />
     <Content Include="Content\bootstrap-utilities.css" />
     <Content Include="Content\bootstrap-utilities.min.css" />
     <Content Include="Content\bootstrap-utilities.rtl.css" />
@@ -200,7 +203,11 @@
     <Content Include="Content\css\home.css" />
     <Content Include="Content\css\livro.css" />
     <Content Include="Content\css\login.css" />
+    <Content Include="Content\css\select2.css" />
+    <Content Include="Content\css\select2.png" />
+    <Content Include="Content\css\select2x2.png" />
     <Content Include="Content\css\serie-aluno.css" />
+    <Content Include="Content\css\spinner.gif" />
     <Content Include="Content\css\style.css" />
     <Content Include="Content\css\unidade-ensino.css" />
     <Content Include="Content\css\usuario-biblioteca.css" />
@@ -385,11 +392,14 @@
     <Content Include="Content\Imagens\solar.jpeg" />
     <Content Include="Content\Imagens\Tools-No-Background.png" />
     <Content Include="Content\Imagens\unidadegestora.jpg" />
+    <Content Include="Content\images\glyphicons-halflings-white.png" />
+    <Content Include="Content\images\glyphicons-halflings.png" />
     <Content Include="Content\Plugins\jquery.mask.js" />
     <Content Include="Content\Plugins\Notiflix\jquery.mask.js" />
     <Content Include="Content\Plugins\Notiflix\notiflix-2.7.0.min.css" />
     <Content Include="Content\Plugins\Notiflix\notiflix-2.7.0.min.js" />
     <Content Include="Content\Plugins\Notiflix\notiflix-aio-2.7.0.min.js" />
+    <Content Include="Content\select2-bootstrap.css" />
     <Content Include="Content\Templates\Atlantis-Lite-master\assets\css\atlantis.css" />
     <Content Include="Content\Templates\Atlantis-Lite-master\assets\css\atlantis.min.css" />
     <Content Include="Content\Templates\Atlantis-Lite-master\assets\css\bootstrap.min.css" />
@@ -643,6 +653,10 @@
     <Content Include="Content\DataTables\css\common.scss" />
     <Content Include="Content\DataTables\css\mixins.scss" />
     <Content Include="Content\DataTables\css\semanticui.scss" />
+    <Content Include="Content\select2-bootstrap.scss" />
+    <Content Include="Content\select2-bootstrap.less" />
+    <Content Include="Content\select2-bootstrap-build.scss" />
+    <Content Include="Content\select2-bootstrap-build.less" />
     <None Include="Scripts\jquery-3.6.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.6.1.js" />
     <Content Include="Scripts\jquery-3.6.1.min.js" />
@@ -657,6 +671,8 @@
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
     <Content Include="Scripts\js\main.js" />
     <Content Include="Scripts\modernizr-2.8.3.js" />
+    <Content Include="Scripts\select2.js" />
+    <Content Include="Scripts\select2.min.js" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
