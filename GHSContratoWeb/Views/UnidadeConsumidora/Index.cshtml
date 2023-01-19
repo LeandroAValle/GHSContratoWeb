@@ -1,10 +1,10 @@
-﻿@model List<GHSContratoWeb.Models.Mapping.UnidadeConsumidora>
+﻿@model List<GHSContratoWeb.Models.Mapping.EnderecoCliente>
 @{
     Layout = "~/Views/Shared/_Layout.cshtml"; }
 
 <div class="page-inner mt-5">
     <div class="page-header card-round" style="background-color: #ffffff">
-        <h4 class="page-title ml-3">Unidade Consumidora</h4>
+        <h4 class="page-title ml-3">Unidades</h4>
         <ul class="breadcrumbs">
             <li class="nav-home">
                 <a href="@Url.Action("Index","Home")" class="text-primary">
@@ -21,7 +21,7 @@
                 <i class="flaticon-right-arrow"></i>
             </li>
             <li class="nav-item">
-                <a>Unidade Consumidora</a>
+                <a>Unidades</a>
             </li>
         </ul>
     </div>
@@ -29,7 +29,7 @@
         <div class="col-md-12">
             <div class="card">
                 <div class="card-header d-flex justify-content-between">
-                    <h4 class="card-title">Consulta de Unidades Gestoras</h4>
+                    <h4 class="card-title">Consulta de Unidades</h4>
                     <a href="@Url.Action("Novo","UnidadeConsumidora")" class="btn btn-sm btn-success d-flex align-items-center"><span class="ml-1">Novo</span></a>
                 </div>
                 <div class="card-body">
@@ -38,12 +38,11 @@
                             <thead>
                                 <tr class="text-dark">
                                     <th>ID</th>
-                                    <th hidden>IDEnderecoCliente</th>
-                                    <th hidden>IDConsensionaria</th>
-                                    <th hidden>CodigoUnidadeConsumidora</th>
-                                    <th hidden>Observacao</th>
-                                    <th>Registro</th>
-                                    <th>Ativo</th>
+                                    <th>IDCliente</th>
+                                    <th>Rua</th>
+                                    <th>Numero</th>
+                                    <th>Bairro</th>
+                                    <th>LocalInstalacao</th>
                                     <th class="text-center">Ações</th>
                                 </tr>
                             </thead>
@@ -52,12 +51,11 @@
                                     {
                                         <tr>
                                             <td>@item.ID</td>
-                                            <td hidden>@item.IDEnderecoCliente</td>
-                                            <td hidden>@item.IDConsensionaria</td>
-                                            <td hidden>@item.CodigoUnidadeConsumidora</td>
-                                            <td hidden>@item.Observacao.ToString()</td>
-                                            <td>@item.DataHoraRegistro.Value.ToString("dd/MM/yyyy")</td>
-                                            <td>@item.Ativo</td>
+                                            <td>@item.IDCliente</td>
+                                            <td>@item.Rua</td>
+                                            <td>@item.Numero</td>
+                                            <td>@item.Bairro</td>
+                                            <td>@item.LocalInstalacao</td>
                                             <td>
                                                 <a class="btn btn-sm btn-info btn-detalhes-cliente" name="btn-detalhes-cliente" data-toggle="modal" data-target="#modalcliente" data-id="@item.ID" style="color: white !important">Detalhes</a>
                                                 <a class="btn btn-sm btn-primary" href="@Url.Action("Alterar","UnidadeConsumidora",new  {ID = @item.ID })">Alterar</a>

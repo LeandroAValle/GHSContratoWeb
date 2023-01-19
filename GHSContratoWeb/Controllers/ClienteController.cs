@@ -112,7 +112,7 @@ namespace GHSContratoWeb.Controllers
                     Observacao = form["EnderecoObs"].IsNullOrEmptyBoolean() ? null : form["EnderecoObs"].Trim(),
                     LatitudeHoras = form["LatitudeHoras"].IsNullOrEmptyBoolean() ? null : form["LatitudeHoras"].Trim(),
                     LongitudeHoras = form["LongitudeHoras"].IsNullOrEmptyBoolean() ? null : form["LongitudeHoras"].Trim(),
-                    LocalInstalacao = form["enderecoPrincipal"].ToBoolean()
+                    LocalInstalacao = form["enderecoInstalacao"].ToBoolean()
                 });
             }
 

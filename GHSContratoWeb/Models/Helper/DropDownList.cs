@@ -116,6 +116,31 @@ namespace GHSContratoWeb.Models.Helper
             return list;
         }
 
+        public static List<SelectListItem> DropDownConcessionaria(int? id = null)
+        {
+            var list = new List<SelectListItem>();
+            var concessionarias = new ConcessionariaBusiness().SelectConcessionaria();
+
+            foreach (var concessionaria in concessionarias)
+            {
+                list.Add(new SelectListItem
+                {
+                    Text = concessionaria.Nome,
+                    Value = concessionaria.ID.ToString(),
+                    Selected = concessionaria.ID == id
+                });
+            }
+
+            list.Insert(0, new SelectListItem
+            {
+                Text = "-Selecione-",
+                Value = "",
+                Selected = (id == null ? true : false)
+            });
+
+            return list;
+        }
+
 
     }
 }

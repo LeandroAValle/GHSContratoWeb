@@ -1,4 +1,8 @@
 ﻿using System;
+using GHSContratoWeb.Models.Business;
+using GHSContratoWeb.Models.Grid;
+using GHSContratoWeb.Models.Mapping;
+using GHSContratoWebBusiness.Helper;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -11,7 +15,9 @@ namespace GHSContratoWeb.Controllers
         // GET: Concessionaria
         public ActionResult Index()
         {
-            return View();
+            List<Concessionaria> listaGrid = new ConcessionariaBusiness().SelectConcessionaria();
+
+            return View(listaGrid);
         }
     }
 }

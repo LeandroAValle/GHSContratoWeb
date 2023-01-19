@@ -257,8 +257,8 @@
                                         <div class="col-12 col-md-3 px-0">
                                             <div class="form-check form-check-inline">
                                                 <div class="custom-control custom-checkbox">
-                                                    <input type="checkbox" class="custom-control-input" id="enderecoPrincipalAdd" value="0">
-                                                    <label class="custom-control-label" for="enderecoPrincipalAdd">Endereço de Instalação</label>
+                                                    <input type="checkbox" class="custom-control-input" id="enderecoInstalacaoAdd" value="0">
+                                                    <label class="custom-control-label" for="enderecoInstalacaoAdd">Endereço de Instalação</label>
                                                 </div>
                                             </div>
                                         </div>
@@ -744,51 +744,11 @@
         let EstadoN = $("#EstadoAdd").find(':selected').val();
         let CEP = $('#CEPAdd').val();
         let Concessionaria = $('#ConcessionariaAdd').val();
-        let enderecoPrincipal = $('#enderecoPrincipalAdd').val();
+        let enderecoInstalacao = $('#enderecoInstalacaoAdd').val();
         let enderecoResidencial = $('#enderecoResidencialAdd').val();
         let Longitude = $('#LongitudeAdd').val();
         let Latitude = $('#LatitudeAdd').val();
         let EnderecoObs = $('#enderecoObservacaoAdd').val();
-
-        if (enderecoPrincipal == 0 && enderecoResidencial == 0) {
-            $.notify({
-                // options
-                title: '<strong>ATENÇÃO</strong>',
-                message: "Selecione aa opções de endereço.",
-                icon: 'fas fa-exclamation',
-            }, {
-                // settings
-                element: 'body',
-                position: null,
-                type: "warning",
-                allow_dismiss: true,
-                newest_on_top: false,
-                showProgressbar: false,
-                placement: {
-                    from: "top",
-                    align: "right"
-                },
-                offset: 20,
-                spacing: 10,
-                z_index: 1031,
-                delay: 3300,
-                timer: 1000,
-                url_target: '_blank',
-                mouse_over: null,
-                animate: {
-                    enter: 'animated bounceIn',
-                    exit: 'animated bounceOut'
-                },
-                onShow: null,
-                onShown: null,
-                onClose: null,
-                onClosed: null,
-                icon_type: 'class',
-            });
-
-            e.preventDefault();
-            return false;
-        }
 
         if (Rua == "" || Numero == "" || Bairro == "" || Cidade == "" || Estado == "" || CEP == "") {
 
@@ -831,13 +791,98 @@
             return false;
         }
 
+        if (enderecoInstalacao == 0 && enderecoResidencial == 0) {
+            $.notify({
+                // options
+                title: '<strong>ATENÇÃO</strong>',
+                message: "Selecione aa opções de endereço.",
+                icon: 'fas fa-exclamation',
+            }, {
+                // settings
+                element: 'body',
+                position: null,
+                type: "warning",
+                allow_dismiss: true,
+                newest_on_top: false,
+                showProgressbar: false,
+                placement: {
+                    from: "top",
+                    align: "right"
+                },
+                offset: 20,
+                spacing: 10,
+                z_index: 1031,
+                delay: 3300,
+                timer: 1000,
+                url_target: '_blank',
+                mouse_over: null,
+                animate: {
+                    enter: 'animated bounceIn',
+                    exit: 'animated bounceOut'
+                },
+                onShow: null,
+                onShown: null,
+                onClose: null,
+                onClosed: null,
+                icon_type: 'class',
+            });
+
+            e.preventDefault();
+            return false;
+        }
+
+        var Descricaodoendereco;
+        if (enderecoInstalacao == 1) { Descricaodoendereco = "Titular/Instalação" }
+        if (enderecoResidencial == 1) { Descricaodoendereco = "Residencia" }
+        if (enderecoResidencial == 1 && enderecoInstalacao == 1) { Descricaodoendereco = "Residencia/Instalação" }
+
         $('#enderecoTable tbody tr').each(function () {
-            if ($(this).find('.td-enderecoPrincipal').find('input').attr('value') == enderecoPrincipal && enderecoPrincipal == "1" ) {
+            if ($(this).find('.td-enderecoInstalacao').find('input').attr('value') == enderecoInstalacao && enderecoInstalacao == "1" ) {
 
                 $.notify({
                     // options
                     title: '<strong>ATENÇÃO</strong>',
                     message: "Já existe uma unidade titular de instalação.",
+                    icon: 'fas fa-exclamation',
+                }, {
+                    // settings
+                    element: 'body',
+                    position: null,
+                    type: "warning",
+                    allow_dismiss: true,
+                    newest_on_top: false,
+                    showProgressbar: false,
+                    placement: {
+                        from: "top",
+                        align: "right"
+                    },
+                    offset: 20,
+                    spacing: 10,
+                    z_index: 1031,
+                    delay: 3300,
+                    timer: 1000,
+                    url_target: '_blank',
+                    mouse_over: null,
+                    animate: {
+                        enter: 'animated bounceIn',
+                        exit: 'animated bounceOut'
+                    },
+                    onShow: null,
+                    onShown: null,
+                    onClose: null,
+                    onClosed: null,
+                    icon_type: 'class',
+                });
+                e.preventDefault();
+                return false;
+            }
+
+            if ($(this).find('.td-enderecoResidencial').find('input').attr('value') == enderecoResidencial && enderecoResidencial == "1") {
+
+                $.notify({
+                    // options
+                    title: '<strong>ATENÇÃO</strong>',
+                    message: "Já existe uma unidade residencial.",
                     icon: 'fas fa-exclamation',
                 }, {
                     // settings
@@ -891,7 +936,7 @@
             "<td hidden class='td-CEP'><input type='text' name='CEP" + cont + "' value='" + CEP + "'/></td>" +
             "<td hidden class='td-Concessionaria'><input type='text' name='Concessionaria" + cont + "' value='" + Concessionaria + "'/></td>" +
             "<td hidden class='td-EnderecoObs'><input type='text' name='EnderecoObs" + cont + "' value='" + EnderecoObs + "'/></td>" +
-            "<td hidden class='td-enderecoPrincipal'><input type='text' name='enderecoPrincipal" + cont + "' value='" + enderecoPrincipal + "'/></td>" +
+            "<td hidden class='td-enderecoInstalacao'><input type='text' name='enderecoInstalacao" + cont + "' value='" + enderecoInstalacao + "'/></td>" +
             "<td hidden class='td-enderecoResidencial'><input type='text' name='enderecoResidencial" + cont + "' value='" + enderecoResidencial + "'/></td>" +
             "<td class=''>" + Rua + "</td>" +
             "<td class=''>" + Numero + "</td>" +
@@ -900,7 +945,7 @@
             "<td class=''>" + Estado + "</td>" +
             "<td class=''>" + CEP + "</td>" +
             "<td class=''>" + Concessionaria + "</td>" +
-            "<td class=''>" + enderecoPrincipal + "</td>" +
+            "<td class=''>" + Descricaodoendereco + "</td>" +
             "<td style='width: 100px !important;' class='td-acoes'>" +
             "<div class='form-button-action px-1 d-flex justify-content-center'>" +
             "<a class='btn btn-link btn-danger btn-deletar-endereco'><span class='material-icons-outlined text-danger'>delete_forever</span></a>" +
@@ -917,7 +962,7 @@
         $('#EstadoAdd').val("");
         $('#CEPAdd').val("");
         $('#ConcessionariaAdd').val("");
-        $('#enderecoPrincipalAdd').prop('checked', false);
+        $('#enderecoInstalacaoAdd').prop('checked', false);
         $('#enderecoResidencialAdd').prop('checked', false);
         $('#LongitudeAdd').val("");
         $('#LatitudeAdd').val("");
@@ -947,7 +992,7 @@
                 $(this).find('.td-Latitude').find('input').attr('name', 'Latitude' + cont);
                 $(this).find('.td-CEP').find('input').attr('name', 'CEP' + cont);
                 $(this).find('.td-Concessionaria').find('input').attr('name', 'Concessionaria' + cont);
-                $(this).find('.td-enderecoPrincipal').find('input').attr('name', 'enderecoPrincipal' + cont);
+                $(this).find('.td-enderecoInstalacao').find('input').attr('name', 'enderecoInstalacao' + cont);
                 $(this).find('.td-enderecoResidencial').find('input').attr('name', 'enderecoResidencial' + cont);
                 $(this).find('.td-EnderecoObs').find('input').attr('name', 'EnderecoObs' + cont);
                 cont++;
@@ -1092,17 +1137,17 @@
     });
 
 
-    $('#enderecoPrincipalAdd').change(function () {
+    $('#enderecoInstalacaoAdd').change(function () {
 
         if ($(this).prop("checked") == true) {
-            $('#enderecoPrincipalAdd').val(1);
+            $('#enderecoInstalacaoAdd').val(1);
         } else {
-            $('#enderecoPrincipalAdd').val(0);
+            $('#enderecoInstalacaoAdd').val(0);
         }
 
     });
 
-    $('#enderecoPrincipalAdd').prop('checked', false);
+    $('#enderecoInstalacaoAdd').prop('checked', false);
 
     $('#enderecoResidencialAdd').change(function () {
 
@@ -1128,7 +1173,7 @@
 
     //        if (x < max_fields) { //max input box allowed
     //            x++; //text box increment
-    //            $(wrapper).append('<div><h4 class="float-none w-auto p-2">Endereço<label class="Total-endereco">' + (length + 1) + '</label></h4><div class="row"><div class="col-12 col-md-7 px-0"><div class="form-group"><label for="Rua">Rua</label><input type="text" name="Rua' + (length + 1) + '" class="form-control form-control-sm" id="Rua' + (length + 1) + '" /></div></div><div class="col-12 col-md-1 px-0"><div class="form-group"><label for="Número">Número</label><input type="text" name="Numero' + (length + 1) + '" class="form-control form-control-sm" id="Número' + (length + 1) + '" /></div></div><div class="col-12 col-md-4 px-0"><div class="form-group"><label for="Bairro">Bairro</label><input type="text" name="Bairro' + (length + 1) + '" class="form-control form-control-sm" id="Bairro' + (length + 1) + '" /></div></div></div><div class="row"><div class="col-12 col-md-5 px-0"><div class="form-group"><label for="Cidade">Cidade</label><input type="text" name="Cidade' + (length + 1) + '" class="form-control form-control-sm" id="Cidade' + (length + 1) + '" /></div></div><div class="col-12 col-md-1 px-0"><div class="form-group"><label for="Estado">Estado</label><input type="text" name="Estado' + (length + 1) + '" class="form-control form-control-sm" id="Estado' + (length + 1) + '" /></div></div><div class="col-12 col-md-2 px-0"><div class="form-group"><label for="CEP">CEP</label><input type="text" name="CEP' + (length + 1) + '" class="form-control form-control-sm" id="CEP' + (length + 1) + '" /></div></div><div class="col-12 col-md-4 px-0"><div class="form-group"><label for="Concessionaria">Concessionária</label><input type="text" name="Concessionaria' + (length + 1) + '" class="form-control form-control-sm" id="Concessionaria' + (length + 1) + '" /></div></div></div><div class="row"><div class="col-12 col-md-5 px-0"><div class="form-check"><input type="checkbox" class="form-check-input" id="enderecoPrincipal' + (length + 1) + '"><label class="form-check-label" for="exampleCheck1">Principal</label></div></div></div><a href="#" class="remove_field">Remover</a><hr /></div>');
+    //            $(wrapper).append('<div><h4 class="float-none w-auto p-2">Endereço<label class="Total-endereco">' + (length + 1) + '</label></h4><div class="row"><div class="col-12 col-md-7 px-0"><div class="form-group"><label for="Rua">Rua</label><input type="text" name="Rua' + (length + 1) + '" class="form-control form-control-sm" id="Rua' + (length + 1) + '" /></div></div><div class="col-12 col-md-1 px-0"><div class="form-group"><label for="Número">Número</label><input type="text" name="Numero' + (length + 1) + '" class="form-control form-control-sm" id="Número' + (length + 1) + '" /></div></div><div class="col-12 col-md-4 px-0"><div class="form-group"><label for="Bairro">Bairro</label><input type="text" name="Bairro' + (length + 1) + '" class="form-control form-control-sm" id="Bairro' + (length + 1) + '" /></div></div></div><div class="row"><div class="col-12 col-md-5 px-0"><div class="form-group"><label for="Cidade">Cidade</label><input type="text" name="Cidade' + (length + 1) + '" class="form-control form-control-sm" id="Cidade' + (length + 1) + '" /></div></div><div class="col-12 col-md-1 px-0"><div class="form-group"><label for="Estado">Estado</label><input type="text" name="Estado' + (length + 1) + '" class="form-control form-control-sm" id="Estado' + (length + 1) + '" /></div></div><div class="col-12 col-md-2 px-0"><div class="form-group"><label for="CEP">CEP</label><input type="text" name="CEP' + (length + 1) + '" class="form-control form-control-sm" id="CEP' + (length + 1) + '" /></div></div><div class="col-12 col-md-4 px-0"><div class="form-group"><label for="Concessionaria">Concessionária</label><input type="text" name="Concessionaria' + (length + 1) + '" class="form-control form-control-sm" id="Concessionaria' + (length + 1) + '" /></div></div></div><div class="row"><div class="col-12 col-md-5 px-0"><div class="form-check"><input type="checkbox" class="form-check-input" id="enderecoInstalacao' + (length + 1) + '"><label class="form-check-label" for="exampleCheck1">Principal</label></div></div></div><a href="#" class="remove_field">Remover</a><hr /></div>');
     //            //Reconta as linhas
     //            total = wrapper.find(".Total-endereco").length;
     //            $('.endereco-total').val(total);

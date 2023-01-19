@@ -23,7 +23,7 @@ namespace GHSContratoWeb.Controllers
                 RedirectToAction("Index", "Login");
             }
 
-            List<UnidadeConsumidora> listaGrid = new UnidadeConsumidoraBusiness().SelectUnidadeConsumidora();
+            List<EnderecoCliente> listaGrid = new EnderecoClienteBusiness().SelectEnderecoCliente();
 
             if (TempData["Resultado"] != null)
             {

@@ -133,7 +133,7 @@
     <Compile Include="Models\Business\ArquivoContratoBusiness.cs" />
     <Compile Include="Models\Business\CidadeBusiness.cs" />
     <Compile Include="Models\Business\ClienteBusiness.cs" />
-    <Compile Include="Models\Business\ConsensionariaBusiness.cs" />
+    <Compile Include="Models\Business\ConcessionariaBusiness.cs" />
     <Compile Include="Models\Business\ContatoClienteBusiness.cs" />
     <Compile Include="Models\Business\ContratoBusiness.cs" />
     <Compile Include="Models\Business\DadosClienteBusiness.cs" />

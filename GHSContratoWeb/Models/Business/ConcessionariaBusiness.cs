@@ -8,7 +8,7 @@ using GHSContratoWeb.Models.Mapping;
 
 namespace GHSContratoWeb.Models.Business
 {
-    public class ConsensionariaBusiness
+    public class ConcessionariaBusiness
     {
         public List<Concessionaria> SelectConcessionaria()
         {
