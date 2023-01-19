@@ -3,5 +3,75 @@
     ViewBag.Title = "Index";
 }
 
-<h2>Index</h2>
+<div class="page-inner mt-5">
+    <div class="page-header card-round" style="background-color: #ffffff">
+        <h4 class="page-title ml-3">Clientes</h4>
+        <ul class="breadcrumbs">
+            <li class="nav-home">
+                <a href="@Url.Action("Index","Home")" class="text-primary">
+                    <i class="flaticon-home"></i>
+                </a>
+            </li>
+            <li class="separator">
+                <i class="flaticon-right-arrow"></i>
+            </li>
+            <li class="nav-item">
+                <a>Cadastros</a>
+            </li>
+            <li class="separator">
+                <i class="flaticon-right-arrow"></i>
+            </li>
+            <li class="nav-item">
+                <a>Clientes</a>
+            </li>
+        </ul>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card">
+                <div class="card-header d-flex justify-content-between">
+                    <h2 class="card-title">Consulta de Clientes</h2>
+                    <a href="@Url.Action("Novo","Cliente")" class="btn btn-sm btn-success d-flex align-items-center"><span class="ml-1">Novo<i class="fas fa fa-plus ml-1"></i></span></a>
+                </div>
+                <div class="card-body">
+                    <fieldset class="border p-2">
+                        <div class="table-responsive">
+                            <table class="dtPadrao table-sm display table-striped table-hover w-100 table-bordered">
+                                <thead>
+                                    <tr class="text-dark">
+                                        <th>ID</th>
+                                        <th>Nome</th>
+                                        <th>Tipo do Cliente</th>
+                                        <th>Documento</th>
+                                        <th>Data do Cliente</th>
+                                        <th hidden>Data Expedição</th>
+                                        <th class="text-center">Ações</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @{ foreach (var item in Model)
+                                        {
+                                            <tr>
+                                                <td class="text-center">@item.ID</td>
+                                                <td>@item.Nome</td>
+                                                <td>@item.TipoCliente</td>
+                                                <td>@item.Documento.ToString()</td>
+                                                <td hidden>@item.DataCliente.Value.ToString("dd/MM/yyyy")</td>
+                                                <td>@item.DataExpedicao.Value.ToString("dd/MM/yyyy")</td>
+                                                <td class="text-center">
+                                                    <a class="btn-link btn-detalhes-cliente" data-toggle="modal" data-target="#modalcliente" data-id="@item.ID"><i class="fas fa fa-search-plus text-info"></i></a>
+                                                    @*<a class="btn-link ml-1" href="@Url.Action("Alterar","Cliente",new  {ID = @item.ID })"><i class="fas fa fa-edit text-primary"></i></a>*@
+                                                    <a class="btn-link ml-3" href="@Url.Action("Excluir","Cliente", new {ID = @item.ID })"><i class="fas fa fa-trash text-danger"></i></a>
+                                                </td>
+                                            </tr>
+                                        } }
+                                </tbody>
+                            </table>
+                        </div>
+                    </fieldset>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 

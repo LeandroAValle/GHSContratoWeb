@@ -17,7 +17,7 @@ namespace GHSContratoWeb.Models.Business
             {
                 using (var db = new Conexao().GetCon())
                 {
-                    string sql = @"SELECT ID, IDCliente, IDCidade, Rua, Numero, Bairro, Complemento, CEP, LatitudeDecimal, LongitudeDecimal, Padrao, Ativo, Observacao, LatitudeHoras, LongitudeHoras, LocalInstalacao FROM [EnderecosClientes]";
+                    string sql = @"SELECT ID, IDCliente, IDCidade, IDEstado, Rua, Numero, Bairro, Complemento, CEP, LatitudeDecimal, LongitudeDecimal, Padrao, Ativo, Observacao, LatitudeHoras, LongitudeHoras, LocalInstalacao FROM [EnderecosClientes]";
                     List<EnderecoCliente> lista = db.Query<EnderecoCliente>(sql).ToList();
                     return lista;
                 }
@@ -36,8 +36,8 @@ namespace GHSContratoWeb.Models.Business
             {
                 using (var db = new Conexao().GetCon())
                 {
-                    string sql = @"INSERT INTO [EnderecosClientes] (IDCliente, IDCidade, Rua, Numero, Bairro, Complemento, CEP, LatitudeDecimal, LongitudeDecimal, Padrao, Ativo, Observacao, LatitudeHoras, LongitudeHoras, LocalInstalacao) VALUES (@IDCliente, @IDCidade, @Rua, @Numero, @Bairro, @Complemento, @CEP, @LatitudeDecimal, @LongitudeDecimal, @Padrao, @Ativo, @Observacao, @LatitudeHoras, @LongitudeHoras, @LocalInstalacao)";
-                    int? res = db.Execute(sql, new { IDCliente = enderecocliente.IDCliente, IDCidade = enderecocliente.IDCidade, Rua = enderecocliente.Rua, Numero = enderecocliente.Numero, Bairro = enderecocliente.Bairro, Complemento = enderecocliente.Complemento, CEP = enderecocliente.CEP, LatitudeDecimal = enderecocliente.LatitudeDecimal, LongitudeDecimal = enderecocliente.LongitudeDecimal, Padrao = enderecocliente.Padrao, Ativo = enderecocliente.Ativo, Observacao = enderecocliente.Observacao, LatitudeHoras = enderecocliente.LatitudeHoras, LongitudeHoras = enderecocliente.LongitudeHoras, LocalInstalacao = enderecocliente.LocalInstalacao });
+                    string sql = @"INSERT INTO [EnderecosClientes] (IDCliente, IDCidade, IDEstado, Rua, Numero, Bairro, Complemento, CEP, LatitudeDecimal, LongitudeDecimal, Padrao, Ativo, Observacao, LatitudeHoras, LongitudeHoras, LocalInstalacao) VALUES (@IDCliente, @IDCidade, @IDEstado, @Rua, @Numero, @Bairro, @Complemento, @CEP, @LatitudeDecimal, @LongitudeDecimal, @Padrao, @Ativo, @Observacao, @LatitudeHoras, @LongitudeHoras, @LocalInstalacao)";
+                    int? res = db.Execute(sql, new { IDCliente = enderecocliente.IDCliente, IDCidade = enderecocliente.IDCidade, IDEstado = enderecocliente.IDEstado, Rua = enderecocliente.Rua, Numero = enderecocliente.Numero, Bairro = enderecocliente.Bairro, Complemento = enderecocliente.Complemento, CEP = enderecocliente.CEP, LatitudeDecimal = enderecocliente.LatitudeDecimal, LongitudeDecimal = enderecocliente.LongitudeDecimal, Padrao = enderecocliente.Padrao, Ativo = enderecocliente.Ativo, Observacao = enderecocliente.Observacao, LatitudeHoras = enderecocliente.LatitudeHoras, LongitudeHoras = enderecocliente.LongitudeHoras, LocalInstalacao = enderecocliente.LocalInstalacao });
                     return res;
                 }
             }

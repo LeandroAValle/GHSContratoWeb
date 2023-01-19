@@ -97,8 +97,9 @@ namespace GHSContratoWeb.Controllers
             {
                 cliente.Enderecos.Add(new EnderecoCliente
                 {
-                    IDCliente = form["IDCliente"].IsNullOrEmptyBoolean() ? (Int32?)null : form["IDCliente"].ToInt32(),
-                    IDCidade = form["IDCidade"].IsNullOrEmptyBoolean() ? (Int32?)null : form["IDCidade"].ToInt32(),
+                    IDCliente = form["ID"].IsNullOrEmptyBoolean() ? (Int32?)null : form["ID"].ToInt32(),
+                    IDCidade = form["Cidade"].IsNullOrEmptyBoolean() ? (Int32?)null : form["Cidade"].ToInt32(),
+                    IDEstado = form["Estado"].IsNullOrEmptyBoolean() ? (Int32?)null : form["Estado"].ToInt32(),
                     Rua = form["Rua"].IsNullOrEmptyBoolean() ? null : form["Rua"].Trim(),
                     Numero = form["Numero"].IsNullOrEmptyBoolean() ? null : form["Numero"].Trim(),
                     Bairro = form["Bairro"].IsNullOrEmptyBoolean() ? null : form["Bairro"].Trim(),
@@ -108,10 +109,10 @@ namespace GHSContratoWeb.Controllers
                     LongitudeDecimal = form["LongitudeDecimal"].IsNullOrEmptyBoolean() ? (Decimal?)null : form["LongitudeDecimal"].ToDecimal(),
                     Padrao = form["Padrao"].ToBoolean(),
                     Ativo = form["Ativo"].ToBoolean(),
-                    Observacao = form["Observacao"].IsNullOrEmptyBoolean() ? null : form["Observacao"].Trim(),
+                    Observacao = form["EnderecoObs"].IsNullOrEmptyBoolean() ? null : form["EnderecoObs"].Trim(),
                     LatitudeHoras = form["LatitudeHoras"].IsNullOrEmptyBoolean() ? null : form["LatitudeHoras"].Trim(),
                     LongitudeHoras = form["LongitudeHoras"].IsNullOrEmptyBoolean() ? null : form["LongitudeHoras"].Trim(),
-                    LocalInstalacao = form["LocalInstalacao"].ToBoolean()
+                    LocalInstalacao = form["enderecoPrincipal"].ToBoolean()
                 });
             }
 

@@ -214,7 +214,7 @@
                                 <fieldset class="border p-4">
                                     <div class="row">
                                         <div class="col-12 col-md-3 px-0">
-                                            <div class="form-group"><label for="CEP">CEP</label><input type="text" class="form-control form-control-sm" id="CEPAdd" maxlength="10" onkeypress="return event.charCode >= 48 && event.charCode <= 57" @*onblur="pesquisacep(this.value);"*@ /></div>
+                                            <div class="form-group"><label for="CEP">CEP</label><input type="text" class="form-control form-control-sm" id="CEPAdd" maxlength="10" onkeypress="return event.charCode >= 48 && event.charCode <= 57" onblur="pesquisacep(this.value);" /></div>
                                         </div>
                                         <div class="col-12 col-md-7 px-0">
                                             <div class="form-group"><label for="Rua">Rua</label><input type="text" class="form-control form-control-sm" id="RuaAdd" maxlength="100" /></div>
@@ -254,11 +254,19 @@
                                                 <textarea type="text" name="enderecoObservacao" class="form-control form-control-sm" id="enderecoObservacaoAdd"></textarea>
                                             </div>
                                         </div>
-                                        <div class="col-12 col-md-10 px-0">
+                                        <div class="col-12 col-md-3 px-0">
                                             <div class="form-check form-check-inline">
                                                 <div class="custom-control custom-checkbox">
                                                     <input type="checkbox" class="custom-control-input" id="enderecoPrincipalAdd" value="0">
-                                                    <label class="custom-control-label" for="enderecoPrincipalAdd">Principal</label>
+                                                    <label class="custom-control-label" for="enderecoPrincipalAdd">Endereço de Instalação</label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-12 col-md-3 px-0">
+                                            <div class="form-check form-check-inline">
+                                                <div class="custom-control custom-checkbox">
+                                                    <input type="checkbox" class="custom-control-input" id="enderecoResidencialAdd" value="0">
+                                                    <label class="custom-control-label" for="enderecoResidencialAdd">Residencial</label>
                                                 </div>
                                             </div>
                                         </div>
@@ -272,6 +280,7 @@
                                     <table id="enderecoTable" class="dtPadrao table-sm display table-striped table-hover w-100 table-bordered">
                                         <thead>
                                             <tr class="text-dark">
+                                                <th hidden></th>
                                                 <th hidden></th>
                                                 <th hidden></th>
                                                 <th hidden></th>
@@ -363,7 +372,6 @@
     }
 </style>
 <script>
-
     /*DROPDOWNESTADOS*/
     $('#EstadoAdd').change(function () {
         $.ajax({
@@ -456,8 +464,8 @@
             //Atualiza os campos com os valores.
             document.getElementById('RuaAdd').value = (conteudo.logradouro);
             document.getElementById('BairroAdd').value = (conteudo.bairro);
-            document.getElementById('CidadeAdd').value = (conteudo.localidade);
-            document.getElementById('EstadoAdd').value = (conteudo.uf);
+            //document.getElementById('CidadeAdd').value = (conteudo.localidade);
+            //document.getElementById('EstadoAdd').value = (conteudo.uf);
         } //end if.
         else {
             //CEP não Encontrado.
@@ -520,8 +528,8 @@
                 //Preenche os campos com "..." enquanto consulta webservice.
                 document.getElementById('RuaAdd').value = "...";
                 document.getElementById('BairroAdd').value = "...";
-                document.getElementById('CidadeAdd').value = "...";
-                document.getElementById('EstadoAdd').value = "...";
+                //document.getElementById('CidadeAdd').value = "...";
+                //document.getElementById('EstadoAdd').value = "...";
 
                 //Cria um elemento javascript.
                 var script = document.createElement('script');
@@ -671,7 +679,7 @@
                 onClosed: null,
                 icon_type: 'class',
             });
-
+            e.preventDefault();
             return false;
         }
 
@@ -737,9 +745,50 @@
         let CEP = $('#CEPAdd').val();
         let Concessionaria = $('#ConcessionariaAdd').val();
         let enderecoPrincipal = $('#enderecoPrincipalAdd').val();
+        let enderecoResidencial = $('#enderecoResidencialAdd').val();
         let Longitude = $('#LongitudeAdd').val();
         let Latitude = $('#LatitudeAdd').val();
         let EnderecoObs = $('#enderecoObservacaoAdd').val();
+
+        if (enderecoPrincipal == 0 && enderecoResidencial == 0) {
+            $.notify({
+                // options
+                title: '<strong>ATENÇÃO</strong>',
+                message: "Selecione aa opções de endereço.",
+                icon: 'fas fa-exclamation',
+            }, {
+                // settings
+                element: 'body',
+                position: null,
+                type: "warning",
+                allow_dismiss: true,
+                newest_on_top: false,
+                showProgressbar: false,
+                placement: {
+                    from: "top",
+                    align: "right"
+                },
+                offset: 20,
+                spacing: 10,
+                z_index: 1031,
+                delay: 3300,
+                timer: 1000,
+                url_target: '_blank',
+                mouse_over: null,
+                animate: {
+                    enter: 'animated bounceIn',
+                    exit: 'animated bounceOut'
+                },
+                onShow: null,
+                onShown: null,
+                onClose: null,
+                onClosed: null,
+                icon_type: 'class',
+            });
+
+            e.preventDefault();
+            return false;
+        }
 
         if (Rua == "" || Numero == "" || Bairro == "" || Cidade == "" || Estado == "" || CEP == "") {
 
@@ -777,15 +826,18 @@
                 onClosed: null,
                 icon_type: 'class',
             });
+
+            e.preventDefault();
+            return false;
         }
 
         $('#enderecoTable tbody tr').each(function () {
-            if ($(this).find('.td-enderecoPrincipal').find('input').attr('value') == "1") {
+            if ($(this).find('.td-enderecoPrincipal').find('input').attr('value') == enderecoPrincipal && enderecoPrincipal == "1" ) {
 
                 $.notify({
                     // options
                     title: '<strong>ATENÇÃO</strong>',
-                    message: "Já existe uma unidade principal.",
+                    message: "Já existe uma unidade titular de instalação.",
                     icon: 'fas fa-exclamation',
                 }, {
                     // settings
@@ -816,6 +868,7 @@
                     onClosed: null,
                     icon_type: 'class',
                 });
+                e.preventDefault();
                 return false;
             }
         });
@@ -839,6 +892,7 @@
             "<td hidden class='td-Concessionaria'><input type='text' name='Concessionaria" + cont + "' value='" + Concessionaria + "'/></td>" +
             "<td hidden class='td-EnderecoObs'><input type='text' name='EnderecoObs" + cont + "' value='" + EnderecoObs + "'/></td>" +
             "<td hidden class='td-enderecoPrincipal'><input type='text' name='enderecoPrincipal" + cont + "' value='" + enderecoPrincipal + "'/></td>" +
+            "<td hidden class='td-enderecoResidencial'><input type='text' name='enderecoResidencial" + cont + "' value='" + enderecoResidencial + "'/></td>" +
             "<td class=''>" + Rua + "</td>" +
             "<td class=''>" + Numero + "</td>" +
             "<td class=''>" + Bairro + "</td>" +
@@ -864,6 +918,7 @@
         $('#CEPAdd').val("");
         $('#ConcessionariaAdd').val("");
         $('#enderecoPrincipalAdd').prop('checked', false);
+        $('#enderecoResidencialAdd').prop('checked', false);
         $('#LongitudeAdd').val("");
         $('#LatitudeAdd').val("");
         $('#enderecoObservacaoAdd').val("");
@@ -893,6 +948,7 @@
                 $(this).find('.td-CEP').find('input').attr('name', 'CEP' + cont);
                 $(this).find('.td-Concessionaria').find('input').attr('name', 'Concessionaria' + cont);
                 $(this).find('.td-enderecoPrincipal').find('input').attr('name', 'enderecoPrincipal' + cont);
+                $(this).find('.td-enderecoResidencial').find('input').attr('name', 'enderecoResidencial' + cont);
                 $(this).find('.td-EnderecoObs').find('input').attr('name', 'EnderecoObs' + cont);
                 cont++;
             });
@@ -944,7 +1000,7 @@
                 onClosed: null,
                 icon_type: 'class',
             });
-
+            e.preventDefault();
             return false;
         }
 
@@ -1047,6 +1103,18 @@
     });
 
     $('#enderecoPrincipalAdd').prop('checked', false);
+
+    $('#enderecoResidencialAdd').change(function () {
+
+        if ($(this).prop("checked") == true) {
+            $('#enderecoResidencialAdd').val(1);
+        } else {
+            $('#enderecoResidencialAdd').val(0);
+        }
+
+    });
+
+    $('#enderecoResidencialAdd').prop('checked', false);
 
     //$(document).ready(function () {
     //    var max_fields = 10; //maximum input boxes allowed

@@ -11,6 +11,7 @@ namespace GHSContratoWeb.Models.Mapping
 		public int ID { get; set; }
 		public int? IDCliente { get; set; }
 		public int? IDCidade { get; set; }
+		public int? IDEstado { get; set; }
 		public string Rua { get; set; }
 		public string Numero { get; set; }
 		public string Bairro { get; set; }

@@ -35,16 +35,7 @@ namespace GHSContratoWeb.Models.Business
             {
                 using (var con = new Conexao().GetCon())
                 {
-                    return con.Query<Cidade>(@"
-                                      SELECT 
-                                         ID, nome, IDEstado, Ibge
-                                      FROM
-                                          Cidades
-                                      WHERE
-                                        IDEstado = @UF
-                                    ORDER BY
-                                        nome
-                                    ASC", new { UF = uf }).ToList();
+                    return con.Query<Cidade>(@"SELECT ID, nome, IDEstado, Ibge FROM Cidades WHERE IDEstado = @UF ORDER BY nome ASC", new { UF = uf }).ToList();
                 }
             }
             catch (Exception ex)
