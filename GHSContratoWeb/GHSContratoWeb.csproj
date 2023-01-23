@@ -701,6 +701,7 @@
     <Content Include="Views\ManutencaoPreventiva\Index.cshtml" />
     <Content Include="Views\Procuracao\Index.cshtml" />
     <Content Include="Views\Recibo\Index.cshtml" />
+    <Content Include="Views\UnidadeConsumidora\Alterar.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

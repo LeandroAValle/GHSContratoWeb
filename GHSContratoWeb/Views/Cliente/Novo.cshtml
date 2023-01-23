@@ -39,325 +39,347 @@
                     </div>*@
                 <div class="card-body">
                     <form action="@Url.Action("Novo","Cliente")" method="post">
-                        <div class="">
-                            <fieldset class="border p-4">
-                                <legend class="float-none w-auto" style="font-size: 1.2em !important;">Dados Pessoais</legend>
-                                <div class="row">
-                                    <div class="col-12 col-md-2 px-0">
-                                        <div class="form-group">
-                                            <img src="~/Content/Imagens/procuraimagem.png" alt="Anexo Foto" class="img-thumbnail">
-                                            <input type="file" name="Anexo" id="Anexo" accept="image/jpeg, image/png" onchange="validateFileType()">
-                                        </div>
+
+                        <div class="tab" role="tabpanel">
+                            <!-- Nav tabs -->
+                            <ul class="nav nav-tabs" role="tablist">
+                                <li role="presentation" class="active"><a href="#Section1" aria-controls="dados" role="tab" data-toggle="tab"><i class="fa fa-address-card mr-2" style="font-size:24px"></i>Dados Pessoais</a></li>
+                                <li role="presentation"><a href="#Section2" aria-controls="contatos" role="tab" data-toggle="tab"><i class="fa fa-id-badge mr-2" style="font-size:24px"></i>Contatos</a></li>
+                                <li role="presentation"><a href="#Section3" aria-controls="enderecos" role="tab" data-toggle="tab"><i class="fa fa-home mr-2" style="font-size:24px"></i>Endereços</a></li>
+                                <li role="presentation"><a href="#Section4" aria-controls="acessos" role="tab" data-toggle="tab"><i class="fa fa-rss mr-2" style="font-size:24px"></i>Informações de Acesso</a></li>
+                            </ul>
+                            <hr />
+                            <!-- Tab panes -->
+                            <div class="tab-content tabs">
+                                <div role="tabpanel" class="tab-pane fade show active" id="Section1">
+                                    <div class="">
+                                        <fieldset class="border p-4">
+                                            <legend class="float-none w-auto" style="font-size: 1.2em !important;">Dados Pessoais</legend>
+                                            <div class="row">
+                                                <div class="col-12 col-md-2 px-0">
+                                                    <div class="form-group">
+                                                        <img src="~/Content/Imagens/procuraimagem.png" alt="Anexo Foto" class="img-thumbnail">
+                                                        <input type="file" name="Anexo" id="Anexo" accept="image/jpeg, image/png" onchange="validateFileType()">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-12 col-md-1 px-0">
+                                                    <div class="form-group">
+                                                        <label for="ID">Código</label>
+                                                        <input type="text" name="ID" class="form-control form-control-sm" id="Codigo" readonly value="@ViewBag.UltimoCodigo" />
+                                                    </div>
+                                                </div>
+                                                <div class="col-12 col-md-5 px-0">
+                                                    <div class="form-group">
+                                                        <label for="Nome">Nome</label>
+                                                        <input type="text" name="Nome" class="form-control form-control-sm " id="Nome" maxlength="100">
+                                                    </div>
+                                                </div>
+                                                <div class="col-12 col-md-2 px-0">
+                                                    <div class="form-group">
+                                                        <label for="TipoCliente">Pessoa</label>
+                                                        @Html.DropDownList("DropDownTipoCliente", null, new { @Name = "TipoCliente", @class = "form-control form-control-sm select2" })
+                                                    </div>
+                                                </div>
+                                                <div class="col-12 col-md-2 px-0">
+                                                    <div class="form-group">
+                                                        <label for="CPF">CPF</label>
+                                                        <input type="text" name="CPF" class="form-control form-control-sm" id="CPF" maxlength="20">
+                                                    </div>
+                                                </div>
+                                                <div class="col-12 col-md-2 px-0">
+                                                    <div class="form-group">
+                                                        <label for="CNPJ">CNPJ</label>
+                                                        <input type="text" name="CNPJ" class="form-control form-control-sm" id="CNPJ" />
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-12 col-md-3 px-0">
+                                                    <div class="form-group">
+                                                        <label for="RG">RG</label>
+                                                        <input type="text" class="form-control form-control-sm" name="RG" id="RG" maxlength="15" OnKeyPress="formatar('##.###.###-##', this)" />
+                                                    </div>
+                                                </div>
+                                                <div class="col-12 col-md-2 px-0">
+                                                    <div class="form-group">
+                                                        <label for="OE">Orgão Expedidor</label>
+                                                        <input type="text" class="form-control form-control-sm" name="OE" id="OE" maxlength="2" />
+                                                    </div>
+                                                </div>
+                                                <div class="col-12 col-md-3 px-0">
+                                                    <div class="form-group">
+                                                        <label for="InscricaoEstadual">Inscricao Estadual</label>
+                                                        <input type="text" name="InscricaoEstadual" class="form-control form-control-sm" id="InscricaoEstadual" maxlength="16" OnKeyPress="formatar('###.###.###/####', this)" />
+                                                    </div>
+                                                </div>
+                                                <div class="col-12 col-md-2 px-0">
+                                                    <div class="form-group">
+                                                        <label for="Tipodocumento">Tipo Documento</label>
+                                                        <input type="text" name="Tipodocumento" class="form-control form-control-sm" id="Tipodocumento" maxlength="16" />
+                                                    </div>
+                                                </div>
+                                                <div class="col-12 col-md-2 px-0">
+                                                    <div class="form-group">
+                                                        <label for="DataExpedicao">Data Expedição</label>
+                                                        <input type="date" class="form-control form-control-sm" name="DataExpedicao" id="DataExpedicao" />
+                                                    </div>
+                                                </div>
+                                                <div class="col-12 col-md-2 px-0">
+                                                    <div class="form-group">
+                                                        <label for="Cidadania">Cidadania</label>
+                                                        <input type="text" name="Cidadania" class="form-control form-control-sm" id="Cidadania" />
+                                                    </div>
+                                                </div>
+                                                <div class="col-12 col-md-2 px-0">
+                                                    <div class="form-group">
+                                                        <label for="DataNascimento">Data Nascimento</label>
+                                                        <input type="date" name="DataNascimento" class="form-control form-control-sm" id="DataNascimento" />
+                                                    </div>
+                                                </div>
+                                                <div class="col-12 col-md-2 px-0">
+                                                    <div class="form-group">
+                                                        <label for="EstadoCivil">Estado Civil</label>
+                                                        <input type="text" name="EstadoCivil" class="form-control form-control-sm" id="EstadoCivil" />
+                                                    </div>
+                                                </div>
+                                                <div class="col-12 col-md-4 px-0">
+                                                    <div class="form-group">
+                                                        <label for="Profissao">Profissão</label>
+                                                        <input type="text" name="Profissao" class="form-control form-control-sm" id="Profissao" />
+                                                    </div>
+                                                </div>
+                                                <div class="col-12 col-md-2 px-0">
+                                                    <div class="form-group">
+                                                        <label for="faixaSalarial">Faixa Salárial</label>
+                                                        <input type="text" name="faixaSalarial" class="form-control form-control-sm" id="faixaSalarial" maxlength="12" onkeyup="formatarMoeda()" />
+                                                    </div>
+                                                </div>
+                                                <div class="col-12 col-md-2 px-0">
+                                                    <div class="form-group">
+                                                        <label for="DataAbertura">Data Abertura</label>
+                                                        <input type="date" name="DataAbertura" class="form-control form-control-sm" id="DataAbertura" />
+                                                    </div>
+                                                </div>
+                                                <div class="col-12 col-md-10 px-0">
+                                                    <div class="form-group">
+                                                        <label for="anexo">Anexos</label>
+                                                        <input type="file" name="anexos" class="form-control form-control-sm" id="anexos" />
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-md-12 col-md-12 px-0">
+                                                    <div class="form-group">
+                                                        <label for="Observacao">Observações</label>
+                                                        <textarea type="text" name="Observacao" class="form-control form-control-sm" id="Observacao"></textarea>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </fieldset>
                                     </div>
                                 </div>
-                                <div class="row">
-                                    <div class="col-12 col-md-1 px-0">
-                                        <div class="form-group">
-                                            <label for="ID">Código</label>
-                                            <input type="text" name="ID" class="form-control form-control-sm" id="Codigo" readonly value="@ViewBag.UltimoCodigo" />
-                                        </div>
-                                    </div>
-                                    <div class="col-12 col-md-5 px-0">
-                                        <div class="form-group">
-                                            <label for="Nome">Nome</label>
-                                            <input type="text" name="Nome" class="form-control form-control-sm " id="Nome" maxlength="100">
-                                        </div>
-                                    </div>
-                                    <div class="col-12 col-md-2 px-0">
-                                        <div class="form-group">
-                                            <label for="TipoCliente">Pessoa</label>
-                                            @Html.DropDownList("DropDownTipoCliente", null, new { @Name = "TipoCliente", @class = "form-control form-control-sm select2" })
-                                        </div>
-                                    </div>
-                                    <div class="col-12 col-md-2 px-0">
-                                        <div class="form-group">
-                                            <label for="CPF">CPF</label>
-                                            <input type="text" name="CPF" class="form-control form-control-sm" id="CPF" maxlength="20">
-                                        </div>
-                                    </div>
-                                    <div class="col-12 col-md-2 px-0">
-                                        <div class="form-group">
-                                            <label for="CNPJ">CNPJ</label>
-                                            <input type="text" name="CNPJ" class="form-control form-control-sm" id="CNPJ" />
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-12 col-md-3 px-0">
-                                        <div class="form-group">
-                                            <label for="RG">RG</label>
-                                            <input type="text" class="form-control form-control-sm" name="RG" id="RG" maxlength="15" OnKeyPress="formatar('##.###.###-##', this)" />
-                                        </div>
-                                    </div>
-                                    <div class="col-12 col-md-2 px-0">
-                                        <div class="form-group">
-                                            <label for="OE">Orgão Expedidor</label>
-                                            <input type="text" class="form-control form-control-sm" name="OE" id="OE" maxlength="2" />
-                                        </div>
-                                    </div>
-                                    <div class="col-12 col-md-3 px-0">
-                                        <div class="form-group">
-                                            <label for="InscricaoEstadual">Inscricao Estadual</label>
-                                            <input type="text" name="InscricaoEstadual" class="form-control form-control-sm" id="InscricaoEstadual" maxlength="16" OnKeyPress="formatar('###.###.###/####', this)" />
-                                        </div>
-                                    </div>
-                                    <div class="col-12 col-md-2 px-0">
-                                        <div class="form-group">
-                                            <label for="Tipodocumento">Tipo Documento</label>
-                                            <input type="text" name="Tipodocumento" class="form-control form-control-sm" id="Tipodocumento" maxlength="16" />
-                                        </div>
-                                    </div>
-                                    <div class="col-12 col-md-2 px-0">
-                                        <div class="form-group">
-                                            <label for="DataExpedicao">Data Expedição</label>
-                                            <input type="date" class="form-control form-control-sm" name="DataExpedicao" id="DataExpedicao" />
-                                        </div>
-                                    </div>
-                                    <div class="col-12 col-md-2 px-0">
-                                        <div class="form-group">
-                                            <label for="Cidadania">Cidadania</label>
-                                            <input type="text" name="Cidadania" class="form-control form-control-sm" id="Cidadania" />
-                                        </div>
-                                    </div>
-                                    <div class="col-12 col-md-2 px-0">
-                                        <div class="form-group">
-                                            <label for="DataNascimento">Data Nascimento</label>
-                                            <input type="date" name="DataNascimento" class="form-control form-control-sm" id="DataNascimento" />
-                                        </div>
-                                    </div>
-                                    <div class="col-12 col-md-2 px-0">
-                                        <div class="form-group">
-                                            <label for="EstadoCivil">Estado Civil</label>
-                                            <input type="text" name="EstadoCivil" class="form-control form-control-sm" id="EstadoCivil" />
-                                        </div>
-                                    </div>
-                                    <div class="col-12 col-md-4 px-0">
-                                        <div class="form-group">
-                                            <label for="Profissao">Profissão</label>
-                                            <input type="text" name="Profissao" class="form-control form-control-sm" id="Profissao" />
-                                        </div>
-                                    </div>
-                                    <div class="col-12 col-md-2 px-0">
-                                        <div class="form-group">
-                                            <label for="faixaSalarial">Faixa Salárial</label>
-                                            <input type="text" name="faixaSalarial" class="form-control form-control-sm" id="faixaSalarial" maxlength="12" onkeyup="formatarMoeda()" />
-                                        </div>
-                                    </div>
-                                    <div class="col-12 col-md-2 px-0">
-                                        <div class="form-group">
-                                            <label for="DataAbertura">Data Abertura</label>
-                                            <input type="date" name="DataAbertura" class="form-control form-control-sm" id="DataAbertura" />
-                                        </div>
-                                    </div>
-                                    <div class="col-12 col-md-10 px-0">
-                                        <div class="form-group">
-                                            <label for="anexo">Anexos</label>
-                                            <input type="file" name="anexos" class="form-control form-control-sm" id="anexos" />
-                                        </div>
+                                <div role="tabpanel" class="tab-pane fade" id="Section2">
+                                    <div class="">
+                                        <fieldset class="border p-2">
+                                            <input type="hidden" name="contatoTotal" class="contato-total" value="0" />
+                                            <legend class="float-none w-auto" style="font-size: 1.2em !important;">Contatos</legend>
+                                            <input hidden type="text" name="totalContatos" class="form-control form-control-sm" id="totalContatos" />
+                                            <fieldset class="border p-4">
+                                                <div class="row">
+                                                    <div class="col-12 col-md-2 px-0">
+                                                        <div class="form-group"><label for="Telefone">Telefone</label><input type="text" class="form-control form-control-sm" id="TelefoneAdd" onkeypress="mask(this, mphone);" onblur="mask(this, mphone);" /></div>
+                                                    </div>
+                                                    <div class="col-12 col-md-5 px-0">
+                                                        <div class="form-group"><label for="Email">E-mail</label><input type="text" class="form-control form-control-sm" id="EmailAdd" /></div>
+                                                    </div>
+                                                    <div class="col-12 col-md-5 px-0">
+                                                        <div class="form-group"><label for="Proprietario">Proprietário</label><input type="text" class="form-control form-control-sm" id="proprietarioAdd" /></div>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group d-flex flex-row-reverse">
+                                                    <button type="button" href="#" id="adicionarcampoContatos" class="btn btn-sm btn-primary add_field_button_contatos">Adicionar Contato</button>
+                                                </div>
+                                            </fieldset>
+                                            <hr />
+                                            <div class="table-responsive">
+                                                <table id="contatoTable" class="dtPadrao table-sm display table-striped table-hover w-100 table-bordered">
+                                                    <thead>
+                                                        <tr class="text-dark">
+                                                            <th hidden></th>
+                                                            <th hidden></th>
+                                                            <th hidden></th>
+                                                            <th>Proprietário</th>
+                                                            <th>E-mail</th>
+                                                            <th>Telefone</th>
+                                                            <th class="text-center">Ações</th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                        </fieldset>
                                     </div>
                                 </div>
-                                <div class="row">
+                                <div role="tabpanel" class="tab-pane fade" id="Section3">
+                                    <div class="">
+                                        <fieldset class="border p-2">
+                                            <input type="hidden" name="enderecoTotal" class="endereco-total" value="0" />
+                                            <legend class="float-none w-auto" style="font-size: 1.2em !important;">Endereços</legend>
+                                            <fieldset class="border p-4">
+                                                <div class="row">
+                                                    <div class="col-12 col-md-3 px-0">
+                                                        <div class="form-group"><label for="CEP">CEP</label><input type="text" class="form-control form-control-sm" id="CEPAdd" maxlength="10" onkeypress="return event.charCode >= 48 && event.charCode <= 57" onblur="pesquisacep(this.value);" /></div>
+                                                    </div>
+                                                    <div class="col-12 col-md-7 px-0">
+                                                        <div class="form-group"><label for="Rua">Rua</label><input type="text" class="form-control form-control-sm" id="RuaAdd" maxlength="100" /></div>
+                                                    </div>
+                                                    <div class="col-12 col-md-2 px-0">
+                                                        <div class="form-group"><label for="Número">Número</label><input type="text" class="form-control form-control-sm" id="NumeroAdd" maxlength="9" onkeypress="return event.charCode >= 48 && event.charCode <= 57" /></div>
+                                                    </div>
+                                                    <div class="col-12 col-md-4 px-0">
+                                                        <div class="form-group"><label for="Bairro">Bairro</label><input type="text" class="form-control form-control-sm" id="BairroAdd" maxlength="100" /></div>
+                                                    </div>
+                                                    <div class="col-12 col-md-2 px-0">
+                                                        <div class="form-group">
+                                                            <label for="Estado">Estado</label>
+                                                            @*<input type="text" class="form-control form-control-sm" id="EstadoAdd" />*@
+                                                            @Html.DropDownList("DropDownEstado", null, new { @class = "form-control form-control-sm", @ID = "EstadoAdd" })
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-12 col-md-4 px-0">
+                                                        <div class="form-group">
+                                                            <label for="Cidade">Cidade</label>
+                                                            @*<input type="text" class="form-control form-control-sm" id="CidadeAdd" />*@
+                                                            @Html.DropDownList("DropDownCidade", null, new { @class = "form-control form-control-sm", @ID = "CidadeAdd" })
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-12 col-md-2 px-0">
+                                                        <div class="form-group"><label for="Concessionaria">Concessionária</label><input type="text" class="form-control form-control-sm" id="ConcessionariaAdd" /></div>
+                                                    </div>
+                                                    <div class="col-12 col-md-6 px-0">
+                                                        <div class="form-group"><label for="Latitude">Latitude</label><input type="text" class="form-control form-control-sm" id="LatitudeAdd" maxlength="100" /></div>
+                                                    </div>
+                                                    <div class="col-12 col-md-6 px-0">
+                                                        <div class="form-group"><label for="Longitude">Longitude</label><input type="text" class="form-control form-control-sm" id="LongitudeAdd" maxlength="100" /></div>
+                                                    </div>
+                                                    <div class="col-md-12 col-md-12 px-0">
+                                                        <div class="form-group">
+                                                            <label for="enderecoObservacao">Observações</label>
+                                                            <textarea type="text" name="enderecoObservacao" class="form-control form-control-sm" id="enderecoObservacaoAdd"></textarea>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-12 col-md-3 px-0">
+                                                        <div class="form-check form-check-inline">
+                                                            <div class="custom-control custom-checkbox">
+                                                                <input type="checkbox" class="custom-control-input" id="enderecoInstalacaoAdd" value="0">
+                                                                <label class="custom-control-label" for="enderecoInstalacaoAdd">Endereço de Instalação</label>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-12 col-md-3 px-0">
+                                                        <div class="form-check form-check-inline">
+                                                            <div class="custom-control custom-checkbox">
+                                                                <input type="checkbox" class="custom-control-input" id="enderecoResidencialAdd" value="0">
+                                                                <label class="custom-control-label" for="enderecoResidencialAdd">Residencial</label>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group d-flex flex-row-reverse">
+                                                    <button type="button" href="#" id="adicionarEndereco" class="btn btn-sm btn-primary add_field_button">Adicionar Endereço</button>
+                                                </div>
+                                            </fieldset>
+                                            <hr />
+                                            <div class="table-responsive">
+                                                <table id="enderecoTable" class="dtPadrao table-sm display table-striped table-hover w-100 table-bordered">
+                                                    <thead>
+                                                        <tr class="text-dark">
+                                                            <th hidden></th>
+                                                            <th hidden></th>
+                                                            <th hidden></th>
+                                                            <th hidden></th>
+                                                            <th hidden></th>
+                                                            <th hidden></th>
+                                                            <th hidden></th>
+                                                            <th hidden></th>
+                                                            <th hidden></th>
+                                                            <th hidden></th>
+                                                            <th hidden></th>
+                                                            <th>Rua</th>
+                                                            <th>Número</th>
+                                                            <th>Bairro</th>
+                                                            <th>Cidade</th>
+                                                            <th>Estado</th>
+                                                            <th>CEP</th>
+                                                            <th>Concessionária</th>
+                                                            <th>Principal</th>
+                                                            <th class="text-center">Ações</th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                        </fieldset>
+                                    </div>
+                                </div>
+                                <div role="tabpanel" class="tab-pane fade" id="Section4">
+                                    <div class="">
+                                        <fieldset class="border p-2">
+                                            <input type="hidden" name="acessoTotal" class="acesso-total" value="0" />
+                                            <legend class="float-none w-auto" style="font-size: 1.2em !important;">Informações de Acesso</legend>
+                                            <fieldset class="border p-4">
+                                                <div class="row Total-acesso">
+                                                    <div class="col-12 col-md-3 px-0">
+                                                        <div class="form-group"><label for="Internet">Internet</label><input type="text" class="form-control form-control-sm" id="internetAdd" maxlength="55" /></div>
+                                                    </div>
+                                                    <div class="col-12 col-md-3 px-0">
+                                                        <div class="form-group"><label for="AplicativoMonitor">AplicativoMonitor</label><input type="text" class="form-control form-control-sm" id="aplicativoMonitorAdd" maxlength="55" /></div>
+                                                    </div>
+                                                    <div class="col-12 col-md-3 px-0">
+                                                        <div class="form-group"><label for="Usuario">Usuário</label><input type="text" class="form-control form-control-sm" id="usuarioAdd" maxlength="55" /></div>
+                                                    </div>
+                                                    <div class="col-12 col-md-3 px-0">
+                                                        <div class="form-group"><label for="Senha">Senha</label><input type="text" class="form-control form-control-sm" id="senhaAdd" maxlength="55" /></div>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group d-flex flex-row-reverse">
+                                                    <button type="button" href="#" id="adicionaracesso" class="btn btn-sm btn-primary add_field_acesso_button">Adicionar Acesso</button>
+                                                </div>
+                                            </fieldset>
+                                            <hr />
+                                            <div class="table-responsive">
+                                                <table id="acessoTable" class="dtPadrao table-sm display table-striped table-hover w-100 table-bordered">
+                                                    <thead>
+                                                        <tr class="text-dark">
+                                                            <th hidden></th>
+                                                            <th hidden></th>
+                                                            <th hidden></th>
+                                                            <th hidden></th>
+                                                            <th>Internet</th>
+                                                            <th>Discriminação</th>
+                                                            <th>Usuário</th>
+                                                            <th>Senha</th>
+                                                            <th class="text-center">Ações</th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                        </fieldset>
+                                    </div>
                                     <div class="col-md-12 col-md-12 px-0">
-                                        <div class="form-group">
-                                            <label for="Observacao">Observações</label>
-                                            <textarea type="text" name="Observacao" class="form-control form-control-sm" id="Observacao"></textarea>
+                                        <div class="form-group d-flex flex-row-reverse">
+                                            <button type="button" class="btn btn-info btn-sm d-flex align-items-center ml-1" id="proximaEtapaButton">Proxima Etapa</button>
+                                            <button type="submit" class="btn btn-success btn-sm d-flex align-items-center salvar-alert ml-1">Salvar</button>
+                                            <a href="@Url.Action("Index","Cliente")" class="btn btn-dark btn-sm d-flex align-items-center ml-1">Cancelar</a>
                                         </div>
                                     </div>
                                 </div>
-                            </fieldset>
-                        </div>
-                        <div class="">
-                            <fieldset class="border p-2">
-                                <input type="hidden" name="contatoTotal" class="contato-total" value="0" />
-                                <legend class="float-none w-auto" style="font-size: 1.2em !important;">Contatos</legend>
-                                <input hidden type="text" name="totalContatos" class="form-control form-control-sm" id="totalContatos" />
-                                <fieldset class="border p-4">
-                                    <div class="row">
-                                        <div class="col-12 col-md-2 px-0">
-                                            <div class="form-group"><label for="Telefone">Telefone</label><input type="text" class="form-control form-control-sm" id="TelefoneAdd" onkeypress="mask(this, mphone);" onblur="mask(this, mphone);" /></div>
-                                        </div>
-                                        <div class="col-12 col-md-5 px-0">
-                                            <div class="form-group"><label for="Email">E-mail</label><input type="text" class="form-control form-control-sm" id="EmailAdd" /></div>
-                                        </div>
-                                        <div class="col-12 col-md-5 px-0">
-                                            <div class="form-group"><label for="Proprietario">Proprietário</label><input type="text" class="form-control form-control-sm" id="proprietarioAdd" /></div>
-                                        </div>
-                                    </div>
-                                    <div class="form-group d-flex flex-row-reverse">
-                                        <button type="button" href="#" id="adicionarcampoContatos" class="btn btn-sm btn-primary add_field_button_contatos">Adicionar Contato</button>
-                                    </div>
-                                </fieldset>
-                                <hr />
-                                <div class="table-responsive">
-                                    <table id="contatoTable" class="dtPadrao table-sm display table-striped table-hover w-100 table-bordered">
-                                        <thead>
-                                            <tr class="text-dark">
-                                                <th hidden></th>
-                                                <th hidden></th>
-                                                <th hidden></th>
-                                                <th>Proprietário</th>
-                                                <th>E-mail</th>
-                                                <th>Telefone</th>
-                                                <th class="text-center">Ações</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                        </tbody>
-                                    </table>
-                                </div>
-                            </fieldset>
-                        </div>
-                        <div class="">
-                            <fieldset class="border p-2">
-                                <input type="hidden" name="enderecoTotal" class="endereco-total" value="0" />
-                                <legend class="float-none w-auto" style="font-size: 1.2em !important;">Endereços</legend>
-                                <fieldset class="border p-4">
-                                    <div class="row">
-                                        <div class="col-12 col-md-3 px-0">
-                                            <div class="form-group"><label for="CEP">CEP</label><input type="text" class="form-control form-control-sm" id="CEPAdd" maxlength="10" onkeypress="return event.charCode >= 48 && event.charCode <= 57" onblur="pesquisacep(this.value);" /></div>
-                                        </div>
-                                        <div class="col-12 col-md-7 px-0">
-                                            <div class="form-group"><label for="Rua">Rua</label><input type="text" class="form-control form-control-sm" id="RuaAdd" maxlength="100" /></div>
-                                        </div>
-                                        <div class="col-12 col-md-2 px-0">
-                                            <div class="form-group"><label for="Número">Número</label><input type="text" class="form-control form-control-sm" id="NumeroAdd" maxlength="9" onkeypress="return event.charCode >= 48 && event.charCode <= 57" /></div>
-                                        </div>
-                                        <div class="col-12 col-md-4 px-0">
-                                            <div class="form-group"><label for="Bairro">Bairro</label><input type="text" class="form-control form-control-sm" id="BairroAdd" maxlength="100" /></div>
-                                        </div>
-                                        <div class="col-12 col-md-2 px-0">
-                                            <div class="form-group">
-                                                <label for="Estado">Estado</label>
-                                                @*<input type="text" class="form-control form-control-sm" id="EstadoAdd" />*@
-                                                @Html.DropDownList("DropDownEstado", null, new { @class = "form-control form-control-sm", @ID = "EstadoAdd" })
-                                            </div>
-                                        </div>
-                                        <div class="col-12 col-md-4 px-0">
-                                            <div class="form-group">
-                                                <label for="Cidade">Cidade</label>
-                                                @*<input type="text" class="form-control form-control-sm" id="CidadeAdd" />*@
-                                                @Html.DropDownList("DropDownCidade", null, new { @class = "form-control form-control-sm", @ID = "CidadeAdd" })
-                                            </div>
-                                        </div>
-                                        <div class="col-12 col-md-2 px-0">
-                                            <div class="form-group"><label for="Concessionaria">Concessionária</label><input type="text" class="form-control form-control-sm" id="ConcessionariaAdd" /></div>
-                                        </div>
-                                        <div class="col-12 col-md-6 px-0">
-                                            <div class="form-group"><label for="Latitude">Latitude</label><input type="text" class="form-control form-control-sm" id="LatitudeAdd" maxlength="100" /></div>
-                                        </div>
-                                        <div class="col-12 col-md-6 px-0">
-                                            <div class="form-group"><label for="Longitude">Longitude</label><input type="text" class="form-control form-control-sm" id="LongitudeAdd" maxlength="100" /></div>
-                                        </div>
-                                        <div class="col-md-12 col-md-12 px-0">
-                                            <div class="form-group">
-                                                <label for="enderecoObservacao">Observações</label>
-                                                <textarea type="text" name="enderecoObservacao" class="form-control form-control-sm" id="enderecoObservacaoAdd"></textarea>
-                                            </div>
-                                        </div>
-                                        <div class="col-12 col-md-3 px-0">
-                                            <div class="form-check form-check-inline">
-                                                <div class="custom-control custom-checkbox">
-                                                    <input type="checkbox" class="custom-control-input" id="enderecoInstalacaoAdd" value="0">
-                                                    <label class="custom-control-label" for="enderecoInstalacaoAdd">Endereço de Instalação</label>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-12 col-md-3 px-0">
-                                            <div class="form-check form-check-inline">
-                                                <div class="custom-control custom-checkbox">
-                                                    <input type="checkbox" class="custom-control-input" id="enderecoResidencialAdd" value="0">
-                                                    <label class="custom-control-label" for="enderecoResidencialAdd">Residencial</label>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="form-group d-flex flex-row-reverse">
-                                        <button type="button" href="#" id="adicionarEndereco" class="btn btn-sm btn-primary add_field_button">Adicionar Endereço</button>
-                                    </div>
-                                </fieldset>
-                                <hr />
-                                <div class="table-responsive">
-                                    <table id="enderecoTable" class="dtPadrao table-sm display table-striped table-hover w-100 table-bordered">
-                                        <thead>
-                                            <tr class="text-dark">
-                                                <th hidden></th>
-                                                <th hidden></th>
-                                                <th hidden></th>
-                                                <th hidden></th>
-                                                <th hidden></th>
-                                                <th hidden></th>
-                                                <th hidden></th>
-                                                <th hidden></th>
-                                                <th hidden></th>
-                                                <th hidden></th>
-                                                <th hidden></th>
-                                                <th>Rua</th>
-                                                <th>Número</th>
-                                                <th>Bairro</th>
-                                                <th>Cidade</th>
-                                                <th>Estado</th>
-                                                <th>CEP</th>
-                                                <th>Concessionária</th>
-                                                <th>Principal</th>
-                                                <th class="text-center">Ações</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                        </tbody>
-                                    </table>
-                                </div>
-                            </fieldset>
-                        </div>
-                        <div class="">
-                            <fieldset class="border p-2">
-                                <input type="hidden" name="acessoTotal" class="acesso-total" value="0" />
-                                <legend class="float-none w-auto" style="font-size: 1.2em !important;">Informações de Acesso</legend>
-                                <fieldset class="border p-4">
-                                    <div class="row Total-acesso">
-                                        <div class="col-12 col-md-3 px-0">
-                                            <div class="form-group"><label for="Internet">Internet</label><input type="text" class="form-control form-control-sm" id="internetAdd" maxlength="55" /></div>
-                                        </div>
-                                        <div class="col-12 col-md-3 px-0">
-                                            <div class="form-group"><label for="AplicativoMonitor">AplicativoMonitor</label><input type="text" class="form-control form-control-sm" id="aplicativoMonitorAdd" maxlength="55" /></div>
-                                        </div>
-                                        <div class="col-12 col-md-3 px-0">
-                                            <div class="form-group"><label for="Usuario">Usuário</label><input type="text" class="form-control form-control-sm" id="usuarioAdd" maxlength="55" /></div>
-                                        </div>
-                                        <div class="col-12 col-md-3 px-0">
-                                            <div class="form-group"><label for="Senha">Senha</label><input type="text" class="form-control form-control-sm" id="senhaAdd" maxlength="55" /></div>
-                                        </div>
-                                    </div>
-                                    <div class="form-group d-flex flex-row-reverse">
-                                        <button type="button" href="#" id="adicionaracesso" class="btn btn-sm btn-primary add_field_acesso_button">Adicionar Acesso</button>
-                                    </div>
-                                </fieldset>
-                                <hr />
-                                <div class="table-responsive">
-                                    <table id="acessoTable" class="dtPadrao table-sm display table-striped table-hover w-100 table-bordered">
-                                        <thead>
-                                            <tr class="text-dark">
-                                                <th hidden></th>
-                                                <th hidden></th>
-                                                <th hidden></th>
-                                                <th hidden></th>
-                                                <th>Internet</th>
-                                                <th>Discriminação</th>
-                                                <th>Usuário</th>
-                                                <th>Senha</th>
-                                                <th class="text-center">Ações</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                        </tbody>
-                                    </table>
-                                </div>
-                            </fieldset>
-                        </div>
-                        <div class="col-md-12 col-md-12 px-0">
-                            <div class="form-group d-flex flex-row-reverse">
-                                <button type="button" class="btn btn-info btn-sm d-flex align-items-center ml-1" id="proximaEtapaButton">Proxima Etapa</button>
-                                <button type="submit" class="btn btn-success btn-sm d-flex align-items-center salvar-alert ml-1">Salvar</button>
-                                <a href="@Url.Action("Index","Cliente")" class="btn btn-dark btn-sm d-flex align-items-center">Cancelar</a>
                             </div>
                         </div>
                     </form>
@@ -366,10 +388,109 @@
         </div>
     </div>
 </div>
+<script type="text/javascript" src="https://code.jquery.com/jquery-1.12.0.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
 <style>
     .dataTables_wrapper div.dataTables_filter {
         display: none
     }
+
+    a:hover, a:focus {
+        text-decoration: none;
+        outline: none;
+    }
+
+    .tab {
+        font-family: 'Nunito', sans-serif;
+    }
+
+        .tab .nav-tabs {
+            background-color: transparent;
+            border: none;
+        }
+
+            .tab .nav-tabs li a {
+                color: #222;
+                background: transparent;
+                font-size: 14px;
+                font-weight: 800;
+                letter-spacing: 1px;
+                text-align: center;
+                text-transform: uppercase;
+                padding: 15px 15px 10px;
+                margin: 0;
+                border: none;
+                border-radius: 0;
+                overflow: hidden;
+                position: relative;
+                z-index: 1;
+                transition: all 0.3s ease 0s;
+                
+            }
+
+            .tab .nav-tabs li:last-child a {
+                margin-right: 0;
+            }
+
+            .tab .nav-tabs li a:hover,
+            .tab .nav-tabs li.active a {
+                color: #222;
+                background: #fff;
+                border: none;
+            }
+
+            .tab .nav-tabs li.active a {
+                color: #6CBF1C;
+            }
+
+            .tab .nav-tabs li a:before,
+            .tab .nav-tabs li a:after {
+                content: "";
+                background-color: #d1d1d1;
+                height: 7px;
+                width: 100%;
+                position: absolute;
+                top: 0;
+                left: 0;
+                z-index: -1;
+                transition: all 0.5s ease 0s;
+            }
+
+            .tab .nav-tabs li a:after {
+                background-color: #6CBF1C;
+                height: 100%;
+                opacity: 0;
+            }
+
+            .tab .nav-tabs li.active a:before,
+            .tab .nav-tabs li a:hover:before {
+                height: 100%;
+                opacity: 0;
+            }
+
+            .tab .nav-tabs li.active a:after,
+            .tab .nav-tabs li a:hover:after {
+                height: 7px;
+                opacity: 1;
+            }
+
+        .tab .tab-content {
+            color: #555;
+            background: #fff;
+            font-size: 15px;
+            letter-spacing: 1px;
+            line-height: 23px;
+            padding: 20px;
+        }
+
+            .tab .tab-content h3 {
+                color: #222;
+                font-size: 22px;
+                font-weight: 700;
+                text-transform: uppercase;
+                letter-spacing: 1px;
+                margin: 0 0 7px 0;
+            }
 </style>
 <script>
     /*DROPDOWNESTADOS*/
