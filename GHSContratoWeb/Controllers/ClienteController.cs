@@ -232,7 +232,7 @@ namespace GHSContratoWeb.Controllers
             return PartialView(cliente);
         }
 
-
+        [HttpGet]
         public ActionResult Alterar(int id)
         {
             Cliente cliente = new ClienteBusiness().Detalhes(id);

@@ -41,33 +41,13 @@ namespace GHSContratoWeb.Controllers
 
             return View(listaGrid);
         }
+              
 
-        public ActionResult Novo()
+        [HttpGet]
+        public ActionResult Cadastro(int id)
         {
-            Usuario usuario = new Utils().Usuario;
-
-            if (usuario == null)
-            {
-                RedirectToAction("Index", "Login");
-            }
-
-            ViewBag.UnidadeConsumidoraBeneficiada = new UnidadeConsumidoraBusiness().SelectUnidadeConsumidora();
-
-            return View();
-        }
-
-        public ActionResult Alterar()
-        {
-            Usuario usuario = new Utils().Usuario;
-
-            if (usuario == null)
-            {
-                RedirectToAction("Index", "Login");
-            }
-
-            ViewBag.UnidadeConsumidoraBeneficiada = new UnidadeConsumidoraBusiness().SelectUnidadeConsumidora();
-
-            return View();
+            EnderecoCliente endereco = new EnderecoClienteBusiness().Detalhes(id);
+            return View(endereco);
         }
     }
 }

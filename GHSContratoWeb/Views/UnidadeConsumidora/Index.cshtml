@@ -1,5 +1,6 @@
 ﻿@model List<GHSContratoWeb.Models.Mapping.EnderecoCliente>
 @{
+    ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml"; }
 
 <div class="page-inner mt-5">
@@ -58,8 +59,8 @@
                                             <td>@item.LocalInstalacao</td>
                                             <td>
                                                 <a class="btn btn-sm btn-info btn-detalhes-cliente" name="btn-detalhes-cliente" data-toggle="modal" data-target="#modalcliente" data-id="@item.ID" style="color: white !important">Detalhes</a>
-                                                <a class="btn btn-sm btn-primary" href="@Url.Action("Alterar","UnidadeConsumidora")">Alterar</a>
-                                                <a class="btn btn-sm btn-danger" href="@Url.Action("Excluir","UnidadeConsumidora", new {ID = @item.ID })">Excluir</a>
+                                                <a href="@Url.Action("Cadastro","UnidadeConsumidora", new { id = item.IDCliente})" class="btn btn-sm btn-primary">Cadastro</a>
+                                                <a class="btn btn-sm btn-danger" href="@Url.Action("Excluir","UnidadeConsumidora", new {id = item.IDCliente})">Excluir</a>
                                             </td>
                                         </tr>
                                     } }

@@ -92,7 +92,7 @@ namespace GHSContratoWeb.Models.Business
                 using (var db = new Conexao().GetCon())
                 {
                     string sql = @"SELECT ID, IDCliente, IDCidade, Rua, Numero, Bairro, Complemento, CEP, LatitudeDecimal, LongitudeDecimal, Padrao, Ativo, Observacao, LatitudeHoras, LongitudeHoras, LocalInstalacao FROM [EnderecosClientes] where ID = @ID";
-                    EnderecoCliente enderecoCliente = db.Query<EnderecoCliente>(sql).SingleOrDefault();
+                    EnderecoCliente enderecoCliente = db.Query<EnderecoCliente>(sql, new { ID = ID }).SingleOrDefault();
                     return enderecoCliente;
                 }
             }

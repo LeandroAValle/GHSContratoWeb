@@ -60,7 +60,7 @@
                                                 <td>@item.DataExpedicao.Value.ToString("dd/MM/yyyy")</td>
                                                 <td class="text-center">
                                                     <a class="btn-link btn-detalhes-cliente" data-toggle="modal" data-target="#modalcliente" data-id="@item.ID"><i class="fas fa fa-search-plus text-info"></i></a>
-                                                    @*<a class="btn-link ml-1" href="@Url.Action("Alterar","Cliente",new  {ID = @item.ID })"><i class="fas fa fa-edit text-primary"></i></a>*@
+                                                    <a class="btn-link ml-1" href="@Url.Action("Alterar","Cliente",new  {ID = @item.ID })"><i class="fas fa fa-edit text-primary"></i></a>
                                                     <a class="btn-link ml-3" href="@Url.Action("Excluir","Cliente", new {ID = @item.ID })"><i class="fas fa fa-trash text-danger"></i></a>
                                                 </td>
                                             </tr>

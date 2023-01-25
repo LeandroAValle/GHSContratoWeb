@@ -693,7 +693,6 @@
     <Content Include="Views\Cliente\_BuscarCliente.cshtml" />
     <Content Include="Views\Login\Index.cshtml" />
     <Content Include="Views\UnidadeConsumidora\Index.cshtml" />
-    <Content Include="Views\UnidadeConsumidora\Novo.cshtml" />
     <Content Include="Views\Material\Index.cshtml" />
     <Content Include="Views\Material\_Disjuntores.cshtml" />
     <Content Include="Views\Concessionaria\Index.cshtml" />
@@ -701,7 +700,7 @@
     <Content Include="Views\ManutencaoPreventiva\Index.cshtml" />
     <Content Include="Views\Procuracao\Index.cshtml" />
     <Content Include="Views\Recibo\Index.cshtml" />
-    <Content Include="Views\UnidadeConsumidora\Alterar.cshtml" />
+    <Content Include="Views\UnidadeConsumidora\Cadastro.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

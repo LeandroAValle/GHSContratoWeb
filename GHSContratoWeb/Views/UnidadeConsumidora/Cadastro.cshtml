@@ -1,5 +1,9 @@
-﻿@{ 
-    Layout = "~/Views/Shared/_Layout.cshtml"; }
+﻿@model GHSContratoWeb.Models.Mapping.EnderecoCliente
+@{
+    ViewBag.Title = "Cadastro";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
 <div class="page-inner mt-5">
     <div class="page-header card-round" style="background-color: #ffffff">
         <h4 class="page-title ml-3">Cadastro Unidade Consumidora</h4>
@@ -47,9 +51,8 @@
                                         </div>
                                     </div>*@
                                 <div class="col-12 col-md-12 px-0">
-                                    <h4>Descrição </h4>
-                                    <h4>+ Endereço + Numero + Bairro + Cidade + Estado</h4>
-
+                                    @*<h4>@Model.Observacao</h4>
+                                        <h4><span>@Model.Rua</span><span>@Model.Numero</span><span>@Model.Bairro</span><span>@Model.IDCidade</span><span>@Model.IDEstado</span></h4>*@
                                     @*<div class="form-group">
                                             <label for="Nome">Nome</label>
                                             <input type="text" name="Nome" class="form-control form-control-sm " id="Nome" maxlength="100">
@@ -65,7 +68,7 @@
                         </fieldset>
                     </div>
                     <hr />
-                    <form action="@Url.Action("Novo","UnidadeConsumidora")" method="post">
+                    <form action="@Url.Action("Cadastro","UnidadeConsumidora")" method="post">
                         <div class="tab" role="tabpanel">
                             <!-- Nav tabs -->
                             <ul class="nav nav-tabs" role="tablist">
@@ -310,7 +313,7 @@
                                                         </tr>
                                                     </thead>
                                                     <tbody>
-                                                        @{ foreach (var item in ViewBag.UnidadeConsumidoraBeneficiada)
+                                                        @*@{ foreach (var item in ViewBag.UnidadeConsumidoraBeneficiada)
                                                             {
                                                                 <tr>
                                                                     <td>@item.ID</td>
@@ -324,7 +327,7 @@
                                                                         <a class="btn btn-sm btn-info btn-detalhes-cliente" name="btn-detalhes-cliente" data-toggle="modal" data-target="#modalcliente" data-id="@item.ID" style="color: white !important">Adicionar</a>
                                                                     </td>
                                                                 </tr>
- } }
+                                                            } }*@
                                                     </tbody>
                                                 </table>
                                             </div>
@@ -582,3 +585,4 @@
             }
 </style>
 <script></script>
+
