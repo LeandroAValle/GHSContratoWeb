@@ -42,7 +42,7 @@
                 <div class="card-body">
                     <div class="">
                         <fieldset class="border p-4">
-                            <legend class="float-none w-auto" style="font-size: 1.2em !important;">Unidade Consumidora</legend>
+                            <legend class="float-none w-auto" style="font-size: 1.2em !important;">Unidade de Instalação</legend>
                             <div class="row">
                                 @*<div class="col-12 col-md-1 px-0">
                                         <div class="form-group">
@@ -51,8 +51,8 @@
                                         </div>
                                     </div>*@
                                 <div class="col-12 col-md-12 px-0">
-                                    @*<h4>@Model.Observacao</h4>
-                                        <h4><span>@Model.Rua</span><span>@Model.Numero</span><span>@Model.Bairro</span><span>@Model.IDCidade</span><span>@Model.IDEstado</span></h4>*@
+                                    <h4>@Model.Observacao</h4>
+                                    <h4><span>@Model.Rua</span><span>@Model.Numero</span><span>@Model.Bairro</span><span>@Model.IDCidade</span><span>@Model.IDEstado</span></h4>
                                     @*<div class="form-group">
                                             <label for="Nome">Nome</label>
                                             <input type="text" name="Nome" class="form-control form-control-sm " id="Nome" maxlength="100">
@@ -87,14 +87,14 @@
                                             <div class="row">
                                                 <div class="col-12 col-md-3 px-0">
                                                     <div class="form-group">
-                                                        <label for="CPF">Concessionaria/Contato</label>
-                                                        <input type="text" name="CPF" class="form-control form-control-sm" id="CPF" maxlength="100">
+                                                        <label for="Concessionaria">Concessionaria/Contato</label>
+                                                        <input type="text" name="Concessionaria" class="form-control form-control-sm" id="CPF" maxlength="100">
                                                     </div>
                                                 </div>
                                                 <div class="col-12 col-md-4 px-0">
                                                     <div class="form-group">
-                                                        <label for="CPF">Apresentou Fatura de Energia?</label>
-                                                        <select class="custom-select custom-select-sm mr-sm-2" id="inlineFormCustomSelect">
+                                                        <label for="FaturaEnergia">Apresentou Fatura de Energia?</label>
+                                                        <select class="custom-select custom-select-sm mr-sm-2" name="FaturaEnergia" id="inlineFormCustomSelect">
                                                             <option selected>-Selecione-</option>
                                                             <option value="1">Sim</option>
                                                             <option value="2">Não</option>
@@ -104,79 +104,79 @@
                                                 <div class="col-12 col-md-2 px-0">
                                                     <div class="form-group">
                                                         <label for="codigoUc">Código da UC</label>
-                                                        <input type="text" name="CPF" class="form-control form-control-sm" id="CPF" maxlength="100">
+                                                        <input type="text" name="codigoUc" class="form-control form-control-sm" id="codigoUc" maxlength="100">
                                                     </div>
                                                 </div>
                                                 <div class="col-12 col-md-3 px-0">
                                                     <div class="form-group">
                                                         <label for="demandaContratada">Demanda Contratada (KW)</label>
-                                                        <input type="text" name="CPF" class="form-control form-control-sm" id="CPF" maxlength="100">
+                                                        <input type="text" name="demandaContratada" class="form-control form-control-sm" id="demandaContratada" maxlength="100">
                                                     </div>
                                                 </div>
                                                 <div class="col-12 col-md-3 px-0">
                                                     <div class="form-group">
                                                         <label for="categoriaFases">Categoria (fases)</label>
-                                                        <input type="text" name="CPF" class="form-control form-control-sm" id="CPF" maxlength="100">
+                                                        <input type="text" name="categoriaFases" class="form-control form-control-sm" id="categoriaFases" maxlength="100">
                                                     </div>
                                                 </div>
                                                 <div class="col-12 col-md-3 px-0">
                                                     <div class="form-group">
                                                         <label for="disjuntor">Disjuntor</label>
-                                                        <input type="text" name="CPF" class="form-control form-control-sm" id="CPF" maxlength="100">
+                                                        <input type="text" name="disjuntor" class="form-control form-control-sm" id="disjuntor" maxlength="100">
                                                     </div>
                                                 </div>
                                                 <div class="col-12 col-md-3 px-0">
                                                     <div class="form-group">
                                                         <label for="bitolaEntrada">Bitola cabo entrada (mm²)</label>
-                                                        <input type="text" name="CPF" class="form-control form-control-sm" id="CPF" maxlength="100">
+                                                        <input type="text" name="bitolaEntrada" class="form-control form-control-sm" id="bitolaEntrada" maxlength="100">
                                                     </div>
                                                 </div>
                                                 <div class="col-12 col-md-3 px-0">
                                                     <div class="form-group">
                                                         <label for="tipoLigacao">Tipo de ligação</label>
-                                                        <input type="text" name="CPF" class="form-control form-control-sm" id="CPF" maxlength="100">
+                                                        <input type="text" name="tipoLigacao" class="form-control form-control-sm" id="tipoLigacao" maxlength="100">
                                                     </div>
                                                 </div>
                                                 <div class="col-12 col-md-3 px-0">
                                                     <div class="form-group">
                                                         <label for="qdca">Há QDCA?</label>
-                                                        <input type="text" name="CPF" class="form-control form-control-sm" id="CPF" maxlength="100">
+                                                        <input type="text" name="qdca" class="form-control form-control-sm" id="qdca" maxlength="100">
                                                     </div>
                                                 </div>
                                                 <div class="col-12 col-md-6 px-0">
                                                     <div class="form-group">
                                                         <label for="distanciaBitola">Distancia (m) e Bitola (mm²) Padrão até QDCA</label>
-                                                        <input type="text" name="CPF" class="form-control form-control-sm" id="CPF" maxlength="100">
+                                                        <input type="text" name="distanciaBitola" class="form-control form-control-sm" id="distanciaBitola" maxlength="100">
                                                     </div>
                                                 </div>
                                                 <div class="col-12 col-md-3 px-0">
                                                     <div class="form-group">
                                                         <label for="padraoEntrada">Padrão de entrada</label>
-                                                        <input type="text" name="CPF" class="form-control form-control-sm" id="CPF" maxlength="100">
+                                                        <input type="text" name="padraoEntrada" class="form-control form-control-sm" id="padraoEntrada" maxlength="100">
                                                     </div>
                                                 </div>
                                                 <div class="col-12 col-md-3 px-0">
                                                     <div class="form-group">
                                                         <label for="projetoMelhoria">Projeto de melhoria?</label>
-                                                        <input type="text" name="CPF" class="form-control form-control-sm" id="CPF" maxlength="100">
+                                                        <input type="text" name="projetoMelhoria" class="form-control form-control-sm" id="projetoMelhoria" maxlength="100">
                                                     </div>
                                                 </div>
                                                 <div class="col-12 col-md-3 px-0">
                                                     <div class="form-group">
                                                         <label for="consumo">Consumo (kWh/mês)</label>
-                                                        <input type="text" name="CPF" class="form-control form-control-sm" id="CPF" maxlength="100">
+                                                        <input type="text" name="consumo" class="form-control form-control-sm" id="consumo" maxlength="100">
                                                     </div>
                                                 </div>
                                                 <div class="col-12 col-md-3 px-0">
                                                     <div class="form-group">
                                                         <label for="aumentoCarga">Aumento de carga?(S)%</label>
-                                                        <input type="text" name="CPF" class="form-control form-control-sm" id="CPF" maxlength="100">
+                                                        <input type="text" name="aumentoCarga" class="form-control form-control-sm" id="aumentoCarga" maxlength="100">
                                                     </div>
                                                 </div>
                                                 <div class="col-12 col-md-12 px-0">
                                                     <div class="form-group">
                                                         <label for="obsPertinentes">Observações Pertinentes</label>
-                                                        <textarea type="text" name="CPF" class="form-control form-control-sm" id="CPF" maxlength="100"></textarea>
+                                                        <textarea type="text" name="obsPertinentes" class="form-control form-control-sm" id="obsPertinentes" maxlength="100"></textarea>
                                                     </div>
                                                 </div>
                                             </div>
@@ -190,104 +190,104 @@
                                             <div class="row">
                                                 <div class="col-12 col-md-6 px-0">
                                                     <div class="form-group">
-                                                        <label for="ID">Média de geração atual ESTIMADA (kWh/mês)</label>
-                                                        <input type="text" name="ID" class="form-control form-control-sm" id="Codigo" maxlength="11" />
+                                                        <label for="mediaGeracaoEstimada">Média de geração atual ESTIMADA (kWh/mês)</label>
+                                                        <input type="text" name="mediaGeracaoEstimada" class="form-control form-control-sm" id="mediaGeracaoEstimada" maxlength="11" />
                                                     </div>
                                                 </div>
                                                 <div class="col-12 col-md-6 px-0">
                                                     <div class="form-group">
-                                                        <label for="Nome">Geração estimada em 25 anos (kWh/mês)</label>
-                                                        <input type="text" name="Nome" class="form-control form-control-sm " id="Nome" maxlength="100">
+                                                        <label for="GeracaoEstimada">Geração estimada em 25 anos (kWh/mês)</label>
+                                                        <input type="text" name="GeracaoEstimada" class="form-control form-control-sm " id="GeracaoEstimada" maxlength="100">
                                                     </div>
                                                 </div>
                                                 <div class="col-12 col-md-4 px-0">
                                                     <div class="form-group">
-                                                        <label for="CPF">Capacidade (kWp)</label>
-                                                        <input type="text" name="CPF" class="form-control form-control-sm" id="CPF" maxlength="100">
+                                                        <label for="CapacidadeKWP">Capacidade (kWp)</label>
+                                                        <input type="text" name="CapacidadeKWP" class="form-control form-control-sm" id="CapacidadeKWP" maxlength="100">
                                                     </div>
                                                 </div>
                                                 <div class="col-12 col-md-4 px-0">
                                                     <div class="form-group">
-                                                        <label for="CPF">Capacidade Inversores (kW)</label>
-                                                        <input type="text" name="CPF" class="form-control form-control-sm" id="CPF" maxlength="100">
+                                                        <label for="CapacidadeInversores">Capacidade Inversores (kW)</label>
+                                                        <input type="text" name="CapacidadeInversores" class="form-control form-control-sm" id="CapacidadeInversores" maxlength="100">
                                                     </div>
                                                 </div>
                                                 <div class="col-12 col-md-4 px-0">
                                                     <div class="form-group">
-                                                        <label for="CPF">Quantiddade de Módulos</label>
-                                                        <input type="text" name="CPF" class="form-control form-control-sm" id="CPF" maxlength="100">
+                                                        <label for="QtdModulos">Quantidade de Módulos</label>
+                                                        <input type="text" name="QtdModulos" class="form-control form-control-sm" id="QtdModulos" maxlength="100">
                                                     </div>
                                                 </div>
                                                 <div class="col-12 col-md-3 px-0">
                                                     <div class="form-group">
-                                                        <label for="CPF">Potência e Tecnologia (Wp)</label>
-                                                        <input type="text" name="CPF" class="form-control form-control-sm" id="CPF" maxlength="100">
+                                                        <label for="PotenciaTecnologica">Potência e Tecnologia (Wp)</label>
+                                                        <input type="text" name="PotenciaTecnologica" class="form-control form-control-sm" id="PotenciaTecnologica" maxlength="100">
                                                     </div>
                                                 </div>
                                                 <div class="col-12 col-md-3 px-0">
                                                     <div class="form-group">
-                                                        <label for="CPF">Quantidade de Inversores</label>
-                                                        <input type="text" name="CPF" class="form-control form-control-sm" id="CPF" maxlength="100">
+                                                        <label for="QtdInversores">Quantidade de Inversores</label>
+                                                        <input type="text" name="QtdInversores" class="form-control form-control-sm" id="QtdInversores" maxlength="100">
                                                     </div>
                                                 </div>
                                                 <div class="col-12 col-md-2 px-0">
                                                     <div class="form-group">
-                                                        <label for="CPF">Potencia (W)</label>
-                                                        <input type="text" name="CPF" class="form-control form-control-sm" id="CPF" maxlength="100">
+                                                        <label for="Potencia">Potencia (W)</label>
+                                                        <input type="text" name="Potencia" class="form-control form-control-sm" id="Potencia" maxlength="100">
                                                     </div>
                                                 </div>
                                                 <div class="col-12 col-md-4 px-0">
                                                     <div class="form-group">
-                                                        <label for="CPF">Área de acomodação (m²)</label>
-                                                        <input type="text" name="CPF" class="form-control form-control-sm" id="CPF" maxlength="100">
+                                                        <label for="AreaAcomodacao">Área de acomodação (m²)</label>
+                                                        <input type="text" name="AreaAcomodacao" class="form-control form-control-sm" id="AreaAcomodacao" maxlength="100">
                                                     </div>
                                                 </div>
                                                 <div class="col-12 col-md-4 px-0">
                                                     <div class="form-group">
-                                                        <label for="CPF">Área telhado (m²)</label>
-                                                        <input type="text" name="CPF" class="form-control form-control-sm" id="CPF" maxlength="100">
+                                                        <label for="AreaTelhado">Área telhado (m²)</label>
+                                                        <input type="text" name="AreaTelhado" class="form-control form-control-sm" id="AreaTelhado" maxlength="100">
                                                     </div>
                                                 </div>
                                                 <div class="col-12 col-md-3 px-0">
                                                     <div class="form-group">
-                                                        <label for="CPF">Proteção C.C.</label>
-                                                        <input type="text" name="CPF" class="form-control form-control-sm" id="CPF" maxlength="100">
+                                                        <label for="ProtecaoCC">Proteção C.C.</label>
+                                                        <input type="text" name="Protecao" class="form-control form-control-sm" id="Protecao" maxlength="100">
                                                     </div>
                                                 </div>
                                                 <div class="col-12 col-md-3 px-0">
                                                     <div class="form-group">
-                                                        <label for="CPF">Proteção C.A.</label>
-                                                        <input type="text" name="CPF" class="form-control form-control-sm" id="CPF" maxlength="100">
+                                                        <label for="ProtecaoCA">Proteção C.A.</label>
+                                                        <input type="text" name="ProtecaoCA" class="form-control form-control-sm" id="ProtecaoCA" maxlength="100">
                                                     </div>
                                                 </div>
                                                 <div class="col-12 col-md-2 px-0">
                                                     <div class="form-group">
-                                                        <label for="CPF">Capacidade</label>
-                                                        <input type="text" name="CPF" class="form-control form-control-sm" id="CPF" maxlength="100">
+                                                        <label for="Capacidade">Capacidade</label>
+                                                        <input type="text" name="Capacidade" class="form-control form-control-sm" id="Capacidade" maxlength="100">
                                                     </div>
                                                 </div>
                                                 <div class="col-12 col-md-5 px-0">
                                                     <div class="form-group">
-                                                        <label for="CPF">Valor final do Material + Frete</label>
-                                                        <input type="text" name="CPF" class="form-control form-control-sm" id="CPF" maxlength="100">
+                                                        <label for="ValorFinalMF">Valor final do Material + Frete</label>
+                                                        <input type="text" name="ValorFinalMF" class="form-control form-control-sm" id="ValorFinalMF" maxlength="100">
                                                     </div>
                                                 </div>
                                                 <div class="col-12 col-md-7 px-0">
                                                     <div class="form-group">
-                                                        <label for="CPF">Valor final da Prestação de Serviço + Seguro (MATERIAL)</label>
-                                                        <input type="text" name="CPF" class="form-control form-control-sm" id="CPF" maxlength="100">
+                                                        <label for="ValorFinalPSS">Valor final da Prestação de Serviço + Seguro (MATERIAL)</label>
+                                                        <input type="text" name="ValorFinalPSS" class="form-control form-control-sm" id="ValorFinalPSS" maxlength="100">
                                                     </div>
                                                 </div>
                                                 <div class="col-12 col-md-4 px-0">
                                                     <div class="form-group">
-                                                        <label for="CPF">Valor final Total</label>
-                                                        <input type="text" name="CPF" class="form-control form-control-sm" id="CPF" maxlength="100">
+                                                        <label for="ValorFinalTotal">Valor final Total</label>
+                                                        <input type="text" name="ValorFinalTotal" class="form-control form-control-sm" id="ValorFinalTotal" maxlength="100">
                                                     </div>
                                                 </div>
                                                 <div class="col-12 col-md-8 px-0">
                                                     <div class="form-group">
-                                                        <label for="CPF">Pagamento</label>
-                                                        <input type="text" name="CPF" class="form-control form-control-sm" id="CPF" maxlength="100">
+                                                        <label for="Pagamento">Pagamento</label>
+                                                        <input type="text" name="Pagamento" class="form-control form-control-sm" id="Pagamento" maxlength="100">
                                                     </div>
                                                 </div>
                                             </div>
@@ -335,14 +335,14 @@
                                             <div class="row">
                                                 <div class="col-12 col-md-8 px-0">
                                                     <div class="form-group">
-                                                        <label for="ID">UC Beneficaria 1</label>
-                                                        <input type="text" name="ID" class="form-control form-control-sm" id="Codigo" maxlength="11" />
+                                                        <label for="UCBeneficiaria">UC Beneficaria 1</label>
+                                                        <input type="text" name="UCBeneficiaria" class="form-control form-control-sm" id="UCBeneficiaria" maxlength="11" />
                                                     </div>
                                                 </div>
                                                 <div class="col-12 col-md-3 px-0">
                                                     <div class="form-group">
-                                                        <label for="Nome">Percentual do Exedente(%)</label>
-                                                        <input type="text" name="Nome" class="form-control form-control-sm " id="Nome" maxlength="100">
+                                                        <label for="PE">Percentual do Exedente(%)</label>
+                                                        <input type="text" name="PE" class="form-control form-control-sm " id="PE" maxlength="100">
                                                     </div>
                                                 </div>
                                                 <div style="margin-top: 33px !important; margin-right: -55px !important">
@@ -359,8 +359,8 @@
                                             <div class="row">
                                                 <div class="col-12 col-md-2 px-0">
                                                     <div class="form-group">
-                                                        <label for="CPF">Orientação</label>
-                                                        <select class="custom-select custom-select-sm mr-sm-2" id="inlineFormCustomSelect">
+                                                        <label for="Orientacao">Orientação</label>
+                                                        <select class="custom-select custom-select-sm mr-sm-2" name="Orientacao" id="inlineFormCustomSelect">
                                                             <option selected>-Selecione-</option>
                                                             <option value="1">Sim</option>
                                                             <option value="2">Não</option>
@@ -369,8 +369,8 @@
                                                 </div>
                                                 <div class="col-12 col-md-2 px-0">
                                                     <div class="form-group">
-                                                        <label for="CPF">Inclinação</label>
-                                                        <select class="custom-select custom-select-sm mr-sm-2" id="inlineFormCustomSelect">
+                                                        <label for="Inclinacao">Inclinação</label>
+                                                        <select class="custom-select custom-select-sm mr-sm-2" name="Inclinacao" id="inlineFormCustomSelect">
                                                             <option selected>-Selecione-</option>
                                                             <option value="1">Sim</option>
                                                             <option value="2">Não</option>
@@ -379,38 +379,62 @@
                                                 </div>
                                                 <div class="col-12 col-md-3 px-0">
                                                     <div class="form-group">
-                                                        <label for="Nome">Local de Instalação</label>
-                                                        <input type="text" name="Nome" class="form-control form-control-sm " id="Nome" maxlength="100">
+                                                        <label for="LocalInstalacao">Local de Instalação</label>
+                                                        <input type="text" name="LocalInstalacao" class="form-control form-control-sm " id="LocalInstalacao" maxlength="100">
                                                     </div>
                                                 </div>
                                                 <div class="col-12 col-md-2 px-0">
                                                     <div class="form-group">
-                                                        <label for="Nome">Idade do Telhado</label>
-                                                        <input type="text" name="Nome" class="form-control form-control-sm " id="Nome" maxlength="100">
+                                                        <label for="IdadeTelhado">Idade do Telhado</label>
+                                                        <input type="text" name="IdadeTelhado" class="form-control form-control-sm " id="IdadeTelhado" maxlength="100">
                                                     </div>
                                                 </div>
                                                 <div class="col-12 col-md-3 px-0">
                                                     <div class="form-group">
-                                                        <label for="Nome">Tipo de telhado</label>
-                                                        <input type="text" name="Nome" class="form-control form-control-sm " id="Nome" maxlength="100">
+                                                        <label for="TipoTelhado">Tipo de telhado</label>
+                                                        <input type="text" name="TipoTelhado" class="form-control form-control-sm " id="TipoTelhado" maxlength="100">
                                                     </div>
                                                 </div>
                                                 <div class="col-12 col-md-3 px-0">
                                                     <div class="form-group">
-                                                        <label for="Nome">Peso do Sistema (Kg)</label>
-                                                        <input type="text" name="Nome" class="form-control form-control-sm " id="Nome" maxlength="100">
+                                                        <label for="PesoSistema">Peso do Sistema (Kg)</label>
+                                                        <input type="text" name="PesoSistema" class="form-control form-control-sm " id="PesoSistema" maxlength="100">
                                                     </div>
                                                 </div>
                                                 <div class="col-12 col-md-3 px-0">
                                                     <div class="form-group">
-                                                        <label for="Nome">Peso do Sistema (Kg)</label>
-                                                        <input type="text" name="Nome" class="form-control form-control-sm " id="Nome" maxlength="100">
+                                                        <label for="QualidadeTelhado">Qualidade do Telhado</label>
+                                                        <select class="custom-select custom-select-sm mr-sm-2" name="QualidadeTelhado" id="inlineFormCustomSelect">
+                                                            <option selected>-Selecione-</option>
+                                                            <option value="1">Firme</option>
+                                                            <option value="2">Meio Firme</option>
+                                                        </select>
                                                     </div>
                                                 </div>
                                                 <div class="col-12 col-md-3 px-0">
                                                     <div class="form-group">
-                                                        <label for="CPF">Qualidade do Telhado</label>
-                                                        <select class="custom-select custom-select-sm mr-sm-2" id="inlineFormCustomSelect">
+                                                        <label for="Selado">&nbsp;</label>
+                                                        <select class="custom-select custom-select-sm mr-sm-2" name="Selado" id="inlineFormCustomSelect">
+                                                            <option selected>-Selecione-</option>
+                                                            <option value="1">Selado</option>
+                                                            <option value="2">Pouco</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                                <div class="col-12 col-md-3 px-0">
+                                                    <div class="form-group">
+                                                        <label for="CorroidoDanificado">&nbsp;</label>
+                                                        <select class="custom-select custom-select-sm mr-sm-2" name="CorroidoDanificado" id="inlineFormCustomSelect">
+                                                            <option selected>-Selecione-</option>
+                                                            <option value="1">Corroido</option>
+                                                            <option value="2">Danificado</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                                <div class="col-12 col-md-3 px-0">
+                                                    <div class="form-group">
+                                                        <label for="EstruturaAjuste">Estrutura de Ajuste</label>
+                                                        <select class="custom-select custom-select-sm mr-sm-2" name="EstruturaAjuste" id="inlineFormCustomSelect">
                                                             <option selected>-Selecione-</option>
                                                             <option value="1">Sim</option>
                                                             <option value="2">Não</option>
@@ -419,8 +443,8 @@
                                                 </div>
                                                 <div class="col-12 col-md-3 px-0">
                                                     <div class="form-group">
-                                                        <label for="CPF">&nbsp;</label>
-                                                        <select class="custom-select custom-select-sm mr-sm-2" id="inlineFormCustomSelect">
+                                                        <label for="Serralheiro">Serralheiro</label>
+                                                        <select class="custom-select custom-select-sm mr-sm-2" name="Serralheiro" id="inlineFormCustomSelect">
                                                             <option selected>-Selecione-</option>
                                                             <option value="1">Sim</option>
                                                             <option value="2">Não</option>
@@ -429,8 +453,8 @@
                                                 </div>
                                                 <div class="col-12 col-md-3 px-0">
                                                     <div class="form-group">
-                                                        <label for="CPF">Estrutura de Ajuste</label>
-                                                        <select class="custom-select custom-select-sm mr-sm-2" id="inlineFormCustomSelect">
+                                                        <label for="ObstaculosInternos">Obstáculos Internos <a href="#" title="Antenas, Cano de agua, etc..."><i class="fas fa fa-question"></i></a></label>
+                                                        <select class="custom-select custom-select-sm mr-sm-2" name="ObstaculosInternos" id="inlineFormCustomSelect">
                                                             <option selected>-Selecione-</option>
                                                             <option value="1">Sim</option>
                                                             <option value="2">Não</option>
@@ -439,28 +463,8 @@
                                                 </div>
                                                 <div class="col-12 col-md-3 px-0">
                                                     <div class="form-group">
-                                                        <label for="CPF">Serralheiro</label>
-                                                        <select class="custom-select custom-select-sm mr-sm-2" id="inlineFormCustomSelect">
-                                                            <option selected>-Selecione-</option>
-                                                            <option value="1">Sim</option>
-                                                            <option value="2">Não</option>
-                                                        </select>
-                                                    </div>
-                                                </div>
-                                                <div class="col-12 col-md-3 px-0">
-                                                    <div class="form-group">
-                                                        <label for="CPF">Obstáculos</label>
-                                                        <select class="custom-select custom-select-sm mr-sm-2" id="inlineFormCustomSelect">
-                                                            <option selected>-Selecione-</option>
-                                                            <option value="1">Sim</option>
-                                                            <option value="2">Não</option>
-                                                        </select>
-                                                    </div>
-                                                </div>
-                                                <div class="col-12 col-md-3 px-0">
-                                                    <div class="form-group">
-                                                        <label for="CPF">Externos</label>
-                                                        <select class="custom-select custom-select-sm mr-sm-2" id="inlineFormCustomSelect">
+                                                        <label for="ObstaculosExternos">Externos <a href="#" title="Arvores, esquina..."><i class="fas fa fa-question"></i></a></label>
+                                                        <select class="custom-select custom-select-sm mr-sm-2" name="ObstaculosExternos" id="inlineFormCustomSelect">
                                                             <option selected>-Selecione-</option>
                                                             <option value="1">Sim</option>
                                                             <option value="2">Não</option>
@@ -505,7 +509,7 @@
             .tab .nav-tabs li a {
                 color: #222;
                 background: transparent;
-                font-size: 12px;
+                font-size: 10px;
                 font-weight: 800;
                 letter-spacing: 1px;
                 text-align: center;
