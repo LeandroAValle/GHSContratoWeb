@@ -47,12 +47,61 @@ namespace GHSContratoWeb.Controllers
         public ActionResult Cadastro(int id)
         {
             EnderecoCliente endereco = new EnderecoClienteBusiness().Detalhes(id);
+            ViewBag.DropDownTipoCliente = DropDownList.DropDownTipoCliente();
+            ViewBag.DropDownCidade = DropDownList.DropDownCidade();
+            ViewBag.DropDownEstado = DropDownList.DropDownEstado();
             return View(endereco);
         }
 
         [HttpPost]
         public ActionResult Cadastro(FormCollection form)
         {
+            //Concessionaria
+            //FaturaEnergia
+            //codigoUc
+            //demandaContratada
+            //categoriaFases
+            //disjuntor
+            //bitolaEntrada
+            //tipoLigacao
+            //qdca
+            //distanciaBitola
+            //padraoEntrada
+            //projetoMelhoria
+            //consumo
+            //aumentoCarga
+            //obsPertinentes
+            //mediaGeracaoEstimada
+            //GeracaoEstimada
+            //CapacidadeKWP
+            //CapacidadeInversores
+            //QtdModulos
+            //PotenciaTecnologica
+            //QtdInversores
+            //Potencia
+            //AreaAcomodacao
+            //AreaTelhado
+            //Protecao
+            //ProtecaoCA
+            //Capacidade
+            //ValorFinalMF
+            //ValorFinalPSS
+            //ValorFinalTotal
+            //Pagamento
+            //Orientacao
+            //Inclinacao
+            //LocalInstalacao
+            //IdadeTelhado
+            //TipoTelhado
+            //PesoSistema
+            //QualidadeTelhado
+            //Selado
+            //CorroidoDanificado
+            //EstruturaAjuste
+            //Serralheiro
+            //ObstaculosInternos
+            //ObstaculosExternos
+
             //EnderecoCliente unidadeConsumidora = new EnderecoCliente()
             //{
             //    ID = form["ID"].ToInt32(),
@@ -118,6 +167,15 @@ namespace GHSContratoWeb.Controllers
             //TempData["Resultado"] = obj;
 
             return RedirectToAction("ClienteEndereco");
+        }
+
+        [HttpPost]
+        public JsonResult ListarCidades(int uf)
+        {
+            List<SelectListItem> lista = DropDownList.DropDownCidade(null, uf);
+
+            return Json(new { lista }, JsonRequestBehavior.AllowGet);
+
         }
     }
 }
