@@ -1,4 +1,4 @@
-﻿
+﻿@using Stimulsoft.Report.Mvc;
 @{
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
@@ -28,7 +28,14 @@
                         <h4 class="card-title">Cadastro Unidade Consumidora</h4>
                     </div>*@
                 <div class="card-body">
-                    
+                    @Html.Stimulsoft().StiMvcViewer(new StiMvcViewerOptions()
+{
+    Actions =
+    {
+        GetReport = "GetReport",
+        ViewerEvent = "ViewerEvent"
+    }
+})
                 </div>
             </div>
         </div>
