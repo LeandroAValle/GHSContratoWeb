@@ -7,6 +7,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using GHSContratoWeb.Models.Mapping;
+using GHSContratoWebBusiness.Helper;
 
 namespace GHSContratoWeb.Controllers
 {
@@ -22,9 +23,17 @@ namespace GHSContratoWeb.Controllers
         {
             // Create the report object
             var report = new StiReport();
-            List<EnderecoCliente> list = new EnderecoClienteBusiness().SelectEnderecoCliente();
+
+            var empresa = new EmpresaBusiness().Buscar();
+
+            List<Cliente> list = new ClienteBusiness().SelectCliente();
             report.Load(@"C:\Users\Usuario\source\repos\GHSContratoWeb\GHSContratoWeb\Reports\Pais.mrt");
             report.RegBusinessObject("lista", list);
+
+            report.Dictionary.Variables["TopoLinha1"].Value = empresa.NomeFantasia;
+            report.Dictionary.Variables["TopoLinha2"].Value = empresa.Endereco + ", N º " + empresa.Numero + "    Bairro: " + empresa.Bairro;
+            report.Dictionary.Variables["TopoLinha3"].Value = "CNPJ: " + empresa.CNPJ.FormatarCPFCNPJ() + "    Fone: " + empresa.Telefone.FormatarTelefone() + "   /   " + empresa.Cidade + "-" + empresa.UF;
+
             return StiMvcViewer.GetReportResult(report);
         }
         public ActionResult ViewerEvent()

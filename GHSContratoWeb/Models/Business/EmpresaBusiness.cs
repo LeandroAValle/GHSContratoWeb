@@ -101,5 +101,24 @@ namespace GHSContratoWeb.Models.Business
             }
         }
 
+        public Empresa Buscar()
+        {
+            // Select           
+            try
+            {
+                using (var db = new Conexao().GetCon())
+                {
+                    string sql = @"SELECT ID, RazaoSocial, NomeFantasia, CNPJ, DataHora, Endereco, Numero, Bairro, Telefone, Cidade, UF FROM [Empresas]";
+                    Empresa empresa = db.Query<Empresa>(sql).SingleOrDefault();
+                    return empresa;
+                }
+            }
+            catch (Exception ex)
+            {
+                Empresa empresa = new Empresa();
+                return empresa;
+            }
+        }
+
     }
 }

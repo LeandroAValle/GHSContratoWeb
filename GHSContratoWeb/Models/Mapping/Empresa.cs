@@ -14,5 +14,11 @@ namespace GHSContratoWeb.Models.Mapping
 		public string CNPJ { get; set; }
 		public DateTime? DataHora { get; set; }
 		public byte[] Brazao { get; set; }
+		public string Endereco { get; set; }
+		public string Numero { get; set; }
+		public string Bairro { get; set; }
+		public string Telefone { get; set; }
+		public string Cidade { get; set; }
+		public string UF { get; set; }
 	}
 }
