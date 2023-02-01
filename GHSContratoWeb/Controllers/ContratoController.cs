@@ -27,7 +27,7 @@ namespace GHSContratoWeb.Controllers
             var empresa = new EmpresaBusiness().Buscar();
 
             List<Cliente> list = new ClienteBusiness().SelectCliente();
-            report.Load(@"C:\Users\Usuario\source\repos\GHSContratoWeb\GHSContratoWeb\Reports\Pais.mrt");
+            report.Load(@"C:\Users\Usuario\source\repos\GHSContratoWeb\GHSContratoWeb\Reports\Contrato.mrt");
             report.RegBusinessObject("lista", list);
 
             report.Dictionary.Variables["TopoLinha1"].Value = empresa.NomeFantasia;
