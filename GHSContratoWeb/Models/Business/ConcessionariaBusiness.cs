@@ -98,5 +98,24 @@ namespace GHSContratoWeb.Models.Business
                 return concessionaria;
             }
         }
+
+        internal int? BuscarUltimoCodigo()
+        {
+            try
+            {
+                using (var con = new Conexao().GetCon())
+                {
+                    return con.Query<int?>(@"
+                    SELECT
+                        MAX(ID)
+                    FROM
+                        Concessionarias").SingleOrDefault();
+                }
+            }
+            catch (Exception ex)
+            {
+                return null;
+            }
+        }
     }
 }

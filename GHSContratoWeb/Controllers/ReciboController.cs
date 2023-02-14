@@ -1,4 +1,6 @@
 ﻿using GHSContratoWeb.Models.Business;
+using GHSContratoWeb.Models.Grid;
+using GHSContratoWeb.Models.Helper;
 using GHSContratoWeb.Models.Mapping;
 using GHSContratoWebBusiness.Helper;
 using Stimulsoft.Report;
@@ -16,7 +18,30 @@ namespace GHSContratoWeb.Controllers
         // GET: Recibo
         public ActionResult Index()
         {
-            return View();
+            Usuario usuario = new Utils().Usuario;
+
+            if (usuario == null)
+            {
+                RedirectToAction("Index", "Login");
+            }
+
+            List<ClienteGrid> listaGrid = new ClienteBusiness().ListarGrid();
+
+            if (TempData["Resultado"] != null)
+            {
+                dynamic obj = TempData["Resultado"];
+
+                if (((bool)obj.Resultado) == true)
+                {
+                    ViewBag.Notificacao = "<script>Notiflix.Notify.Success('" + (String)obj.Mensagem + "');</script>";
+                }
+                else
+                {
+                    ViewBag.Notificacao = "<script>Notiflix.Notify.Failure('" + (String)obj.Mensagem + "');</script>";
+                }
+            }
+
+            return View(listaGrid);
         }
 
         public ActionResult GetReport(int id = 1)
@@ -40,5 +65,14 @@ namespace GHSContratoWeb.Controllers
         {
             return StiMvcViewer.ViewerEventResult();
         }
+
+
+        [HttpPost]
+        public PartialViewResult _BuscarClienteRecibo(int id)
+        {
+            Cliente cliente = new ClienteBusiness().Detalhes(id);
+            return PartialView(cliente);
+        }
+
     }
 }

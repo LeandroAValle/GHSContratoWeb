@@ -13,21 +13,12 @@
                 </div>
             </div>
         </div>
-        <div class="col-md-4">
-            <div class="card card-primary" data-toggle="modal" data-target="#modal-b" id="padraoEntrada">
-                <div class="card-body skew-shadow" style="max-height: 300px; overflow-y: auto;">
-                    <div class="card-title fw-mediumbold">
-                        <span class="fw-bold" style="font-size: larger">Padrão de Entrada</span>
-                    </div>
-                </div>
-            </div>
-        </div>
     </div>
 </div>
 
 <!-- #region Modal Disjuntores -->
 <div class="modal fade" id="modal-a" tabindex="-1" role="dialog" aria-labelledby="examplemodallabel" aria-hidden="true">
-    <div class="modal-dialog" role="document">
+    <div class="modal-dialog modal-lg" role="document">
         <div class="modal-content">
             <div class="modal-header">
                 <h5 class="modal-title" id="exampleModalLabel">Disjuntores</h5>
@@ -48,7 +39,7 @@
 <!-- #endregion -->
 <!-- #region Modal Padrão de Entrada -->
 <div class="modal fade" id="modal-b" tabindex="-1" role="dialog" aria-labelledby="examplemodallabel" aria-hidden="true">
-    <div class="modal-dialog" role="document">
+    <div class="modal-dialog modal-lg" role="document">
         <div class="modal-content">
             <div class="modal-header">
                 <h5 class="modal-title" id="exampleModalLabel">Padrão de Entrada</h5>
@@ -67,6 +58,7 @@
     </div>
 </div>
 <!-- #endregion -->
+
 
 <style>
     .card-body::-webkit-scrollbar-track {
@@ -109,6 +101,7 @@
 
     $('#disjuntores').click(function () {
         $.ajax({
+            type: 'GET',
             url: '/Material/_Disjuntores',
             bbeforeSend: function () {
             },
@@ -116,6 +109,23 @@
                 $("#tr-iloading1").hide();
                 $('#modal-a').find('.card-body').empty();
                 $('#modal-a').find('.card-body').html(page);
+            },
+            error: function (data) {
+                console.log('erro');
+            }
+        });
+    });
+
+    $('#padraoEntrada').click(function () {
+        $.ajax({
+            type: 'GET',
+            url: '/Material/_PadraoEntrada',
+            bbeforeSend: function () {
+            },
+            success: function (page) {
+                $("#tr-iloading1").hide();
+                $('#modal-b').find('.card-body').empty();
+                $('#modal-b').find('.card-body').html(page);
             },
             error: function (data) {
                 console.log('erro');

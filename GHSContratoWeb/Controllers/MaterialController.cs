@@ -2,6 +2,7 @@
 using GHSContratoWeb.Models.Grid;
 using GHSContratoWeb.Models.Helper;
 using GHSContratoWeb.Models.Mapping;
+using GHSContratoWebBusiness.Helper;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -38,10 +39,58 @@ namespace GHSContratoWeb.Controllers
             return View();
         }
 
-        [HttpPost]
+        #region Disjuntores
+
+        [HttpGet]
         public PartialViewResult _Disjuntores()
         {
-            return PartialView();
+            List<Disjuntor> disjuntor = new MaterialBusiness().Listar();
+
+            return PartialView(disjuntor);
         }
+
+        [HttpPost]
+        public JsonResult SalvarDisjuntor(FormCollection form)
+        {
+            Disjuntor disjuntor = new Disjuntor()
+            {
+                ID = form["IDdisjuntor"].ToInt32(),
+                Descricao = form["Nomedisjuntor"].IsNullOrEmptyBoolean() ? null : form["Nomedisjuntor"].Trim()
+            };
+
+            int? result = new MaterialBusiness().InsertDisjuntor(disjuntor);
+
+            return Json(result, JsonRequestBehavior.AllowGet);
+        }
+
+        [HttpGet]
+        public JsonResult AtualizaDisjuntor()
+        {
+            List<Disjuntor> disjuntor = new MaterialBusiness().Listar();
+
+            return Json(disjuntor, JsonRequestBehavior.AllowGet);
+        }
+
+        [HttpPost]
+        public JsonResult DeletarDisjuntor(int id)
+        {
+            Disjuntor disjuntor = new MaterialBusiness().Detalhes(id);
+
+            int? result = new MaterialBusiness().DeleteDisjunor(disjuntor);
+
+            return Json(result, JsonRequestBehavior.AllowGet);
+        }
+
+        [HttpGet]
+        public JsonResult BuscaUltimoCodigoDisjuntores()
+        {
+            int? ultimoCodigo = new MaterialBusiness().BuscarUltimoCodigo();
+            ultimoCodigo = (ultimoCodigo != null ? ultimoCodigo.Value + 1 : 1);
+
+            return Json(ultimoCodigo, JsonRequestBehavior.AllowGet);
+        }
+
+        #endregion
+
     }
 }

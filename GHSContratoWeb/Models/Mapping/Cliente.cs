@@ -36,5 +36,6 @@ namespace GHSContratoWeb.Models.Mapping
         public List<EnderecoCliente> Enderecos { get; set; }
         public List<ContatoCliente> Contatos { get; set; }
         public List<InformacoesAcessoCliente> Acessos { get; set; }
+        public List<ClienteAnexo> Anexos { get; set; }
     }
 }

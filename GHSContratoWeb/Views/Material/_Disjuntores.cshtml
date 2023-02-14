@@ -1,32 +1,208 @@
-﻿<div id="card">
+﻿@model List<GHSContratoWeb.Models.Mapping.Disjuntor>
+<div id="Disjuntores">
     <div class="table-responsive">
-        <table id="tableDisjuntores" class="dtPadrao table table-sm display compact table-striped table-hover w-100 info">
+        <table class="dtPadrao table-sm display table-striped table-hover w-100 table-bordered" id="tableDisjuntores">
             <thead>
-                <tr>
-                    <th>Descrição</th>
-                    <th class="acoes-texto-linha text-center">Ações</th>
+                <tr class="text-dark">
+                    <th class="text-center">ID</th>
+                    <th class="text-center">Nome</th>
+                    <th class="text-center"><a class="btn-link ml-3" href="#" onclick="AddTableRowDisjuntores()">Adicionar <i class="fas fa fa-plus text-bg-success"></i></a></th>
                 </tr>
             </thead>
-            <tbody class="tbody-grid" style="display: none !important;">
-                <tr>
-                    <td>Nis</td>
-                    <th class="text-center">Idade</th>
-                    <td>
-                        <div class="form-button-action px-1 d-flex justify-content-center">
-                        </div>
-                    </td>
-                </tr>
+            <tbody>
+                @{ foreach (var item in Model)
+                    {
+                        <tr>
+                            <td class="text-center">@item.ID</td>
+                            <td>@item.Descricao</td>
+                            <td class="text-center">
+                                <a class="btn-link ml-3" href="#"><i class="fas fa fa-trash text-danger" onclick="ExcluirDisjuntores(this)"></i></a>
+                            </td>
+                        </tr>
+                    } }
             </tbody>
         </table>
-        <div id="tr-iloading">
-            <div class="text-center" colspan="15"><img src="../Content/Imagens/Spinner-1s-64px.gif" /></div>
-        </div>
     </div>
+</div>
+<div id="DisjuntoresAdd" style="display: none">
+    <form action="@Url.Action("SalvarDisjuntor","Material")" method="post" id="FormDisjuntor">
+        <div class="row">
+            <div class="col-12 col-md-2 px-0">
+                <div class="form-group">
+                    <label for="ID">ID</label>
+                    <input type="text" name="IDdisjuntor" class="form-control form-control-sm" id="IDdisjuntor" readonly maxlength="16" value="" />
+                </div>
+            </div>
+            <div class="col-12 col-md-6 px-0">
+                <div class="form-group">
+                    <label for="Nomedisjuntor">Nome</label>
+                    <input type="text" class="form-control form-control-sm" name="Nomedisjuntor" id="Nomedisjuntor" />
+                </div>
+            </div>
+            <div class="col-12 col-md-2 px-0">
+                <div class="form-group d-flex mt-4">
+                    <label for="Nome">&ensp;</label>
+                    <button type="submit" class="btn btn-info btn-sm d-flex align-items-center ml-1" id="salvarDisjuntor">Salvar</button>
+                    <button type="button" class="btn btn-danger btn-sm d-flex align-items-center ml-1" id="cancelarDisjuntor">Cancelar</button>
+                </div>
+            </div>
+        </div>
+    </form>
 </div>
 
 <script>
-    $(window).on("load", function () {
-        $("#tr-iloading").hide();
-        $("#table_lista_pessoas").parent().find('tbody').removeAttr("style");
+
+    $(function () {
+        let dtPadrao = $('.dtPadrao').dataTable({
+            responsive: true,
+            bPaginate: true,
+            bFilter: true,
+            destroy: true,
+            "lengthChange": false,
+            "language": {
+                "emptyTable": "Nenhum registro encontrado",
+                "info": "Mostrando página _PAGE_ de _PAGES_",
+                "infoEmpty": "Mostrando 0 de 0",
+                "infoFiltered": "(Filtrado de _MAX_ total registros)",
+                "infoPostFix": "",
+                "thousands": ",",
+                "lengthMenu": "Mostrar _MENU_ registros",
+                "loadingRecords": "Carregando...",
+                "processing": "Processando...",
+                "search": "Pesquisar:",
+                "zeroRecords": "Nenhum registro encontrado",
+                "paginate": {
+                    "first": "Primeiro",
+                    "last": "Último",
+                    "next": "Próximo",
+                    "previous": "Anterior"
+                },
+                "aria": {
+                    "sortAscending": ": ordernar em order crescente",
+                    "sortDescending": ": ordenar em ordem decrescente"
+                }
+            }
+        });
     });
+
+    AddTableRowDisjuntores = function () {
+        $("#Disjuntores").css('display', 'none');
+        $('#DisjuntoresAdd').css('display', 'block');
+
+        $.ajax({
+            url: "/Material/BuscaUltimoCodigoDisjuntores",
+            type: "GET",
+            dataType: 'JSON',
+            success: function (result) {
+
+                $("#IDdisjuntor").val(result);
+            },
+            error: function (result) {
+
+                // Some error in ajax call
+                alert("some Error");
+            }
+        });
+       
+    };
+
+    $('#cancelarDisjuntor').click(function () {
+        $("#ID").val("");
+        $("#Nome").val("");
+
+        $.ajax({
+            url: '/Material/AtualizaDisjuntor',
+            type: 'GET',
+            beforeSend: function () {
+            },
+            success: function (data) {
+
+                $("#tableDisjuntores tbody").empty();
+
+                data.forEach(function (item) {
+                    $('tbody').append('<tr><td class="text-center">' + item.ID + '</td><td>' + item.Descricao + '</td><td class="text-center"><a class="btn-link ml-3" href="#"><i class="fas fa fa-trash text-danger" onclick="ExcluirDisjuntores(this)"></i></a></td></tr>');
+                })
+
+                $('#DisjuntoresAdd').css('display', 'none');
+                $("#Disjuntores").css('display', 'block');
+            },
+            error: function (data) {
+                console.log('erro');
+            }
+        });
+       
+    });
+
+    $("#FormDisjuntor").submit(function (e) {
+        e.preventDefault();
+
+        var IDdisjuntor = $("#IDdisjuntor").val();
+        var Nomedisjuntor = $("#Nomedisjuntor").val();
+
+        $.ajax({
+            url: "/Material/SalvarDisjuntor",
+            type: "POST",
+            dataType: 'JSON',
+            data: { IDdisjuntor: IDdisjuntor, Nomedisjuntor: Nomedisjuntor },
+            success: function (result) {
+
+                $("#FormDisjuntor")[0].reset();
+
+                $.ajax({
+                    url: '/Material/AtualizaDisjuntor',
+                    type: 'GET',
+                    beforeSend: function () {
+                    },
+                    success: function (data) {
+
+                        $("#tableDisjuntores tbody").empty();
+
+                        data.forEach(function (item) {
+                            $('tbody').append('<tr><td class="text-center">' + item.ID + '</td><td>' + item.Descricao + '</td><td class="text-center"><a class="btn-link ml-3" href="#"><i class="fas fa fa-trash text-danger" onclick="ExcluirDisjuntores(this)"></i></a></td></tr>');
+                        })
+
+                        $('#DisjuntoresAdd').css('display', 'none');
+                        $("#Disjuntores").css('display', 'block');
+
+                    },
+                    error: function (data) {
+                        console.log('erro');
+                    }
+                });
+            },
+            error: function (result) {
+
+                // Some error in ajax call
+                alert("some Error");
+            }
+        });
+    });
+
+    ExcluirDisjuntores = function (item) {
+
+        var tr = $(item).closest('tr');
+
+        let IDdisjuntor = $(tr).children("td:nth-child(1)").text();
+
+        $.ajax({
+            url: "/Material/DeletarDisjuntor",
+            type: "POST",
+            dataType: 'JSON',
+            data: { id: IDdisjuntor },
+            success: function (result) {
+
+                tr.fadeOut(400, function () {
+                    tr.remove();
+                });
+
+                return false;
+            },
+            error: function (result) {
+
+                // Some error in ajax call
+                alert("some Error");
+            }
+        });
+    }
+
 </script>

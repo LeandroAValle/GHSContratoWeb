@@ -161,6 +161,7 @@
     <Compile Include="Controllers\LoginController.cs" />
     <Compile Include="Controllers\ProcuracaoController.cs" />
     <Compile Include="Controllers\ReciboController.cs" />
+    <Compile Include="Controllers\RelatorioClienteController.cs" />
     <Compile Include="Controllers\UnidadeConsumidoraController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -180,6 +181,7 @@
     <Compile Include="Models\Business\EstadoBusiness.cs" />
     <Compile Include="Models\Business\HistoricoLoginBusiness.cs" />
     <Compile Include="Models\Business\InformacaoAcessoBusiness.cs" />
+    <Compile Include="Models\Business\MaterialBusiness.cs" />
     <Compile Include="Models\Business\MenuBusiness.cs" />
     <Compile Include="Models\Business\PadraoEntradaBusiness.cs" />
     <Compile Include="Models\Business\SistemaFotovoltaicoBusiness.cs" />
@@ -195,10 +197,12 @@
     <Compile Include="Models\Mapping\ArquivoContrato.cs" />
     <Compile Include="Models\Mapping\Cidade.cs" />
     <Compile Include="Models\Mapping\Cliente.cs" />
+    <Compile Include="Models\Mapping\ClienteAnexo.cs" />
     <Compile Include="Models\Mapping\Concessionaria.cs" />
     <Compile Include="Models\Mapping\ContatoCliente.cs" />
     <Compile Include="Models\Mapping\Contrato.cs" />
     <Compile Include="Models\Mapping\DadosCliente.cs" />
+    <Compile Include="Models\Mapping\Disjuntor.cs" />
     <Compile Include="Models\Mapping\Empresa.cs" />
     <Compile Include="Models\Mapping\EnderecoCliente.cs" />
     <Compile Include="Models\Mapping\Estado.cs" />
@@ -210,6 +214,7 @@
     <Compile Include="Models\Mapping\Teste.cs" />
     <Compile Include="Models\Mapping\TipoCliente.cs" />
     <Compile Include="Models\Mapping\TipoContrato.cs" />
+    <Compile Include="Models\Mapping\UnidadeBeneficiaria.cs" />
     <Compile Include="Models\Mapping\UnidadeConsumidora.cs" />
     <Compile Include="Models\Mapping\Usuario.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -698,6 +703,9 @@
     <Content Include="Reports\Contrato.mrt" />
     <Content Include="Reports\Procuracao.mrt" />
     <Content Include="Reports\Recibo.mrt" />
+    <Content Include="Reports\Contrato_Compra_e_Venda.mrt" />
+    <Content Include="Reports\Contrato_Prestacao_Servico.mrt" />
+    <Content Include="Reports\RelatorioCliente.mrt" />
     <None Include="Scripts\jquery-3.6.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.6.1.js" />
     <Content Include="Scripts\jquery-3.6.1.min.js" />
@@ -742,6 +750,11 @@
     <Content Include="Views\Procuracao\Index.cshtml" />
     <Content Include="Views\Recibo\Index.cshtml" />
     <Content Include="Views\UnidadeConsumidora\Cadastro.cshtml" />
+    <Content Include="Views\UnidadeConsumidora\Alterar.cshtml" />
+    <Content Include="Views\UnidadeConsumidora\_BuscarUnidadeConsumidora.cshtml" />
+    <Content Include="Views\Recibo\_BuscarClienteRecibo.cshtml" />
+    <Content Include="Views\Concessionaria\Novo.cshtml" />
+    <Content Include="Views\RelatorioCliente\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
