@@ -25,5 +25,6 @@ namespace GHSContratoWeb.Models.Mapping
 		public string LatitudeHoras { get; set; }
 		public string LongitudeHoras { get; set; }
 		public bool? LocalInstalacao { get; set; }
+		public bool? Residencial { get; set; }
 	}
 }

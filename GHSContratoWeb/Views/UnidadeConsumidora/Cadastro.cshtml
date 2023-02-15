@@ -122,7 +122,8 @@
                                                 <div class="col-12 col-md-3 px-0">
                                                     <div class="form-group">
                                                         <label for="disjuntor" class="form-label">Disjuntor</label>
-                                                        <input type="text" name="disjuntor" class="form-control form-control-sm" id="disjuntor" maxlength="100">
+                                                        @*<input type="text" name="disjuntor" class="form-control form-control-sm" id="disjuntor" list="text_editors" maxlength="100">*@
+                                                        @Html.DropDownList("DropDownDisjuntor", null, new { @class = "form-control", @ID = "disjuntor" })
                                                     </div>
                                                 </div>
                                                 <div class="col-12 col-md-3 px-0">
@@ -510,6 +511,11 @@
 <script type="text/javascript" src="https://code.jquery.com/jquery-1.12.0.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
 <style>
+
+    #disjuntor {
+        padding: .475rem 1.75rem;
+    }
+
     a:hover, a:focus {
         text-decoration: none;
         outline: none;
@@ -527,7 +533,7 @@
             .tab .nav-tabs li a {
                 color: #222;
                 background: transparent;
-                font-size: 10px;
+                font-size: 12px;
                 font-weight: 800;
                 letter-spacing: 1px;
                 text-align: center;

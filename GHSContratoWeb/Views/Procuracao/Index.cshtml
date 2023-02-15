@@ -1,4 +1,5 @@
 ﻿@using Stimulsoft.Report.Mvc;
+@model List<GHSContratoWeb.Models.Grid.ClienteGrid>
 @{
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
@@ -16,6 +17,12 @@
                 <i class="flaticon-right-arrow"></i>
             </li>
             <li class="nav-item">
+                <a>Documentos</a>
+            </li>
+            <li class="separator">
+                <i class="flaticon-right-arrow"></i>
+            </li>
+            <li class="nav-item">
                 <a>Procuração</a>
             </li>
         </ul>
@@ -23,14 +30,70 @@
     <div class="row">
         <div class="col-md-12">
             <div class="card border-top-personalizada">
-                @*<div class="card-header d-flex justify-content-between">
-                        <h4 class="card-title">Cadastro Unidade Consumidora</h4>
-                    </div>*@
                 <div class="card-body">
-                    @Html.Stimulsoft().StiMvcViewer(new StiMvcViewerOptions() { Actions = { GetReport = "GetReport", ViewerEvent = "ViewerEvent" } })
+                    <div class="table-responsive">
+                        <table class="dtPadrao table-sm display table-striped table-hover w-100 table-bordered">
+                            <thead>
+                                <tr class="text-dark">
+                                    <th>ID</th>
+                                    <th>Nome</th>
+                                    <th>Tipo do Cliente</th>
+                                    <th>Documento</th>
+                                    <th>Data do Cliente</th>
+                                    <th hidden>Data Expedição</th>
+                                    <th class="text-center">Ações</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @{ foreach (var item in Model)
+                                    {
+                                        <tr>
+                                            <td class="text-center">@item.ID</td>
+                                            <td>@item.Nome</td>
+                                            <td>@item.TipoCliente</td>
+                                            <td>@item.Documento.ToString()</td>
+                                            <td hidden>@item.DataCliente.Value.ToString("dd/MM/yyyy")</td>
+                                            <td>@item.DataExpedicao.Value.ToString("dd/MM/yyyy")</td>
+                                            <td class="text-center">
+                                                <a class="btn-link btn-procuracao" data-toggle="modal" data-target="#modalProcuracao" data-id="@item.ID"><i class="fas fa fa-search-plus text-info"></i></a>
+                                            </td>
+                                        </tr>
+                                    } }
+                            </tbody>
+                        </table>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
 </div>
+<div class="modal fade" id="modalProcuracao" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document" style="max-width: 1200px !important;">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Procuração</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Fechar">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="card-body">
+                    @Html.Stimulsoft().StiMvcViewer(new StiMvcViewerOptions() { Actions = { GetReport = "GetReport", ViewerEvent = "ViewerEvent" } })
+                </div>
+            </div><!-- /.card-body -->
+        </div><!-- /.card -->
+    </div>
+</div>
+<script>
+    /*Controla Modals*/
+    var modal_lv = 0;
+    $('.modal').on('shown.bs.modal', function (e) {
+        $('.modal-backdrop:last').css('zIndex', 1051 + modal_lv);
+        $(e.currentTarget).css('zIndex', 1052 + modal_lv);
+        modal_lv++
+    });
 
+    $('.modal').on('hidden.bs.modal', function (e) {
+        modal_lv--
+    });
+</script>

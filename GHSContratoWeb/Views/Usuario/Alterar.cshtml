@@ -1,0 +1,106 @@
+﻿@model GHSContratoWeb.Models.Mapping.Usuario
+@{
+    ViewBag.Title = "Alterar";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="page-inner mt-5">
+    <div class="page-header card-round" style="background-color: #ffffff">
+        <h4 class="page-title ml-3">Alterar Usuario</h4>
+        <ul class="breadcrumbs">
+            <li class="nav-home">
+                <a href="@Url.Action("Index","Home")" class="text-primary">
+                    <i class="flaticon-home"></i>
+                </a>
+            </li>
+            <li class="separator">
+                <i class="flaticon-right-arrow"></i>
+            </li>
+            <li class="nav-item">
+                <a>Cadastros</a>
+            </li>
+            <li class="separator">
+                <i class="flaticon-right-arrow"></i>
+            </li>
+            <li class="nav-item">
+                <a href="@Url.Action("Index","Usuario")" class="text-primary">Usuarios</a>
+            </li>
+            <li class="separator">
+                <i class="flaticon-right-arrow"></i>
+            </li>
+            <li class="nav-item">
+                <a>Alterar Usuario</a>
+            </li>
+        </ul>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card border-top-personalizada">
+                <div class="card-body">
+                    <form action="@Url.Action("Alterar","Usuario")" method="post" id="formAlterarUsuario">
+                        <div class="row">
+                            <div class="col-12 col-md-1 px-0">
+                                <div class="form-group">
+                                    <label for="ID">Codigo</label>
+                                    <input type="text" class="form-control form-control-sm" name="ID" id="ID" value="@ViewBag.ultimoCodigo" />
+                                </div>
+                            </div>
+                            <div class="col-12 col-md-4 px-0">
+                                <div class="form-group">
+                                    <label for="Login">Login</label>
+                                    <input type="text" class="form-control form-control-sm" name="Login" id="Login" maxlength="255" value="@Model.Login" />
+                                </div>
+                            </div>
+                            <div class="col-12 col-md-4 px-0">
+                                <div class="form-group">
+                                    <label for="Nome">Nome</label>
+                                    <input type="text" class="form-control form-control-sm" name="Nome" id="Nome" maxlength="255" value="@Model.Nome" />
+                                </div>
+                            </div>
+                            <div class="col-12 col-md-3 px-0">
+                                <div class="form-group">
+                                    <label for="Senha">Senha</label>
+                                    <input type="text" class="form-control form-control-sm" name="Senha" id="Senha" maxlength="255" value="@Model.Senha" />
+                                </div>
+                            </div>
+                            <div class="col-12 col-md-3 px-0">
+                                <div class="form-check form-check-inline">
+                                    <div class="custom-control custom-checkbox">
+                                        <input type="checkbox" class="custom-control-input" id="Ativo" value="0">
+                                        <label class="custom-control-label" for="Ativo">Ativo</label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+
+    $(document).ready(function () {
+        var ativo = $("#Ativo").val();
+
+        if (ativo == 1) {
+            $('#Ativo').prop('checked', true);
+        } else {
+            $('#Ativo').prop('checked', false);
+        }
+    });
+
+
+    $('#Ativo').change(function () {
+
+        if ($(this).prop("checked") == true) {
+            $('#Ativo').val(1);
+        } else {
+            $('#Ativo').val(0);
+        }
+
+    });
+
+    $('#Ativo').prop('checked', false);
+</script>
+

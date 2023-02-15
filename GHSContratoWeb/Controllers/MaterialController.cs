@@ -44,7 +44,7 @@ namespace GHSContratoWeb.Controllers
         [HttpGet]
         public PartialViewResult _Disjuntores()
         {
-            List<Disjuntor> disjuntor = new MaterialBusiness().Listar();
+            List<Disjuntor> disjuntor = new MaterialBusiness().ListarDisjuntores();
 
             return PartialView(disjuntor);
         }
@@ -66,7 +66,7 @@ namespace GHSContratoWeb.Controllers
         [HttpGet]
         public JsonResult AtualizaDisjuntor()
         {
-            List<Disjuntor> disjuntor = new MaterialBusiness().Listar();
+            List<Disjuntor> disjuntor = new MaterialBusiness().ListarDisjuntores();
 
             return Json(disjuntor, JsonRequestBehavior.AllowGet);
         }

@@ -50,6 +50,7 @@ namespace GHSContratoWeb.Controllers
             ViewBag.DropDownTipoCliente = DropDownList.DropDownTipoCliente();
             ViewBag.DropDownCidade = DropDownList.DropDownCidade();
             ViewBag.DropDownEstado = DropDownList.DropDownEstado();
+            ViewBag.DropDownDisjuntor = DropDownList.DropDownDisjuntor();
             return View(endereco);
         }
 

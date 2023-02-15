@@ -1,0 +1,79 @@
+﻿@model List<GHSContratoWeb.Models.Mapping.Usuario>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="page-inner mt-5">
+    <div class="page-header card-round" style="background-color: #ffffff">
+        <h4 class="page-title ml-3">Usuarios</h4>
+        <ul class="breadcrumbs">
+            <li class="nav-home">
+                <a href="@Url.Action("Index","Home")" class="text-primary">
+                    <i class="flaticon-home"></i>
+                </a>
+            </li>
+            <li class="separator">
+                <i class="flaticon-right-arrow"></i>
+            </li>
+            <li class="nav-item">
+                <a>Cadastros</a>
+            </li>
+            <li class="separator">
+                <i class="flaticon-right-arrow"></i>
+            </li>
+            <li class="nav-item">
+                <a>Usuarios</a>
+            </li>
+        </ul>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card">
+                <div class="card-header d-flex justify-content-between">
+                    <h2 class="card-title">Consulta de Usuarios</h2>
+                    <a href="@Url.Action("Novo","Usuario")" class="btn btn-sm btn-success d-flex align-items-center"><span class="ml-1">Novo<i class="fas fa fa-plus ml-1"></i></span></a>
+                </div>
+                <div class="card-body">
+                    <fieldset class="border p-2">
+                        <div class="table-responsive">
+                            <table class="dtPadrao table-sm display table-striped table-hover w-100 table-bordered">
+                                <thead>
+                                    <tr class="text-dark">
+                                        <th hidden>ID</th>
+                                        <th>Nome</th>
+                                        <th class="text-center">Ativo</th>
+                                        <th class="text-center">Ações</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @{ foreach (var item in Model)
+                                        {
+                                            <tr>
+                                                <td hidden>@item.ID</td>
+                                                <td>@item.Nome</td>
+                                                @if (item.Ativo == true)
+                                                {
+                                                    <td class="text-center">SIM</td>
+                                                }
+                                                else
+                                                {
+                                                    <td class="text-center">NÃO</td>
+                                                }
+
+                                                <td class="text-center">
+                                                    <a class="btn-link ml-1" href="@Url.Action("Alterar","Usuario",new  {ID = @item.ID })"><i class="fas fa fa-edit text-primary"></i></a>
+                                                    <a class="btn-link ml-3" href="@Url.Action("Excluir","Usuario", new {ID = @item.ID })"><i class="fas fa fa-trash text-danger"></i></a>
+                                                </td>
+                                            </tr>
+                                        } }
+                                </tbody>
+                            </table>
+                        </div>
+                    </fieldset>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

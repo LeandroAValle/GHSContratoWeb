@@ -10,7 +10,7 @@ namespace GHSContratoWeb.Models.Business
     public class MaterialBusiness
     {
 
-        public List<Disjuntor> Listar()
+        public List<Disjuntor> ListarDisjuntores()
         {
             // Select           
             try

@@ -1,4 +1,5 @@
 ﻿using GHSContratoWeb.Models.Business;
+using GHSContratoWeb.Models.Grid;
 using GHSContratoWeb.Models.Mapping;
 using GHSContratoWebBusiness.Helper;
 using Stimulsoft.Report;
@@ -16,7 +17,9 @@ namespace GHSContratoWeb.Controllers
         // GET: Procuracao
         public ActionResult Index()
         {
-            return View();
+            List<ClienteGrid> listaGrid = new ClienteBusiness().ListarGrid();
+
+            return View(listaGrid);
         }
 
         public ActionResult GetReport(int id = 1)

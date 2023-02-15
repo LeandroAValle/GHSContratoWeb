@@ -112,7 +112,8 @@ namespace GHSContratoWeb.Controllers
                     Observacao = form["EnderecoObs"].IsNullOrEmptyBoolean() ? null : form["EnderecoObs"].Trim(),
                     LatitudeHoras = form["LatitudeHoras"].IsNullOrEmptyBoolean() ? null : form["LatitudeHoras"].Trim(),
                     LongitudeHoras = form["LongitudeHoras"].IsNullOrEmptyBoolean() ? null : form["LongitudeHoras"].Trim(),
-                    LocalInstalacao = form["enderecoInstalacao"].ToBoolean()
+                    LocalInstalacao = form["enderecoInstalacao"].ToBoolean(),
+                    Residencial = form["enderecoResidencial"].ToBoolean()
                 });
             }
 
@@ -221,6 +222,8 @@ namespace GHSContratoWeb.Controllers
                 obj.Mensagem = "Falha ao realizar cadastro!";
             }
             TempData["Resultado"] = obj;
+
+
 
             return RedirectToAction("Index");
         }

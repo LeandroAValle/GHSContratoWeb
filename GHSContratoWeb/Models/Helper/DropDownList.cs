@@ -141,6 +141,31 @@ namespace GHSContratoWeb.Models.Helper
             return list;
         }
 
+        public static List<SelectListItem> DropDownDisjuntor(int? id = null)
+        {
+            var list = new List<SelectListItem>();
+            var disjuntores = new MaterialBusiness().ListarDisjuntores();
+
+            foreach (var disjuntor in disjuntores)
+            {
+                list.Add(new SelectListItem
+                {
+                    Text = disjuntor.Descricao,
+                    Value = disjuntor.ID.ToString(),
+                    Selected = disjuntor.ID == id
+                });
+            }
+
+            list.Insert(0, new SelectListItem
+            {
+                Text = "-Selecione-",
+                Value = "",
+                Selected = (id == null ? true : false)
+            });
+
+            return list;
+        }
+
 
     }
 }
